@@ -1,0 +1,31 @@
+.shop{
+    margin-bottom: 20px;
+}
+
+.shop_title{
+    margin-top: 15px;
+}
+
+.shop_title a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.shop_title a:hover{
+    text-decoration: underline;
+}
+
+.shop_text{
+    background-color: lightgrey;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    /*padding: 10px;*/
+}
+
+.add_review_btn{
+    margin-top: 15px;
+}
+
+.shop_rating{
+    margin-top: 15px;
+}
