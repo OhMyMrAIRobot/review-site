@@ -1,5 +1,19 @@
+.header{
+    background: aquamarine;
+    height: 70px;
+}
+
+.navbar{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .title{
-    margin-top: 7px;
+    color: #5c5b5b;
 }
 
 .title a {
@@ -7,12 +21,22 @@
     color: inherit;
 }
 
+.navigation{
+    display: flex;
+    align-items: center;
+}
+
+.navigation ul{
+    text-decoration: none;
+    list-style-type: none;
+}
+
 .nav-btn{
     text-decoration: none;
     color: inherit;
     display: block;
-    padding: 22px;
     font-size: 1.2rem;
+    padding: 10px;
 }
 
 .nav-btn:hover{
@@ -28,7 +52,7 @@ li{
 
 .cabinet-btns{
     position: absolute;
-    top: 70px;
+    top: 40px;
     right: 0;
     display: none;
     width: 160px;

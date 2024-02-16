@@ -4,22 +4,3 @@
     box-sizing: border-box;
     font-family: 'Comfortaa', cursive;
 }
-
-html, h1, h2, h3, h4, h5, h6{
-    color: #5c5b5b;
-}
-
-header{
-    background: aquamarine;
-    height: 70px;
-}
-
-header *{
-    list-style-type: none;
-}
-
-header ul {
-    margin: 0;
-    padding: 0;
-    float: right;
-}
