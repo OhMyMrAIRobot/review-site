@@ -1,7 +1,6 @@
 .main{
-    background: crimson;
     width: 80%;
-    margin: 0 auto;
+    margin: 60px auto;
     display: flex;
     justify-content: space-between;
 }

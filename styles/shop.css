@@ -1,9 +1,5 @@
 .shop_container{
     width: 70%;
-    background: purple;
-    /*display: flex;*/
-    /*justify-content: space-between;*/
-    /*flex-wrap: wrap;*/
 }
 
 .shop{
@@ -12,13 +8,12 @@
 }
 
 .shop_img{
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 30%;
 }
 
 .shop_text{
-    width: 80%;
-    background-color: lightgrey;
+    width: 65%;
+    background-color: #ffffff;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
     padding: 10px;
@@ -28,6 +23,7 @@
 }
 
 .shop_title{
+    font-size: 1.5rem;
     padding-bottom: 10px;
 }
 

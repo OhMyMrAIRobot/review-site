@@ -1,5 +1,5 @@
 .header{
-    background: aquamarine;
+    background: #303036;
     height: 70px;
 }
 
@@ -18,7 +18,7 @@
 
 .title a {
     text-decoration: none;
-    color: inherit;
+    color: #ececec;
 }
 
 .navigation{
@@ -33,15 +33,15 @@
 
 .nav-btn{
     text-decoration: none;
-    color: inherit;
+    color: #ececec;
     display: block;
     font-size: 1.2rem;
     padding: 10px;
+    transition: all 0.4s;
 }
 
 .nav-btn:hover{
-    background: aqua;
-    transition: 0.5s;
+    transition: all 0.4s;
     color: inherit;
 }
 
@@ -57,13 +57,18 @@ li{
     display: none;
     width: 160px;
     z-index: 100;
+    transition: all 0.4s;
 }
 
 .nav-btn:hover + .cabinet-btns{
+    background: #303036;
     display: block;
+    transition: all 0.4s;
 }
 
 .cabinet-btns:hover{
+    transition: all 0.4s;
+    background: #303036;
     display: block;
 }
 
