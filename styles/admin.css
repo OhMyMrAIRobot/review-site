@@ -105,3 +105,14 @@
     color: #686868;
     padding-bottom: 15px;
 }
+
+.admin_table_edit{
+    text-decoration: none;
+    color: #006669;
+}
+
+.admin_table_delete{
+    text-decoration: none;
+    color: #FF0000;
+    margin-left: 50px;
+}
