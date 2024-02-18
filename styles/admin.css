@@ -15,14 +15,18 @@
 }
 
 .admin-left_cont ul {
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 35px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     list-style-type: none;
 }
 
 .admin_sidebar_item {
+    padding-bottom: 3px;
+    display: block;
+    width: 100%;
     font-size: 1.5rem;
     color: #686868;
     text-decoration: none;
@@ -36,7 +40,7 @@
 }
 
 .admin_left_header{
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 .admin-right_cont{
@@ -44,4 +48,60 @@
     height: 100%;
     background: #ffffff;
     border-radius: 5px;
+    padding: 15px;
+}
+
+.admin_btn_container{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin_btn_add{
+    display: block;
+    padding: 8px 25px 8px 25px;
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 3px;
+    transition: all 0.4s linear;
+}
+
+.admin_btn_add:hover{
+    transition: all 0.4s linear;
+    color: #198754;
+    background-color: #ffffff;
+}
+
+.admin_btn_edit{
+    display: block;
+    padding: 8px 25px 8px 25px;
+    color: #272727;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
+    border-radius: 3px;
+    transition: all 0.4s linear;
+}
+
+.admin_btn_edit:hover{
+    transition: all 0.4s linear;
+    color: #ffc107;
+    background: #ffffff;
+}
+
+.admin_container_header{
+    margin-top: 30px;
+}
+
+.admin_container_header h2{
+    text-align: center;
+    font-size: 2rem;
+    color: #686868;
+    padding-bottom: 15px;
 }
