@@ -29,31 +29,7 @@
 <body>
 
 <!--HEADER-->
-<header class = "header">
-    <div class = "navbar">
-            <h1 class = "title">
-                <a href = "index.html">My Title</a>
-            </h1>
-
-            <nav class = "navigation">
-                <ul>
-                    <li><a class = "nav-btn" href = "#">Главная</a></li>
-                    <li><a class = "nav-btn" href = "#">Магазины</a></li>
-                    <li><a class = "nav-btn" href = "#">О нас</a></li>
-                    <li>
-                        <a class = "nav-btn" href = "register.html">
-                            <i class = "fa fa-user"></i>
-                            Кабинет
-                        </a>
-                        <ul class = "cabinet-btns">
-                            <li><a class = "nav-btn" href = "admin.html">Админ панель</a></li>
-                            <li><a class = "nav-btn" href = "#">Выход</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-    </div>
-</header>
+<?php require "./components/header.php"?>
 
 <!--MAIN-->
 <main class = "main">
@@ -67,7 +43,7 @@
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="./shopPage.html">Название 1</a>
+                        <a href="shopPage.php">Название 1</a>
                     </h3>
 
                     <p class="shop_description">С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. . Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает</p>
@@ -134,57 +110,7 @@
         </div>
 </main>
 
-
-<footer class = "footer">
-    <div class = "footer_container">
-
-        <!--COLUMN WITH INFO-->
-        <div class = "footer_info_container">
-            <h3 class = "footer_info_header">My title</h3>
-            <p class = "footer_info_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident.</p>
-            <div class = "footer_contacts">
-                <span><i class = "fas fa-phone"></i>&nbsp; 123-456-789</span>
-                <span><i class = "fas fa-envelope"></i>&nbsp; my_title@gmail.com</span>
-            </div>
-            <div class = "footer_social">
-                <a class = "social" href = "#"><i class = "fab fa-facebook"></i></a>
-                <a class = "social" href = "#"><i class = "fab fa-instagram"></i></a>
-                <a class = "social" href = "#"><i class = "fab fa-telegram"></i></a>
-                <a class = "social" href = "#"><i class = "fab fa-vk"></i></a>
-            </div>
-        </div>
-
-        <!--COLUMN WITH QUICK LINKS-->
-        <div class = "quick_links_container">
-            <h3 class = "quick_links_header">Quick Links</h3>
-            <ul class = "quick_links_list">
-                <li><a class = "quick_link" href="#">Quick_link_1</a></li>
-                <li><a class = "quick_link" href="#">Quick_link_2</a></li>
-                <li><a class = "quick_link" href="#">Quick_link_3</a></li>
-                <li><a class = "quick_link" href="#">Quick_link_4</a></li>
-                <li><a class = "quick_link" href="#">Quick_link_5</a></li>
-            </ul>
-        </div>
-
-        <!--COLUMN WITH FEEDBACK-->
-        <div class = "feedback_container">
-            <h3 class = "feedback_header">Feedback</h3>
-            <form action="index.html" method="post">
-                <input class = "feedback_email" type = "email" name = "email" placeholder = "Введите ваш эл. адрес...">
-                <textarea class = "feedback_text" rows="4" name = "message" placeholder = "Введите текст"></textarea>
-                <button class = "feedback_btn">
-                    <i class = "fa fa-envelope"></i>
-                    Отправить
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <div class = "footer_credits">
-        &copy; BSUIR | 2024
-    </div>
-
-</footer>
+<?php require "./components/footer.php" ?>
 
 </body>
 </html>
