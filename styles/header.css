@@ -42,7 +42,7 @@
 
 .nav-btn:hover{
     transition: all 0.4s;
-    color: inherit;
+    color: gold;
 }
 
 li{

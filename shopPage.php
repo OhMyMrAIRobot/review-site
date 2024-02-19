@@ -76,6 +76,14 @@
         <button class = "add_review">Опубликовать</button>
     </div>
 
+    <div class = "reviews_container">
+        <h2 class = "">Отзывы</h2>
+
+        <div class = "review">
+
+        </div>
+
+    </div>
 </main>
 
 
