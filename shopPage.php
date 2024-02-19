@@ -58,7 +58,26 @@
             </div>
         </div>
     </div>
+
+    <div class = "add_review_container">
+        <h5 class = "review_add_header">Заголовок отзыва</h5>
+        <input class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">
+        <h5 style = "margin-top: 15px" class = "review_add_header">Ваш отзыв</h5>
+        <textarea class = "add_review_text" placeholder="Отзыв..."></textarea>
+
+        <div class = "shop_rating">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
+
+        <button class = "add_review">Опубликовать</button>
+    </div>
+
 </main>
+
 
 <!--FOOTER-->
 <?php require "./components/footer.php"?>

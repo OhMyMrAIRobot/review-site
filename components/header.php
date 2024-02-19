@@ -15,7 +15,7 @@
                         Кабинет
                     </a>
                     <ul class = "cabinet-btns">
-                        <li><a class = "nav-btn" href = "../admin/admin.php">Админ панель</a></li>
+                        <li><a class = "nav-btn" href = "../admin/categories/index.php">Админ панель</a></li>
                         <li><a class = "nav-btn" href = "#">Выход</a></li>
                     </ul>
                 </li>

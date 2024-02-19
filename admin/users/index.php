@@ -35,7 +35,6 @@
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
             <button class = "admin_btn_add">Добавить</button>
-            <button class = "admin_btn_edit">Редактировать</button>
         </div>
 
         <div class = "admin_container_header">

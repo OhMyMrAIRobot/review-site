@@ -119,6 +119,7 @@
     background: #272727;
     color: lightgrey;
     width: 100%;
+    resize: none;
 }
 
 .feedback_btn{

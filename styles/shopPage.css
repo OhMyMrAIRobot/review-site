@@ -2,7 +2,7 @@ main{
     width: 80%;
     margin: 30px auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .single_shop_container{
@@ -11,47 +11,48 @@ main{
     border-radius: 5px;
     padding: 10px;
     color: #686868;
+    margin: 30px auto;
 }
 
 .single_shop_header{
     font-size: 1.5rem;
 }
 
-.single_shop{
+.single_shop {
     display: flex;
     margin-top: 10px;
 }
 
-.single_shop_info{
+.single_shop_info {
     margin-left: 15px;
 }
 
-.single_shop_img{
+.single_shop_img {
     max-width: 25%;
     max-height: 25%;
     border-radius: 5px;
 }
 
-.single_shop_category{
+.single_shop_category {
     margin-top: 10px;
 }
 
-.single_shop_description{
+.single_shop_description {
     margin-top: 10px;
 }
 
-.single_shop_contacts{
+.single_shop_contacts {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap:5px;
 }
 
-.single_shop_social{
+.single_shop_social {
     margin-top: 10px;
 }
 
-.shop_social{
+.shop_social {
     border: 1px solid grey;
     width: 45px;
     height: 45px;
@@ -65,8 +66,67 @@ main{
     color: #686868;
 }
 
-.shop_social:hover{
+.shop_social:hover {
     transition: all 0.4s;
     margin-left: 10px;
     color: #272727;
+}
+
+
+.add_review_container {
+    width: 80%;
+    background: #ffffff;
+    margin: 0 auto 30px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.review_add_header {
+    font-size: 1rem;
+    color: #686868;
+}
+
+.add_review_input {
+    margin-top: 3px;
+    width: 50%;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+    padding: 5px;
+    color: #303036;
+}
+
+.add_review_text {
+    margin-top: 3px;
+    width: 50%;
+    height: 120px;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+    padding: 5px;
+    color: #303036;
+    resize: none;
+}
+
+.shop_rating {
+    margin-top: 15px;
+    font-size: 1.5rem;
+}
+
+.add_review{
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 7px 20px 7px 20px;
+    background: #686868;
+    color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid grey;
+    transition: all 0.4s linear;
+}
+
+.add_review:hover{
+    transition: all 0.4s linear;
+    background: #ffffff;
+    color: #686868;
 }
