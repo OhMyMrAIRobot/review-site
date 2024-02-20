@@ -5,6 +5,8 @@
     <meta name="viewport" content="width = device - width, initial-scale = 1">
     <title>some title</title>
 
+    <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
+
     <!--css-->
     <link rel = "stylesheet" href = "./styles/style.css">
     <link rel = "stylesheet" href = "styles/header.css">
@@ -41,7 +43,7 @@
 
     <div class = "reg_btns_container">
         <button class = "reg_btn">Войти</button>
-        <a class = "login_href" href = "./register.php">Регистрация</a>
+        <a class = "login_href" href="register.php">Регистрация</a>
     </div>
 </form>
 

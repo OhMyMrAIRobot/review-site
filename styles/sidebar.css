@@ -5,6 +5,7 @@
 .search_container{
     padding: 15px;
     background: #ffffff;
+    border-radius: 5px;
 }
 
 .search_title{
@@ -20,12 +21,14 @@
     border-radius: 5px;
     font-size: 1rem;
     border: 1px solid #ececec;
+    outline-color: #272727;
 }
 
 .categories_container{
     margin-top: 15px;
     padding: 15px;
     background: #ffffff;
+    border-radius: 5px;
 }
 
 .categories_title{

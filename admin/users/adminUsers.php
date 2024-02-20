@@ -5,12 +5,14 @@
     <meta name="viewport" content="width = device - width, initial-scale = 1">
     <title>some title</title>
 
+    <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
+
     <!--css-->
     <link rel = "stylesheet" href = "../../styles/style.css">
     <link rel = "stylesheet" href = "../../styles/header.css">
     <link rel = "stylesheet" href = "../../styles/footer.css">
     <link rel = "stylesheet" href = "../../styles/admin.css">
-    <link rel = "stylesheet" href = "./adminShop.css">
+    <link rel = "stylesheet" href = "./adminUsers.css">
 
     <!--boostrap-->
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
@@ -35,47 +37,48 @@
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
             <button class = "admin_btn_add">Добавить</button>
-            <button class = "admin_btn_edit">Редактировать</button>
         </div>
 
         <div class = "admin_container_header">
-            <h2>Управление магазинами</h2>
+            <h2>Управление пользователями</h2>
             <div class = "admin_table_header">
                 <div class="admin_table_id">ID</div>
-                <div class = "admin_table_name bold">Название</div>
-                <div class = "admin_table_category bold">Категория</div>
+                <div class = "admin_table_login bold">Логин</div>
+                <div class = "admin_table_email bold">Email</div>
+                <div class = "admin_table_role bold">Роль</div>
                 <div class = "admin_table_control bold">Управление</div>
             </div>
         </div>
 
-        <!--Магазин 1-->
+        <!--USER 1-->
         <div class = "admin_table_header">
             <div class="admin_table_id">1</div>
-            <div class = "admin_table_name bold">Магазин 1</div>
-            <div class = "admin_table_category bold">Категория 1</div>
-            <div class = "admin_table_control bold">
+            <div class = "admin_table_login">login</div>
+            <div class = "admin_table_email">Email@gmail.com</div>
+            <div class = "admin_table_role">User</div>
+            <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--Магазин 1-->
+        <!--USER 1-->
 
-        <!--Магазин 2-->
+        <!--USER 2-->
         <div class = "admin_table_header">
             <div class="admin_table_id">2</div>
-            <div class = "admin_table_name bold">Магазин 2</div>
-            <div class = "admin_table_category bold">Категория 2</div>
-            <div class = "admin_table_control bold">
+            <div class = "admin_table_login">Admin</div>
+            <div class = "admin_table_email">admin@gmail.com</div>
+            <div class = "admin_table_role">Admin</div>
+            <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--Магазин 2-->
+        <!--USER 2-->
 
 
     </div>
 </main>
-
 
 <!--FOOTER-->
 <?php require "../../components/footer.php"?>

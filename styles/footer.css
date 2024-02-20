@@ -96,6 +96,7 @@
 }
 
 .feedback_email{
+    outline-color: #272727;
     margin-top: 15px;
     display: block;
     padding: 10px 12px;
@@ -120,6 +121,7 @@
     color: lightgrey;
     width: 100%;
     resize: none;
+    outline-color: #272727;
 }
 
 .feedback_btn{

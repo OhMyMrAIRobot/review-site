@@ -5,6 +5,8 @@
     <meta name="viewport" content="width = device - width, initial-scale = 1">
     <title>some title</title>
 
+    <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
+
     <!--css-->
     <link rel = "stylesheet" href = "./styles/style.css">
     <link rel = "stylesheet" href = "styles/header.css">
@@ -12,6 +14,7 @@
     <link rel = "stylesheet" href = "./styles/shop.css">
     <link rel = "stylesheet" href = "./styles/sidebar.css">
     <link rel = "stylesheet" href = "./styles/footer.css">
+    <link rel = "stylesheet" href = "./styles/lastReviews.css">
 
 
     <!--boostrap-->
@@ -32,8 +35,82 @@
 <?php require "./components/header.php"?>
 
 <!--MAIN-->
-<main class = "main">
+<main>
+    <div class = "last_reviews_container">
+        <h3>Последние отзывы</h3>
 
+        <!--ОТЗЫВ 1-->
+        <div class = "review_main">
+            <img class = "img_review" alt="img_review" src="images/img.png">
+            <div class = "review_body">
+                <div class = "review_main_header">
+                    <a href="shopPage.php">Магазин 1</a>
+                    <div class = "review_main_rating">
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <i class="review_icon fa-regular fa-user"></i>
+                    <p class = "review_author">username</p>
+                </div>
+                <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
+            </div>
+
+        </div>
+        <!--ОТЗЫВ 1-->
+
+
+        <!--ОТЗЫВ 1-->
+        <div class = "review_main">
+            <img class = "img_review" alt="img_review" src="images/img.png">
+            <div class = "review_body">
+                <div class = "review_main_header">
+                    <a href="shopPage.php">Магазин 1</a>
+                    <div class = "review_main_rating">
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <i class="review_icon fa-regular fa-user"></i>
+                    <p class = "review_author">username</p>
+                </div>
+                <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
+            </div>
+
+        </div>
+        <!--ОТЗЫВ 1-->
+
+        <!--ОТЗЫВ 1-->
+        <div class = "review_main">
+            <img class = "img_review" alt="img_review" src="images/img.png">
+            <div class = "review_body">
+                <div class = "review_main_header">
+                    <a href="shopPage.php">Магазин 1</a>
+                    <div class = "review_main_rating">
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <i class="review_icon fa-regular fa-user"></i>
+                    <p class = "review_author">username</p>
+                </div>
+                <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
+            </div>
+
+        </div>
+        <!--ОТЗЫВ 1-->
+
+        <h3>Магазины</h3>
+    </div>
+
+
+    <div class = "main">
         <!--MAIN CONTENT-->
         <div class = "shop_container">
 
@@ -62,13 +139,13 @@
             </div>
             <!--МАГАЗИН1-->
 
-            <!--МАГАЗИН2-->
+            <!--МАГАЗИН1-->
             <div class = "shop">
                 <img class = "shop_img" src="./images/img.png" alt="shop_image">
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="#">Название 1</a>
+                        <a href="shopPage.php">Название 1</a>
                     </h3>
 
                     <p class="shop_description">С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. . Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает</p>
@@ -85,7 +162,7 @@
                     <button class="add_review_btn">Добавить отзыв</button>
                 </div>
             </div>
-            <!--МАГАЗИН2-->
+            <!--МАГАЗИН1-->
 
         </div>
 
@@ -108,6 +185,8 @@
                 </ul>
             </div>
         </div>
+    </div>
+
 </main>
 
 <?php require "./components/footer.php" ?>
