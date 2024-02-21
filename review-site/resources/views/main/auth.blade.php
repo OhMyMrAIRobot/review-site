@@ -38,7 +38,10 @@
     <input class = "reg_input" type = "password" placeholder="Введите пароль...">
 
     <div class = "reg_btns_container">
-        <button class = "reg_btn">Войти</button>
+        <button class = "reg_btn"
+            onclick="@php $_SESSION['id'] = '1'; $_SESSION['admin'] = '1'; @endphp"
+{{--        onclick="@php session_destroy(); @endphp"--}}
+        >Войти</button>
         <a class = "login_href" href="{{route('register')}}">Регистрация</a>
     </div>
 </form>

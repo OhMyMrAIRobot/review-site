@@ -1,3 +1,5 @@
+@php(session_start())
+
 <header class = "header">
     <div class = "navbar">
         <h1 class = "title">
@@ -10,14 +12,30 @@
                 <li><a class = "nav-btn" href = "{{route('main')}}">Магазины</a></li>
                 <li><a class = "nav-btn" href = "{{route('main')}}">О нас</a></li>
                 <li>
-                    <a class = "nav-btn" href ={{'register'}}>
-                        <i class = "fa fa-user"></i>
-                        Кабинет
-                    </a>
-                    <ul class = "cabinet-btns">
-                        <li><a class = "nav-btn" href = "{{route('adminCategoryMain')}}">Админ панель</a></li>
-                        <li><a class = "nav-btn" href = "#">Выход</a></li>
-                    </ul>
+                    <?php if(isset($_SESSION['id'])): ?>
+                        <a class = "nav-btn" href = {{route('auth')}}>
+                            <i class = "fa fa-user"></i>
+                            Кабинет
+                        </a>
+
+                        <ul class = "cabinet-btns">
+                            <?php if($_SESSION['admin'] == '1'): ?>
+                                <li><a class = "nav-btn" href = "{{route('adminCategoryMain')}}">Админ панель</a></li>
+                            <?php endif; ?>
+
+                            <li><a class = "nav-btn" href = {{route('main')}}>Выход</a></li>
+                        </ul>
+
+                        <?php else: ?>
+                        <a class = "nav-btn" href ={{route('auth')}}>
+                            Войти
+                        </a>
+
+                        <ul class = "cabinet-btns">
+                            <li><a class = "nav-btn" href = "{{route('register')}}">Регистрация</a></li>
+                        </ul>
+                    <?php endif; ?>
+
                 </li>
             </ul>
         </nav>

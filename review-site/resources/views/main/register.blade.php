@@ -45,7 +45,7 @@
     <input class = "reg_input" type = "password" placeholder="Повторите пароль...">
 
     <div class = "reg_btns_container">
-        <button class = "reg_btn">Регистрация</button>
+        <button onclick="@php $_SESSION['id'] = '3'; $_SESSION['admin'] = '0'; @endphp" class = "reg_btn">Регистрация</button>
         <a class = "login_href" href="{{route('auth')}}">Войти</a>
     </div>
 </form>
