@@ -8,11 +8,11 @@
     <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
 
     <!--css-->
-    <link rel = "stylesheet" href = "../../styles/style.css">
-    <link rel = "stylesheet" href = "../../styles/header.css">
-    <link rel = "stylesheet" href = "../../styles/footer.css">
-    <link rel = "stylesheet" href = "../../styles/admin.css">
-    <link rel = "stylesheet" href = "./adminCategory.css">
+    <link rel = "stylesheet" href = "../../../css/style.css">
+    <link rel = "stylesheet" href = "../../../css/header.css">
+    <link rel = "stylesheet" href = "../../../css/footer.css">
+    <link rel = "stylesheet" href = "../../../css/admin.css">
+    <link rel = "stylesheet" href = "../../../css/reviewsAdmin.css">
 
     <!--boostrap-->
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
@@ -29,7 +29,7 @@
 <body>
 
 <!--HEADER-->
-<?php require "../../components/header.php"?>
+<?php require "../../components/header.blade.php" ?>
 
 <main class = "admin-container">
     <?php require "../../components/sidebarAdmin.php" ?>
@@ -41,7 +41,7 @@
         </div>
 
         <div class = "admin_container_header">
-            <h2>Управление категориями</h2>
+            <h2>Управление отзывами</h2>
             <div class = "admin_table_header">
                 <div class="admin_table_id">ID</div>
                 <div class = "admin_table_name bold">Название</div>
@@ -76,7 +76,7 @@
 
 
 <!--FOOTER-->
-<?php require "../../components/footer.php"?>
+<?php require "../../components/footer.blade.php" ?>
 
 </body>
 </html>

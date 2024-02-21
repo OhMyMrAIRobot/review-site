@@ -8,10 +8,10 @@
     <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
 
     <!--css-->
-    <link rel = "stylesheet" href = "./styles/style.css">
-    <link rel = "stylesheet" href = "styles/header.css">
-    <link rel = "stylesheet" href = "./styles/shopPage.css">
-    <link rel = "stylesheet" href = "./styles/footer.css">
+    <link rel = "stylesheet" href = "../../css/style.css">
+    <link rel = "stylesheet" href = "../../css/header.css">
+    <link rel = "stylesheet" href = "../../css/shopPage.css">
+    <link rel = "stylesheet" href = "../../css/footer.css">
 
     <!--boostrap-->
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
@@ -28,13 +28,13 @@
 <body>
 
 <!--HEADER-->
-<?php require "./components/header.php"?>
+<?php require "./components/header.blade.php" ?>
 
 <main>
     <div class = "single_shop_container">
         <h2 class = "single_shop_header">Название магазина</h2>
         <div class = "single_shop">
-            <img class = "single_shop_img" src = "./images/img.png">
+            <img class = "single_shop_img" src = "../../../public/images/img.png">
             <div class = "single_shop_info">
                 <div class = "single_shop_rating">
                     <i class="fa-regular fa-star"></i>
@@ -127,7 +127,7 @@
 
 
 <!--FOOTER-->
-<?php require "./components/footer.php"?>
+<?php require "./components/footer.blade.php" ?>
 
 </body>
 </html>

@@ -5,17 +5,16 @@
     <meta name="viewport" content="width = device - width, initial-scale = 1">
     <title>some title</title>
 
-    <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
-
     <!--css-->
-    <link rel = "stylesheet" href = "./styles/style.css">
-    <link rel = "stylesheet" href = "styles/header.css">
-    <link rel = "stylesheet" href = "./styles/main.css">
-    <link rel = "stylesheet" href = "./styles/shop.css">
-    <link rel = "stylesheet" href = "./styles/sidebar.css">
-    <link rel = "stylesheet" href = "./styles/footer.css">
-    <link rel = "stylesheet" href = "./styles/lastReviews.css">
-
+    @vite([
+        'resources/css/style.css',
+        'resources/css/header.css',
+        'resources/css/main.css',
+        'resources/css/shop.css',
+        'resources/css/sidebar.css',
+        'resources/css/footer.css',
+        'resources/css/lastReviews.css',
+    ])
 
     <!--boostrap-->
 <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
@@ -32,7 +31,7 @@
 <body>
 
 <!--HEADER-->
-<?php require "./components/header.php"?>
+@include('components.header')
 
 <!--MAIN-->
 <main>
@@ -41,7 +40,7 @@
 
         <!--ОТЗЫВ 1-->
         <div class = "review_main">
-            <img class = "img_review" alt="img_review" src="images/img.png">
+            <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
                     <a href="shopPage.php">Магазин 1</a>
@@ -64,7 +63,7 @@
 
         <!--ОТЗЫВ 1-->
         <div class = "review_main">
-            <img class = "img_review" alt="img_review" src="images/img.png">
+            <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
                     <a href="shopPage.php">Магазин 1</a>
@@ -86,7 +85,7 @@
 
         <!--ОТЗЫВ 1-->
         <div class = "review_main">
-            <img class = "img_review" alt="img_review" src="images/img.png">
+            <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
                     <a href="shopPage.php">Магазин 1</a>
@@ -116,7 +115,7 @@
 
             <!--МАГАЗИН1-->
             <div class = "shop">
-                <img class = "shop_img" src="./images/img.png" alt="shop_image">
+                <img class = "shop_img" src="{{asset('/images/img.png')}}" alt="shop_image">
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
@@ -141,7 +140,7 @@
 
             <!--МАГАЗИН1-->
             <div class = "shop">
-                <img class = "shop_img" src="./images/img.png" alt="shop_image">
+                <img class = "shop_img" src="{{asset('/images/img.png')}}" alt="shop_image">
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
@@ -189,7 +188,7 @@
 
 </main>
 
-<?php require "./components/footer.php" ?>
+@include('components.footer')
 
 </body>
 </html>

@@ -8,10 +8,10 @@
     <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
 
     <!--css-->
-    <link rel = "stylesheet" href = "./styles/style.css">
-    <link rel = "stylesheet" href = "styles/header.css">
-    <link rel = "stylesheet" href = "./styles/footer.css">
-    <link rel = "stylesheet" href = "./styles/register.css">
+    <link rel = "stylesheet" href = "../../css/style.css">
+    <link rel = "stylesheet" href = "../../css/header.css">
+    <link rel = "stylesheet" href = "../../css/footer.css">
+    <link rel = "stylesheet" href = "../../css/register.css">
 
 
     <!--boostrap-->
@@ -29,33 +29,26 @@
 <body>
 
 <!--HEADER-->
-<?php require "./components/header.php"?>
+<?php require "./components/header.blade.php" ?>
 
 <!--MAIN-->
 <form class = "reg_container">
-    <h2 class = "reg_header">Регистрация</h2>
+    <h2 class = "reg_header">Авторизация</h2>
     <label class = "reg_label">Ваш логин</label>
     <input class = "reg_input" type = "text" placeholder="Введите логин...">
-
-    <label class = "reg_label">Ваш email</label>
-    <input class = "reg_input" type = "email" placeholder="Введите email...">
 
 
     <label class = "reg_label">Пароль</label>
     <input class = "reg_input" type = "password" placeholder="Введите пароль...">
 
-
-    <label class = "reg_label">Повторите пароль</label>
-    <input class = "reg_input" type = "password" placeholder="Повторите пароль...">
-
     <div class = "reg_btns_container">
-        <button class = "reg_btn">Регистрация</button>
-        <a class = "login_href" href="auth.php">Войти</a>
+        <button class = "reg_btn">Войти</button>
+        <a class = "login_href" href="register.php">Регистрация</a>
     </div>
 </form>
 
 <!--FOOTER-->
-<?php require "./components/footer.php"?>
+<?php require "./components/footer.blade.php" ?>
 
 </body>
 </html>
