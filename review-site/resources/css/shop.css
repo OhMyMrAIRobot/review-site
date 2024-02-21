@@ -50,7 +50,20 @@
 }
 
 .add_review_btn{
-    width: 17%;
+    width: 35%;
+    display: block;
+    padding: 7px 20px 7px 20px;
+    border-radius: 3px;
+    border: 1px solid grey;
+    transition: all 0.4s linear;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.add_review_btn:hover{
+    transition: all 0.4s linear;
+    background: grey;
+    color: white;
 }
 
 

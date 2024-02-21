@@ -19,7 +19,10 @@ Route::view('/register', 'main.register') -> name('register');
 Route::view('/auth', 'main.auth') -> name('auth');
 
 Route::prefix('admin') -> group(function (){
-    Route::view('/category', 'admin/categories.adminCategory') -> name('adminCategoryMain');
+    Route::view('/categories', 'admin/categories.adminCategory') -> name('adminCategoryMain');
+    Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
+    Route::view('/shops', 'admin/shops.adminShops') -> name('adminShopsMain');
+    Route::view('/users', 'admin/users.adminUsers') -> name('adminUsersMain');
 });
 
 
