@@ -3,19 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width = device - width, initial-scale = 1">
-    <title>some title</title>
-
-    <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
+    <title>Auth</title>
 
     <!--css-->
-    <link rel = "stylesheet" href = "../../css/style.css">
-    <link rel = "stylesheet" href = "../../css/header.css">
-    <link rel = "stylesheet" href = "../../css/footer.css">
-    <link rel = "stylesheet" href = "../../css/register.css">
-
-
-    <!--boostrap-->
-    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
+    @vite([
+        'resources/css/style.css',
+        'resources/css/header.css',
+        'resources/css/footer.css',
+        'resources/css/register.css',
+    ])
 
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
@@ -29,7 +25,7 @@
 <body>
 
 <!--HEADER-->
-<?php require "./components/header.blade.php" ?>
+@include('components.header')
 
 <!--MAIN-->
 <form class = "reg_container">
@@ -43,12 +39,12 @@
 
     <div class = "reg_btns_container">
         <button class = "reg_btn">Войти</button>
-        <a class = "login_href" href="register.php">Регистрация</a>
+        <a class = "login_href" href="{{route('register')}}">Регистрация</a>
     </div>
 </form>
 
 <!--FOOTER-->
-<?php require "./components/footer.blade.php" ?>
+@include('components.footer')
 
 </body>
 </html>

@@ -32,7 +32,7 @@
 <?php require "../../components/header.blade.php" ?>
 
 <main class = "admin-container">
-    <?php require "../../components/sidebarAdmin.php" ?>
+    <?php require "../../components/sidebarAdmin.blade.php" ?>
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">

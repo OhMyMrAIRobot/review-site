@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'main.index');
+Route::view('/', 'main.index') -> name('main');
+Route::view('/shop', 'main.shopPage') -> name('shop');
+Route::view('/register', 'main.register') -> name('register');
+Route::view('/auth', 'main.auth') -> name('auth');
+
+Route::prefix('admin') -> group(function (){
+    Route::view('/category', 'admin/categories.adminCategory') -> name('adminCategoryMain');
+});
+
 
 
 

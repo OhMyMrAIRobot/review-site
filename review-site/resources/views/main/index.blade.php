@@ -16,9 +16,6 @@
         'resources/css/lastReviews.css',
     ])
 
-    <!--boostrap-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
-
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 
@@ -43,7 +40,7 @@
             <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
-                    <a href="shopPage.php">Магазин 1</a>
+                    <a href="{{route('shop')}}">Магазин 1</a>
                     <div class = "review_main_rating">
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
@@ -66,7 +63,7 @@
             <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
-                    <a href="shopPage.php">Магазин 1</a>
+                    <a href="shopPage.blade.php">Магазин 1</a>
                     <div class = "review_main_rating">
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
@@ -88,7 +85,7 @@
             <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
-                    <a href="shopPage.php">Магазин 1</a>
+                    <a href="shopPage.blade.php">Магазин 1</a>
                     <div class = "review_main_rating">
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
@@ -119,7 +116,7 @@
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="shopPage.php">Название 1</a>
+                        <a href="shopPage.blade.php">Название 1</a>
                     </h3>
 
                     <p class="shop_description">С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. . Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает</p>
@@ -144,7 +141,7 @@
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="shopPage.php">Название 1</a>
+                        <a href="shopPage.blade.php">Название 1</a>
                     </h3>
 
                     <p class="shop_description">С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. . Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает</p>

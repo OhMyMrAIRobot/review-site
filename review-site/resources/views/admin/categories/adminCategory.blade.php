@@ -3,19 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width = device - width, initial-scale = 1">
-    <title>some title</title>
-
-    <base href = <?php echo '$_SERVER["DOCUMENT_ROOT"]'?>>
+    <title>admin categories</title>
 
     <!--css-->
-    <link rel = "stylesheet" href = "../../../css/style.css">
-    <link rel = "stylesheet" href = "../../../css/header.css">
-    <link rel = "stylesheet" href = "../../../css/footer.css">
-    <link rel = "stylesheet" href = "../../../css/admin.css">
-    <link rel = "stylesheet" href = "../../../css/adminCategory.css">
-
-    <!--boostrap-->
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
+    @vite([
+        'resources/css/style.css',
+        'resources/css/header.css',
+        'resources/css/footer.css',
+        'resources/css/admin.css',
+        'resources/css/adminCategory.css',
+    ])
 
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
@@ -29,10 +26,10 @@
 <body>
 
 <!--HEADER-->
-<?php require "../../components/header.blade.php" ?>
+@include('components.header')
 
 <main class = "admin-container">
-    <?php require "../../components/sidebarAdmin.php" ?>
+    @include('components.sidebarAdmin')
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
@@ -76,7 +73,7 @@
 
 
 <!--FOOTER-->
-<?php require "../../components/footer.blade.php" ?>
+@include('components.footer')
 
 </body>
 </html>
