@@ -21,6 +21,8 @@ Route::view('/auth', 'main.auth') -> name('auth');
 Route::prefix('admin') -> group(function (){
     Route::view('/categories', 'admin/categories.adminCategory') -> name('adminCategoryMain');
     Route::view('/categories/add', 'admin/categories.addCategory') -> name('adminCategoryAdd');
+    Route::view('/categories/edit', 'admin/categories.editCategory') -> name('adminCategoryEdit');
+
     Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
     Route::view('/shops', 'admin/shops.adminShops') -> name('adminShopsMain');
     Route::view('/users', 'admin/users.adminUsers') -> name('adminUsersMain');

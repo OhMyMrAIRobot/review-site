@@ -39,8 +39,8 @@
         <div class = "admin_container_header">
             <h2>Создать категорию</h2>
 
-            <input class = "input_category" title="12324">
-            <button class = "admin_btn_add">Добавить</button>
+            <input value = "category" class = "input_category">
+            <button class = "admin_btn_add">Сохранить</button>
         </div>
 
     </div>
