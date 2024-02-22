@@ -11,7 +11,7 @@
         'resources/css/header.css',
         'resources/css/footer.css',
         'resources/css/admin.css',
-        'resources/css/reviewsAdmin.css',
+        'resources/css/adminReviews.css',
     ])
 
     <!--icons-->
@@ -33,40 +33,45 @@
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
-            <button class = "admin_btn_add">Добавить</button>
-            <button class = "admin_btn_edit">Редактировать</button>
         </div>
 
         <div class = "admin_container_header">
             <h2>Управление отзывами</h2>
             <div class = "admin_table_header">
                 <div class="admin_table_id">ID</div>
-                <div class = "admin_table_name bold">Название</div>
+                <div class = "admin_table_text bold">Текст</div>
+                <div class = "admin_table_author bold">Автор</div>
                 <div class = "admin_table_control bold">Управление</div>
             </div>
         </div>
 
-        <!--Category 1-->
+        {{--Отзыв 1--}}
         <div class = "admin_table_header">
             <div class="admin_table_id">1</div>
-            <div class = "admin_table_name">Категория 1</div>
+            <div class = "admin_table_text">
+                <?php echo mb_substr('Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum ', 0, 50, 'UTF-8') . '...' ?>
+            </div>
+            <div class = "admin_table_author">Автор 1</div>
             <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--Category 1-->
+        {{--Отзыв 1--}}
 
-        <!--Category 2-->
+        {{--Отзыв 1--}}
         <div class = "admin_table_header">
             <div class="admin_table_id">2</div>
-            <div class = "admin_table_name">Категория 2</div>
+            <div class = "admin_table_text">
+                <?php echo mb_substr('Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum ', 0, 50, 'UTF-8') . '...' ?>
+            </div>
+            <div class = "admin_table_author">Автор 2</div>
             <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--Category 2-->
+        {{--Отзыв 1--}}
 
     </div>
 </main>

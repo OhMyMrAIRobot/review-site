@@ -50,9 +50,9 @@
         <!--Магазин 1-->
         <div class = "admin_table_header">
             <div class="admin_table_id">1</div>
-            <div class = "admin_table_name bold">Магазин 1</div>
-            <div class = "admin_table_category bold">Категория 1</div>
-            <div class = "admin_table_control bold">
+            <div class = "admin_table_name">Магазин 1</div>
+            <div class = "admin_table_category">Категория 1</div>
+            <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
@@ -62,9 +62,9 @@
         <!--Магазин 2-->
         <div class = "admin_table_header">
             <div class="admin_table_id">2</div>
-            <div class = "admin_table_name bold">Магазин 2</div>
-            <div class = "admin_table_category bold">Категория 2</div>
-            <div class = "admin_table_control bold">
+            <div class = "admin_table_name">Магазин 2</div>
+            <div class = "admin_table_category">Категория 2</div>
+            <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
