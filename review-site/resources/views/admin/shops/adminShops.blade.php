@@ -33,8 +33,7 @@
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
-            <button class = "admin_btn_add">Добавить</button>
-            <button class = "admin_btn_edit">Редактировать</button>
+            <a class = "admin_btn_add" href = {{route('adminShopAdd')}}>Добавить</a>
         </div>
 
         <div class = "admin_container_header">

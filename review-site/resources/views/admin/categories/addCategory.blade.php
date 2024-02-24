@@ -15,8 +15,6 @@
     'resources/css/adminAddCategory.css',
     ])
 
-    <link rel = "stylesheet" href = "{{asset('cssTest/test.css')}}">
-
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 
@@ -39,7 +37,7 @@
         <div class = "admin_container_header">
             <h2>Создать категорию</h2>
 
-            <input class = "input_category" title="12324">
+            <input class = "input_category">
             <button class = "admin_btn_add">Добавить</button>
         </div>
 

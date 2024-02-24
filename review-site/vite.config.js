@@ -11,6 +11,7 @@ export default defineConfig({
                     'resources/css/adminShop.css',
                     'resources/css/adminUsers.css',
                     'resources/css/adminAddCategory.css',
+                    'resources/css/adminAddShop.css',
                     'resources/css/footer.css',
                     'resources/css/header.css',
                     'resources/css/lastReviews.css',

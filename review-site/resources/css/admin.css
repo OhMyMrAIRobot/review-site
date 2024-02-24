@@ -1,7 +1,6 @@
 .admin-container {
     width: 80%;
     margin: 30px auto;
-    height: 500px;
     display: flex;
     justify-content: space-between;
 }
@@ -55,6 +54,10 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
+}
+
+.admin_btn_container a{
+    text-decoration: none;
 }
 
 .admin_btn_add{

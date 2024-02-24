@@ -25,7 +25,8 @@ Route::prefix('admin') -> group(function (){
 
     Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
 
-    Route::view('/shops', 'admin/shops.adminShops') -> name('adminShopsMain');
+    Route::view('/shops', 'admin/shops.adminShops') -> name('adminShopMain');
+    Route::view('/shops/add', 'admin/shops.addShop') -> name('adminShopAdd');
 
     Route::view('/users', 'admin/users.adminUsers') -> name('adminUsersMain');
 });
