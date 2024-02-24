@@ -181,12 +181,23 @@ main{
 }
 
 .review_title{
+    color: #686868;
     margin-top: 10px;
     font-weight: bold;
     font-size: 1.3rem;
 }
 
 .review_text{
+    color: #686868;
     margin-top: 10px;
     font-size: 0.9rem;
+}
+
+.req_auth_text{
+    color: #686868;
+    font-size: 1.3rem;
+}
+
+.req_auth_text a{
+    color: #232323;
 }

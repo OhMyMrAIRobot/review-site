@@ -13,9 +13,6 @@
         'resources/css/footer.css',
     ])
 
-    <!--boostrap-->
-    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
-
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 
@@ -62,25 +59,31 @@
     </div>
 
     <div class = "add_review_container">
-        <form method="post">
-            <h5 class = "review_add_header">Заголовок отзыва</h5>
-            <input class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">
-            <h5 style = "margin-top: 15px" class = "review_add_header">Ваш отзыв</h5>
-            <textarea class = "add_review_text" placeholder="Отзыв..."></textarea>
-            <div class = "shop_rating">
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
+        <?php if (isset($_SESSION['id'])): ?>
+            <form method="post">
+                <h5 class = "review_add_header">Заголовок отзыва</h5>
+                <input class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">
+                <h5 style = "margin-top: 15px" class = "review_add_header">Ваш отзыв</h5>
+                <textarea class = "add_review_text" placeholder="Отзыв..."></textarea>
+                <div class = "shop_rating">
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
 
-            <button type = "submit" class = "add_review">Опубликовать</button>
-        </form>
+                <button type = "submit" class = "add_review">Опубликовать</button>
+            </form>
+        <?php else: ?>
+            <h3 class = "req_auth_text">Для того, чтобы оставить отзыв требуется <a href = "{{route('auth')}}">авторизация</a>!</h3>
+        <?php endif;?>
+
+
     </div>
 
     <div class = "reviews_container">
-        <h2>Отзывы</h2>
+        <h2 style="color: #686868">Отзывы</h2>
 
         <!--ОТЗЫВ 1-->
         <div class = "review">
