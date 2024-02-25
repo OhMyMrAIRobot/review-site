@@ -45,33 +45,21 @@
             </div>
         </div>
 
+        @php for ($i = 1; $i <= 5; $i++): @endphp
         {{--Отзыв 1--}}
         <div class = "admin_table_header">
-            <div class="admin_table_id">1</div>
+            <div class="admin_table_id"><?=$i?></div>
             <div class = "admin_table_text">
                 <?php echo mb_substr('Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum ', 0, 50, 'UTF-8') . '...' ?>
             </div>
-            <div class = "admin_table_author">Автор 1</div>
+            <div class = "admin_table_author">Автор <?=$i?></div>
             <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
         {{--Отзыв 1--}}
-
-        {{--Отзыв 1--}}
-        <div class = "admin_table_header">
-            <div class="admin_table_id">2</div>
-            <div class = "admin_table_text">
-                <?php echo mb_substr('Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum ', 0, 50, 'UTF-8') . '...' ?>
-            </div>
-            <div class = "admin_table_author">Автор 2</div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "#">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
-        </div>
-        {{--Отзыв 1--}}
+        @php endfor; @endphp
 
     </div>
 </main>

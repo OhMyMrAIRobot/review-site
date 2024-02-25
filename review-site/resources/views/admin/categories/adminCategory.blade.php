@@ -47,27 +47,18 @@
             </div>
         </div>
 
-        <!--Category 1-->
+        @php for ($i = 1; $i <= 6; $i++): @endphp
+        <!--Category-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">1</div>
-            <div class = "admin_table_name">Категория 1</div>
+            <div class="admin_table_id"><?=$i ?></div>
+            <div class = "admin_table_name">Категория <?=$i ?></div>
             <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "{{route('adminCategoryEdit')}}">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--Category 1-->
-
-        <!--Category 2-->
-        <div class = "admin_table_header">
-            <div class="admin_table_id">2</div>
-            <div class = "admin_table_name">Категория 2</div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "{{route('adminCategoryEdit')}}">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
-        </div>
-        <!--Category 2-->
+        <!--Category-->
+        @php endfor; @endphp
 
     </div>
 </main>

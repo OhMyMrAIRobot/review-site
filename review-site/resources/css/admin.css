@@ -3,12 +3,13 @@
     margin: 30px auto;
     display: flex;
     justify-content: space-between;
+    min-height: 500px;
 }
 
 .admin-left_cont{
     width: 25%;
     height: 100%;
-    padding: 15px;
+    padding: 15px 15px 50px 15px;
     background: #ffffff;
     border-radius: 5px;
 }

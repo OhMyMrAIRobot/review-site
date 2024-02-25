@@ -47,32 +47,20 @@
             </div>
         </div>
 
-        <!--USER 1-->
+        @php for ($i = 1; $i <= 5; $i++): @endphp
+        <!--USER-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">1</div>
+            <div class="admin_table_id"><?=$i?></div>
             <div class = "admin_table_login">login</div>
             <div class = "admin_table_email">Email@gmail.com</div>
-            <div class = "admin_table_role">User</div>
+            <div class = "admin_table_role"><?=$i % 2 === 0 ? 'admin' : 'user'?></div>
             <div class = "admin_table_control">
                 <a class = "admin_table_edit" href = "#">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--USER 1-->
-
-        <!--USER 2-->
-        <div class = "admin_table_header">
-            <div class="admin_table_id">2</div>
-            <div class = "admin_table_login">Admin</div>
-            <div class = "admin_table_email">admin@gmail.com</div>
-            <div class = "admin_table_role">Admin</div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "#">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
-        </div>
-        <!--USER 2-->
-
+        <!--USER-->
+        @php endfor; @endphp
 
     </div>
 </main>

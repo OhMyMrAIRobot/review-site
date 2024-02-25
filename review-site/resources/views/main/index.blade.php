@@ -35,12 +35,13 @@
     <div class = "last_reviews_container">
         <h3>Последние отзывы</h3>
 
-        <!--ОТЗЫВ 1-->
+        @php for ($i = 1; $i <= 3; $i++): @endphp
+        <!--ОТЗЫВ-->
         <div class = "review_main">
             <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
             <div class = "review_body">
                 <div class = "review_main_header">
-                    <a href="{{route('shop')}}">Магазин 1</a>
+                    <a href="{{route('shop')}}">Магазин <?=$i?></a>
                     <div class = "review_main_rating">
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
@@ -53,9 +54,9 @@
                 </div>
                 <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
             </div>
-
         </div>
-        <!--ОТЗЫВ 1-->
+        <!--ОТЗЫВ-->
+        @php endfor; @endphp
 
         <h3>Магазины</h3>
     </div>
@@ -65,13 +66,14 @@
         <!--MAIN CONTENT-->
         <div class = "shop_container">
 
-            <!--МАГАЗИН1-->
+            @php for ($i = 1; $i <= 4; $i++): @endphp
+            <!--МАГАЗИН-->
             <div class = "shop">
                 <img class = "shop_img" src="{{asset('/images/img.png')}}" alt="shop_image">
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="{{route('shop')}}">Название 1</a>
+                        <a href="{{route('shop')}}">Название <?=$i?></a>
                     </h3>
 
                     <p class="shop_description">С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. . Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает</p>
@@ -88,7 +90,8 @@
                     <button class="add_review_btn">Добавить отзыв</button>
                 </div>
             </div>
-            <!--МАГАЗИН1-->
+            <!--МАГАЗИН-->
+            @php endfor; @endphp
 
         </div>
 

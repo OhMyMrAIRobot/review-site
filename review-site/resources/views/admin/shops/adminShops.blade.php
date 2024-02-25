@@ -46,37 +46,25 @@
             </div>
         </div>
 
-        <!--Магазин 1-->
+        @php for($i = 1; $i <= 5; $i++): @endphp
+        <!--Магазин-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">1</div>
-            <div class = "admin_table_name">Магазин 1</div>
-            <div class = "admin_table_category">Категория 1</div>
+            <div class="admin_table_id"><?=$i?></div>
+            <div class = "admin_table_name">Магазин <?=$i?></div>
+            <div class = "admin_table_category">Категория <?=$i?></div>
             <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "#">edit</a>
+                <a class = "admin_table_edit" href = "{{route('adminShopEdit')}}">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        <!--Магазин 1-->
-
-        <!--Магазин 2-->
-        <div class = "admin_table_header">
-            <div class="admin_table_id">2</div>
-            <div class = "admin_table_name">Магазин 2</div>
-            <div class = "admin_table_category">Категория 2</div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "#">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
-        </div>
-        <!--Магазин 2-->
-
-
+        @php endfor; @endphp
+        <!--Магазин-->
     </div>
 </main>
 
 
 <!--FOOTER-->
-@include('components.footer')
+@include("components.footer")
 
 </body>
 </html>
