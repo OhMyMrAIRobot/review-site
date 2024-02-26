@@ -22,6 +22,7 @@ export default defineConfig({
                     'resources/css/shopPage.css',
                     'resources/css/sidebar.css',
                     'resources/css/style.css',
+                    'resources/css/adminEditUser.css',
                 ],
                 refresh: true,
             }),

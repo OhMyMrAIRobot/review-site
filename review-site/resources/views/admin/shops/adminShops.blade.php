@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        @php for($i = 1; $i <= 5; $i++): @endphp
+        @for($i = 1; $i <= 5; $i++)
         <!--Магазин-->
         <div class = "admin_table_header">
             <div class="admin_table_id"><?=$i?></div>
@@ -57,7 +57,7 @@
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
-        @php endfor; @endphp
+        @endfor
         <!--Магазин-->
     </div>
 </main>

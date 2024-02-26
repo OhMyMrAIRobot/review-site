@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        @php for ($i = 1; $i <= 5; $i++): @endphp
+        @for ($i = 1; $i <= 5; $i++)
         <!--USER-->
         <div class = "admin_table_header">
             <div class="admin_table_id"><?=$i?></div>
@@ -55,12 +55,12 @@
             <div class = "admin_table_email">Email@gmail.com</div>
             <div class = "admin_table_role"><?=$i % 2 === 0 ? 'admin' : 'user'?></div>
             <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "#">edit</a>
+                <a class = "admin_table_edit" href = "{{route('adminUserAdd')}}">edit</a>
                 <a class = "admin_table_delete" href = "#">delete</a>
             </div>
         </div>
         <!--USER-->
-        @php endfor; @endphp
+        @endfor
 
     </div>
 </main>

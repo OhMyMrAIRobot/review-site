@@ -11,9 +11,11 @@
     'resources/css/header.css',
     'resources/css/footer.css',
     'resources/css/admin.css',
-    'resources/css/adminCategory.css',
-    'resources/css/adminAddCategory.css',
+    'resources/css/adminUsers.css',
+    'resources/css/adminEditUser.css',
     ])
+
+    <link rel = "stylesheet" href = "{{asset('cssTest/test.css')}}">
 
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
@@ -35,9 +37,26 @@
     <div class = "admin-right_cont">
 
         <div class = "admin_container_header">
-            <h2>Создать категорию</h2>
+            <h2>Редактировать пользователя</h2>
 
-            <input value = "category" class = "input_category">
+            <div class = "admin_edit_user_container">
+                <h5>Имя пользователя</h5>
+                <input value = "username" class = "input_category">
+
+                <h5>Email</h5>
+                <input value = "email@mail.com" class = "input_category">
+
+                <h5>Пароль</h5>
+                <input class = "input_category">
+
+                <div class = "admin_checkbox">
+                    <input type="checkbox">
+                    Админ
+                </div>
+            </div>
+
+
+
             <button class = "admin_btn_edit">Сохранить</button>
         </div>
 
@@ -50,3 +69,4 @@
 
 </body>
 </html>
+

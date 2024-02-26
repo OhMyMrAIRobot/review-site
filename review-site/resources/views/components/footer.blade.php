@@ -32,7 +32,7 @@
         <!--COLUMN WITH FEEDBACK-->
         <div class = "feedback_container">
             <h3 class = "feedback_header">Feedback</h3>
-            <form action="" method="post">
+            <form>
                 <input class = "feedback_email" type = "email" name = "email" placeholder = "Введите ваш эл. адрес...">
                 <textarea class = "feedback_text" rows="4" name = "message" placeholder = "Введите текст"></textarea>
                 <button class = "feedback_btn">

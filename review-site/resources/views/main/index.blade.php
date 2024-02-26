@@ -35,7 +35,7 @@
     <div class = "last_reviews_container">
         <h3>Последние отзывы</h3>
 
-        @php for ($i = 1; $i <= 3; $i++): @endphp
+        @for ($i = 1; $i <= 3; $i++)
         <!--ОТЗЫВ-->
         <div class = "review_main">
             <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
@@ -56,7 +56,7 @@
             </div>
         </div>
         <!--ОТЗЫВ-->
-        @php endfor; @endphp
+        @endfor
 
         <h3>Магазины</h3>
     </div>
@@ -66,7 +66,7 @@
         <!--MAIN CONTENT-->
         <div class = "shop_container">
 
-            @php for ($i = 1; $i <= 4; $i++): @endphp
+            @for ($i = 1; $i <= 4; $i++)
             <!--МАГАЗИН-->
             <div class = "shop">
                 <img class = "shop_img" src="{{asset('/images/img.png')}}" alt="shop_image">
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <!--МАГАЗИН-->
-            @php endfor; @endphp
+            @endfor
 
         </div>
 

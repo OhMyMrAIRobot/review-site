@@ -59,7 +59,7 @@
     </div>
 
     <div class = "add_review_container">
-        <?php if (isset($_SESSION['id'])): ?>
+        @if(isset($_SESSION['id']))
             <form method="post">
                 <h5 class = "review_add_header">Заголовок отзыва</h5>
                 <input class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">
@@ -75,9 +75,9 @@
 
                 <button type = "submit" class = "add_review">Опубликовать</button>
             </form>
-        <?php else: ?>
+        @else
             <h3 class = "req_auth_text">Для того, чтобы оставить отзыв требуется <a href = "{{route('auth')}}">авторизация</a>!</h3>
-        <?php endif;?>
+        @endif
 
 
     </div>

@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        @php for ($i = 1; $i <= 6; $i++): @endphp
+        @for ($i = 1; $i <= 6; $i++)
         <!--Category-->
         <div class = "admin_table_header">
             <div class="admin_table_id"><?=$i ?></div>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <!--Category-->
-        @php endfor; @endphp
+        @endfor
 
     </div>
 </main>

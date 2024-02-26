@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <button class = "admin_btn_add">Сохранить</button>
+            <button class = "admin_btn_edit">Сохранить</button>
         </div>
 
     </div>

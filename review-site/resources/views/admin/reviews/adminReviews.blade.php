@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        @php for ($i = 1; $i <= 5; $i++): @endphp
+        @for ($i = 1; $i <= 5; $i++)
         {{--Отзыв 1--}}
         <div class = "admin_table_header">
             <div class="admin_table_id"><?=$i?></div>
@@ -59,7 +59,7 @@
             </div>
         </div>
         {{--Отзыв 1--}}
-        @php endfor; @endphp
+        @endfor
 
     </div>
 </main>
