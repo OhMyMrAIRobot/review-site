@@ -1,4 +1,4 @@
-<footer class = "footer">
+<footer id = "idfooter" class = "footer">
     <div class = "footer_container">
 
         <!--COLUMN WITH INFO-->

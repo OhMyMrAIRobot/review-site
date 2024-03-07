@@ -40,6 +40,11 @@
     transition: all 0.4s;
 }
 
+.btn{
+    background: inherit;
+    border: none;
+}
+
 .nav-btn:hover{
     transition: all 0.4s;
     color: gold;

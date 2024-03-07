@@ -32,10 +32,6 @@
     @include('components.sidebarAdmin')
 
     <div class = "admin-right_cont">
-        <div class = "admin_btn_container">
-            <button class = "admin_btn_add">Добавить</button>
-        </div>
-
         <div class = "admin_container_header">
             <h2>Управление пользователями</h2>
             <div class = "admin_table_header">

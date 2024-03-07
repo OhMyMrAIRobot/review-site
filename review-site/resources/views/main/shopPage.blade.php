@@ -59,7 +59,7 @@
     </div>
 
     <div class = "add_review_container">
-        @if(isset($_SESSION['id']))
+        @if(session()->has('user'))
             <form method="post">
                 <h5 class = "review_add_header">Заголовок отзыва</h5>
                 <input class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">

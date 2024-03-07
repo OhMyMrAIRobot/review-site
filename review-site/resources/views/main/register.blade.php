@@ -28,24 +28,23 @@
 @include('components.header')
 
 <!--MAIN-->
-<form class = "reg_container">
+<form class = "reg_container" method='POST' action="{{route('REG')}}">
+    @csrf
     <h2 class = "reg_header">Регистрация</h2>
     <label class = "reg_label">Ваш логин</label>
-    <input class = "reg_input" type = "text" placeholder="Введите логин...">
+    <input name = "username" class = "reg_input" placeholder="Введите логин...">
 
     <label class = "reg_label">Ваш email</label>
-    <input class = "reg_input" type = "email" placeholder="Введите email...">
-
+    <input name = "email" class = "reg_input" placeholder="Введите email...">
 
     <label class = "reg_label">Пароль</label>
-    <input class = "reg_input" type = "password" placeholder="Введите пароль...">
-
+    <input name = "password" class = "reg_input" placeholder="Введите пароль...">
 
     <label class = "reg_label">Повторите пароль</label>
-    <input class = "reg_input" type = "password" placeholder="Повторите пароль...">
+    <input name = "password" class = "reg_input" placeholder="Повторите пароль...">
 
     <div class = "reg_btns_container">
-        <button onclick="@php $_SESSION['id'] = '3'; $_SESSION['admin'] = '0'; @endphp" class = "reg_btn">Регистрация</button>
+        <button type="SUBMIT" class = "reg_btn">Регистрация</button>
         <a class = "login_href" href="{{route('auth')}}">Войти</a>
     </div>
 </form>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width = device - width, initial-scale = 1">
-    <title>admin categories</title>
+    <title>edit users</title>
 
     <!--css-->
     @vite([
@@ -55,11 +55,8 @@
                 </div>
             </div>
 
-
-
             <button class = "admin_btn_edit">Сохранить</button>
         </div>
-
     </div>
 </main>
 

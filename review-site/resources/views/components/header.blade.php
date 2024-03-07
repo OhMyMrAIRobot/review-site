@@ -12,18 +12,23 @@
                 <li><a class = "nav-btn" href = "{{route('main')}}">Магазины</a></li>
                 <li><a class = "nav-btn" href = "{{route('main')}}">О нас</a></li>
                 <li>
-                    @if(isset($_SESSION['id']))
+                    @if(session()->has('user'))
                         <a class = "nav-btn" href = {{route('auth')}}>
                             <i class = "fa fa-user"></i>
                             Кабинет
                         </a>
 
                         <ul class = "cabinet-btns">
-                            @if($_SESSION['admin'] == '1')
+                            @if(session()->has('isAdmin'))
                                 <li><a class = "nav-btn" href = "{{route('adminCategoryMain')}}">Админ панель</a></li>
                             @endif
 
-                            <li><a class = "nav-btn" href = {{route('main')}}>Выход</a></li>
+                            <li>
+                                <form action="{{route('out')}}" method='POST'>
+                                    @csrf
+                                    <button type='SUBMIT' class = "nav-btn btn">Выход</button>
+                                </form>
+                            </li>
                         </ul>
 
                         @else
