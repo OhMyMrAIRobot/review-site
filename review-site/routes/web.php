@@ -25,7 +25,9 @@ Route::post('/logout', 'App\Http\Controllers\Auth_controller@logout')->name('out
 Route::prefix('admin') -> group(function (){
     Route::view('/categories', 'admin/categories.adminCategory') -> name('adminCategoryMain');
     Route::view('/categories/add', 'admin/categories.addCategory') -> name('adminCategoryAdd');
+    Route::post('/addCategory', 'App\Http\Controllers\Category_controller@create')->name('category.create');
     Route::view('/categories/edit', 'admin/categories.editCategory') -> name('adminCategoryEdit');
+
 
     Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
 
