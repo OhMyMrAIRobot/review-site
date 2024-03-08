@@ -114,10 +114,17 @@
 .admin_table_edit{
     text-decoration: none;
     color: #006669;
+    background: inherit;
+    border: none;
+    font-size: 1rem;
 }
 
 .admin_table_delete{
+    background: inherit;
+    border: none;
     text-decoration: none;
     color: #FF0000;
     margin-left: 50px;
+    font-size: 1rem;
+    cursor: pointer;
 }

@@ -34,16 +34,16 @@
 
     <div class = "admin-right_cont">
 
-        <div class = "admin_container_header">
+        <form action="{{route('categories.update', $category->id)}}" class = "admin_container_header" method="POST">
+            @csrf
+            @method('PUT')
             <h2>Создать категорию</h2>
 
-            <input value = "category" class = "input_category">
-            <button class = "admin_btn_edit">Сохранить</button>
-        </div>
-
+            <input name = "category" value = "@lang($category->category)" class = "input_category">
+            <button type="SUBMIT" class = "admin_btn_edit">Сохранить</button>
+        </form>
     </div>
 </main>
-
 
 <!--FOOTER-->
 @include('components.footer')

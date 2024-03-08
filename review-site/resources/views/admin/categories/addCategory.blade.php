@@ -34,14 +34,13 @@
 
     <div class = "admin-right_cont">
 
-        <form method="POST" action="{{route('category.create')}}" class = "admin_container_header">
+        <form method="POST" action="{{route('categories.store')}}" class = "admin_container_header">
             @csrf
             <h2>Создать категорию</h2>
 
             <input name = "category" class = "input_category">
             <button type="SUBMIT" class = "admin_btn_add">Добавить</button>
         </form>
-
     </div>
 </main>
 

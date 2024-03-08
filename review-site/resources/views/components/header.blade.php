@@ -20,7 +20,7 @@
 
                         <ul class = "cabinet-btns">
                             @if(session()->has('isAdmin'))
-                                <li><a class = "nav-btn" href = "{{route('adminCategoryMain')}}">Админ панель</a></li>
+                                <li><a class = "nav-btn" href = "{{route('categories.index')}}">Админ панель</a></li>
                             @endif
 
                             <li>
