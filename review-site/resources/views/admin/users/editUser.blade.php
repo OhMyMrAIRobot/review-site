@@ -36,27 +36,29 @@
 
     <div class = "admin-right_cont">
 
-        <div class = "admin_container_header">
+        <form method="POST" action="{{route('users.update', $user->id)}}" class = "admin_container_header">
+            @csrf
+            @method('PUT')
             <h2>Редактировать пользователя</h2>
 
             <div class = "admin_edit_user_container">
                 <h5>Имя пользователя</h5>
-                <input value = "username" class = "input_category">
+                <input name = "username" value = "@lang($user->username)" class = "input_category">
 
                 <h5>Email</h5>
-                <input value = "email@mail.com" class = "input_category">
+                <input name = "email" value = "@lang($user->email)" class = "input_category">
 
                 <h5>Пароль</h5>
-                <input class = "input_category">
+                <input name = "password" class = "input_category" type="password">
 
                 <div class = "admin_checkbox">
-                    <input type="checkbox">
+                    <input name="admin" type="checkbox" {{ $user->admin ? 'checked' : '' }}>
                     Админ
                 </div>
             </div>
 
-            <button class = "admin_btn_edit">Сохранить</button>
-        </div>
+            <button type="SUBMIT" class = "admin_btn_edit">Сохранить</button>
+        </form>
     </div>
 </main>
 

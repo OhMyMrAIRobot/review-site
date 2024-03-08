@@ -43,21 +43,22 @@
             </div>
         </div>
 
-        @for ($i = 1; $i <= 5; $i++)
+        @foreach($users as $key => $user)
         <!--USER-->
         <div class = "admin_table_header">
-            <div class="admin_table_id"><?=$i?></div>
-            <div class = "admin_table_login">login</div>
-            <div class = "admin_table_email">Email@gmail.com</div>
-            <div class = "admin_table_role"><?=$i % 2 === 0 ? 'admin' : 'user'?></div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "{{route('adminUserAdd')}}">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
+            <div class="admin_table_id">@lang($key)</div>
+            <div class = "admin_table_login">@lang($user->username)</div>
+            <div class = "admin_table_email">@lang($user->email)</div>
+            <div class = "admin_table_role">@lang($user->admin ? 'admin' : 'user')</div>
+            <form method="POST" action="{{route('users.destroy', $user->id)}}" class = "admin_table_control">
+                @csrf
+                @method('DELETE')
+                <a class = "admin_table_edit" href = "{{route('users.edit', $user->id)}}">edit</a>
+                <button type="SUBMIT" class = "admin_table_delete">delete</button>
+            </form>
         </div>
         <!--USER-->
-        @endfor
-
+        @endforeach
     </div>
 </main>
 

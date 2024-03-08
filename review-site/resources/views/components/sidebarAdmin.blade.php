@@ -4,7 +4,7 @@
         <li><a class = "admin_sidebar_item" href = "{{route('shops.index')}}">Магазины</a></li>
         <li><a class = "admin_sidebar_item" href = "{{route('categories.index')}}">Категории</a></li>
         <li><a class = "admin_sidebar_item" href = "{{route('adminReviewMain')}}">Отзывы</a></li>
-        <li><a class = "admin_sidebar_item" href = "{{route('adminUserMain')}}">Пользователи</a></li>
-        <li><a class = "admin_sidebar_item" href = "{{route('adminUserMain')}}">Почта</a></li>
+        <li><a class = "admin_sidebar_item" href = "{{route('users.index')}}">Пользователи</a></li>
+        <li><a class = "admin_sidebar_item" href = "{{route('main')}}">Почта</a></li>
     </ul>
 </div>

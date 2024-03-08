@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Category_controller;
 use App\Http\Controllers\Shop_controller;
+use App\Http\Controllers\User_controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,10 +46,14 @@ Route::prefix('admin') -> group(function (){
     Route::put('/shops/{shop}', Shop_controller::class . '@update')->name('shops.update');
     Route::delete('/shops/{shop}', Shop_controller::class . '@destroy')->name('shops.destroy');
 
+    // Пользователи
+    Route::get('/users', User_controller::class .'@index')->name('users.index');
+    Route::get('/users/{user}/edit', User_controller::class . '@edit')->name('users.edit');
+    Route::put('/users/{user}', User_controller::class . '@update')->name('users.update');
+    Route::delete('/users/{user}', User_controller::class . '@destroy')->name('users.destroy');
 
 
     Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
-    Route::view('/users', 'admin/users.adminUsers') -> name('adminUserMain');
     Route::view('/users/edit', 'admin/users.editUser') -> name('adminUserAdd');
 });
 
