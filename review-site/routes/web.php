@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Category_controller;
+use App\Http\Controllers\Shop_controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,28 +15,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Основные маршруты
 Route::view('/', 'main.index') -> name('main');
 Route::view('/shop', 'main.shopPage') -> name('shop');
-Route::view('/register', 'main.register') -> name('register');
-Route::view('/auth', 'main.auth') -> name('auth');
 
+// Регистрация и авторизация
+Route::view('/register', 'main.register') -> name('register');
 Route::post('/reg', 'App\Http\Controllers\Register_controller@submit')->name('REG');
+Route::view('/auth', 'main.auth') -> name('auth');
 Route::post('/log', 'App\Http\Controllers\Auth_controller@submit')->name('log');
 Route::post('/logout', 'App\Http\Controllers\Auth_controller@logout')->name('out');
 
+// Админ панель
 Route::prefix('admin') -> group(function (){
-    Route::view('/categories', 'admin/categories.adminCategory') -> name('adminCategoryMain');
-    Route::view('/categories/add', 'admin/categories.addCategory') -> name('adminCategoryAdd');
-    Route::post('/addCategory', 'App\Http\Controllers\Category_controller@create')->name('category.create');
-    Route::view('/categories/edit', 'admin/categories.editCategory') -> name('adminCategoryEdit');
+
+    // Категории
+    Route::get('/categories', Category_controller::class .'@index')->name('categories.index');
+    Route::get('/categories/create', Category_controller::class . '@create')->name('categories.create');
+    Route::post('/categories/store', Category_controller::class . '@store')->name('categories.store');
+    Route::get('/categories/{category}/edit', Category_controller::class . '@edit')->name('categories.edit');
+    Route::put('/categories/{category}', Category_controller::class . '@update')->name('categories.update');
+    Route::delete('/categories/{category}', Category_controller::class . '@destroy')->name('categories.destroy');
+
+    // Магазины
+    Route::get('/shops', Shop_controller::class .'@index')->name('shops.index');
+    Route::get('/shops/create', Shop_controller::class . '@create')->name('shops.create');
+    Route::post('/shops/store', Shop_controller::class . '@store')->name('shops.store');
+    Route::get('/shops/{shop}/edit', Shop_controller::class . '@edit')->name('shops.edit');
+    Route::put('/shops/{shop}', Shop_controller::class . '@update')->name('shops.update');
+    Route::delete('/shops/{shop}', Shop_controller::class . '@destroy')->name('shops.destroy');
+
 
 
     Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
-
-    Route::view('/shops', 'admin/shops.adminShops') -> name('adminShopMain');
-    Route::view('/shops/add', 'admin/shops.addShop') -> name('adminShopAdd');
-    Route::view('/shops/edit', 'admin/shops.editShop') -> name('adminShopEdit');
-
     Route::view('/users', 'admin/users.adminUsers') -> name('adminUserMain');
     Route::view('/users/edit', 'admin/users.editUser') -> name('adminUserAdd');
 });

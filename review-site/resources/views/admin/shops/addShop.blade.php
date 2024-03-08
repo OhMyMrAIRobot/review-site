@@ -34,66 +34,66 @@
 
     <div class = "admin-right_cont">
 
-        <div class = "admin_container_header">
+        <form method="POST" action="{{route('shops.store')}}" class = "admin_container_header">
+            @csrf
             <h2>Добавить магазин</h2>
 
-            <input class = "shopName_input" type = "text" placeholder="Название...">
+            <input name = "title" class = "shopName_input" type = "text" placeholder="Название...">
 
             <div class = "shop_desc_container">
                 <h5>Описание</h5>
-                <textarea placeholder="Описание..." class = "desc_text"></textarea>
+                <textarea name="description" placeholder="Описание..." class = "desc_text"></textarea>
             </div>
 
             <h5>Изображение</h5>
             <div class = "select_shop_img_container">
-                <input type="file" class="select_img_input" id="selectImg">
+                <input name = "img" type="file" class="select_img_input" id="selectImg">
                 <label class = "select_img_label"for="selectImg">Upload</label>
             </div>
 
             <h5>Категория</h5>
-            <select class = "select_category" name="topic" aria-label="Default select example">
-                <option selected>Категория:</option>
-                <option>category 1</option>
-                <option>category 2</option>
-                <option>category 3</option>
-                <option>category 4</option>
+            <select name = "category" class = "select_category" name="topic" aria-label="Default select example">
+                <option value="-1" selected>Категория:</option>
+                @foreach($categories as $key => $category)
+                    <option value="@lang($category->id)">@lang($category->category)</option>
+                @endforeach
             </select>
 
             <h5>Контактная информация</h5>
             <div class = "contact_container">
                 <div class = "contact">
                     <i class="icon fab fa-facebook"></i>
-                    <input class = "contact_input" type = "text">
+                    <input name = "facebook" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fab fa-instagram"></i>
-                    <input class = "contact_input" type = "text">
+                    <input name = "instagram" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fab fa-telegram"></i>
-                    <input class = "contact_input" type = "text">
+                    <input name = "telegram" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fab fa-vk"></i>
-                    <input class = "contact_input" type = "text">
+                    <input name = "vk" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fas fa-phone"></i>
-                    <input class = "contact_input" type = "text">
+                    <input name = "phone" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fas fa-envelope"></i>
-                    <input class = "contact_input" type = "text">
+                    <input name = "email" class = "contact_input" type = "text">
                 </div>
             </div>
 
-            <button class = "admin_btn_add">Добавить</button>
-        </div>
+            <button type="SUBMIT" class = "admin_btn_add">Добавить</button>
+        </form>
 
     </div>
 </main>

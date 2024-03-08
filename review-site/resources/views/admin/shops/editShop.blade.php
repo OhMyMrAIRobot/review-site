@@ -34,66 +34,70 @@
 
     <div class = "admin-right_cont">
 
-        <div class = "admin_container_header">
-            <h2>Редактировать магазин</h2>
+        <form method="POST" action="{{route('shops.update', $shop->id)}}" class = "admin_container_header">
+            @csrf
+            @method('PUT')
+            <h2>Добавить магазин</h2>
 
-            <input value = "Название" class = "shopName_input" type = "text" placeholder="Название...">
+            <input value="@lang($shop->title)" name = "title" class = "shopName_input" type = "text" placeholder="Название...">
 
             <div class = "shop_desc_container">
                 <h5>Описание</h5>
-                <textarea placeholder="Описание..." class = "desc_text">Описание</textarea>
+                <textarea name="description" placeholder="Описание..." class = "desc_text">@lang($shop->description)</textarea>
             </div>
 
             <h5>Изображение</h5>
             <div class = "select_shop_img_container">
-                <input type="file" class="select_img_input" id="selectImg">
-                <label class = "select_img_label"for="selectImg">Upload</label>
+                <input type="hidden" name="img" value="{{ $shop->img }}">
+                <input src="@lang($shop->img)" name = "new_img" type="file" class="select_img_input" id="selectImg">
+                <label class = "select_img_label" for="selectImg">Upload</label>
             </div>
 
             <h5>Категория</h5>
-            <select class = "select_category" name="topic" aria-label="Default select example">
-                <option selected>Категория:</option>
-                <option>category 1</option>
-                <option>category 2</option>
-                <option>category 3</option>
-                <option>category 4</option>
+            <select name = "category" class = "select_category" name="topic" aria-label="Default select example">
+                <option value="@lang($shop->category_id)" selected>@lang($categories[$shop->category_id]):</option>
+                @foreach($categories as $key => $category)
+                    @if ($categories[$shop->category_id] !== $category)
+                        <option value="@lang($key)">@lang($category)</option>
+                    @endif
+                @endforeach
             </select>
 
             <h5>Контактная информация</h5>
             <div class = "contact_container">
                 <div class = "contact">
                     <i class="icon fab fa-facebook"></i>
-                    <input value = "facebook" class = "contact_input" type = "text">
+                    <input value="@lang($shop->facebook)" name = "facebook" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fab fa-instagram"></i>
-                    <input value = "instagram" class = "contact_input" type = "text">
+                    <input value="@lang($shop->instagram)" name = "instagram" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fab fa-telegram"></i>
-                    <input value = "telegram" class = "contact_input" type = "text">
+                    <input value="@lang($shop->telegram)" name = "telegram" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fab fa-vk"></i>
-                    <input value = "vk" class = "contact_input" type = "text">
+                    <input value="@lang($shop->vk)" name = "vk" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fas fa-phone"></i>
-                    <input value="+123 456 789" class = "contact_input" type = "text">
+                    <input value="@lang($shop->phone)" name = "phone" class = "contact_input" type = "text">
                 </div>
 
                 <div class = "contact">
                     <i class="icon fas fa-envelope"></i>
-                    <input value = "mail@mail.com" class = "contact_input" type = "text">
+                    <input value="@lang($shop->email)" name = "email" class = "contact_input" type = "text">
                 </div>
             </div>
 
-            <button class = "admin_btn_edit">Сохранить</button>
-        </div>
+            <button type="SUBMIT" class = "admin_btn_add">Сохранить</button>
+        </form>
 
     </div>
 </main>

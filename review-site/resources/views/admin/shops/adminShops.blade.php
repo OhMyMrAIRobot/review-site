@@ -33,7 +33,7 @@
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
-            <a class = "admin_btn_add" href = {{route('adminShopAdd')}}>Добавить</a>
+            <a class = "admin_btn_add" href = {{route('shops.create')}}>Добавить</a>
         </div>
 
         <div class = "admin_container_header">
@@ -46,19 +46,21 @@
             </div>
         </div>
 
-        @for($i = 1; $i <= 5; $i++)
+        @foreach($shops as $key => $shop)
         <!--Магазин-->
         <div class = "admin_table_header">
-            <div class="admin_table_id"><?=$i?></div>
-            <div class = "admin_table_name">Магазин <?=$i?></div>
-            <div class = "admin_table_category">Категория <?=$i?></div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "{{route('adminShopEdit')}}">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
+            <div class="admin_table_id">@lang($key)</div>
+            <div class = "admin_table_name">@lang($shop->title)</div>
+            <div class = "admin_table_category">@lang($categories[$shop->category_id])</div>
+            <form action="{{route('shops.destroy', $shop->id)}}" method="POST" class = "admin_table_control">
+                @csrf
+                @method('DELETE')
+                <a class = "admin_table_edit" href = "{{route('shops.edit', $shop->id)}}">edit</a>
+                <button class = "admin_table_delete" type="SUBMIT">delete</button>
+            </form>
         </div>
-        @endfor
         <!--Магазин-->
+        @endforeach
     </div>
 </main>
 

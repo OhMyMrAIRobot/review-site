@@ -30,11 +30,10 @@
 
 <main class = "admin-container">
     @include('components.sidebarAdmin')
-
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
             <a class = "admin_btn_add"
-               href = {{route('adminCategoryAdd')}}
+               href = {{route('categories.create')}}
             >Добавить</a>
         </div>
 
@@ -47,18 +46,20 @@
             </div>
         </div>
 
-        @for ($i = 1; $i <= 6; $i++)
+        @foreach($categories as $key => $category)
         <!--Category-->
         <div class = "admin_table_header">
-            <div class="admin_table_id"><?=$i ?></div>
-            <div class = "admin_table_name">Категория <?=$i ?></div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "{{route('adminCategoryEdit')}}">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
-            </div>
+            <div class="admin_table_id">@lang($key++)</div>
+            <div class = "admin_table_name">@lang($category->category)</div>
+            <form action="{{route('categories.destroy', $category->id)}}" method="POST" class = "admin_table_control">
+                @csrf
+                @method('DELETE')
+                <a href="{{route('categories.edit', $category->id)}}" class = "admin_table_edit">edit</a>
+                <button type="SUBMIT" class = "admin_table_delete">delete</button>
+            </form>
         </div>
         <!--Category-->
-        @endfor
+        @endforeach
 
     </div>
 </main>
