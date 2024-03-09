@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth_controller;
 use App\Http\Controllers\Category_controller;
 use App\Http\Controllers\MainPage_controller;
+use App\Http\Controllers\Register_controller;
 use App\Http\Controllers\Shop_controller;
+use App\Http\Controllers\ShopPage_controller;
 use App\Http\Controllers\User_controller;
 use Illuminate\Support\Facades\Route;
 
@@ -19,20 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 // Основные маршруты
 Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
-
-
-
-
-
-
-Route::view('/shop', 'main.shopPage') -> name('shop');
+Route::get('/shop/{id}', ShopPage_controller::class .'@index') -> name('shop.index');
 
 // Регистрация и авторизация
-Route::view('/register', 'main.register') -> name('register');
-Route::post('/reg', 'App\Http\Controllers\Register_controller@submit')->name('REG');
-Route::view('/auth', 'main.auth') -> name('auth');
-Route::post('/log', 'App\Http\Controllers\Auth_controller@submit')->name('log');
-Route::post('/logout', 'App\Http\Controllers\Auth_controller@logout')->name('out');
+Route::get('/register', Register_controller::class . '@index')->name('register.index');
+Route::post('/register', Register_controller::class . '@store')->name('register.store');
+Route::get('/auth', Auth_controller::class . '@index')->name('auth.index');
+Route::post('/auth', Auth_controller::class . '@check')->name('auth.check');
+Route::post('/logout', Auth_controller::class . '@logout')->name('auth.logout');
 
 // Админ панель
 Route::prefix('admin') -> group(function (){

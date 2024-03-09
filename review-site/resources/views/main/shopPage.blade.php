@@ -29,9 +29,9 @@
 
 <main>
     <div class = "single_shop_container">
-        <h2 class = "single_shop_header">Название магазина</h2>
+        <h2 class = "single_shop_header">@lang($shop->title)</h2>
         <div class = "single_shop">
-            <img class = "single_shop_img" src = "{{asset('/images/img.png')}}">
+            <img class = "single_shop_img" src = "{{asset('/images/'. $shop->img)}}">
             <div class = "single_shop_info">
                 <div class = "single_shop_rating">
                     <i class="fa-regular fa-star"></i>
@@ -40,19 +40,19 @@
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                 </div>
-                <p class = "single_shop_category">Категория</p>
-                <p class = "single_shop_description">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,</p>
+                <p class = "single_shop_category">@lang($category)</p>
+                <p class = "single_shop_description">@lang($shop->description)</p>
 
                 <div class = "single_shop_contacts">
-                    <span><i class = "fas fa-phone"></i>&nbsp; 123-456-789</span>
-                    <span><i class = "fas fa-envelope"></i>&nbsp; my_title@gmail.com</span>
+                    <span><i class = "fas fa-phone"></i>&nbsp @lang($shop->phone)</span>
+                    <span><i class = "fas fa-envelope"></i>&nbsp; @lang($shop->email)</span>
                 </div>
 
                 <div class = "single_shop_social">
-                    <a class = "shop_social" href = "#"><i class = "fab fa-facebook"></i></a>
-                    <a class = "shop_social" href = "#"><i class = "fab fa-instagram"></i></a>
-                    <a class = "shop_social" href = "#"><i class = "fab fa-telegram"></i></a>
-                    <a class = "shop_social" href = "#"><i class = "fab fa-vk"></i></a>
+                    <a class = "shop_social" href = "@lang($shop->facebook)"><i class = "fab fa-facebook"></i></a>
+                    <a class = "shop_social" href = "@lang($shop->instagram)"><i class = "fab fa-instagram"></i></a>
+                    <a class = "shop_social" href = "@lang($shop->telegram)"><i class = "fab fa-telegram"></i></a>
+                    <a class = "shop_social" href = "@lang($shop->vk)"><i class = "fab fa-vk"></i></a>
                 </div>
             </div>
         </div>

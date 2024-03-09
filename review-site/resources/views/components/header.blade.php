@@ -13,18 +13,18 @@
                 <li><a class = "nav-btn" href = "{{route('main.index')}}">О нас</a></li>
                 <li>
                     @if(session()->has('user'))
-                        <a class = "nav-btn" href = {{route('auth')}}>
+                        <a class = "nav-btn">
                             <i class = "fa fa-user"></i>
                             Кабинет
                         </a>
 
                         <ul class = "cabinet-btns">
                             @if(session()->has('isAdmin'))
-                                <li><a class = "nav-btn" href = "{{route('categories.index')}}">Админ панель</a></li>
+                                <li><a class = "nav-btn" href = "{{route('shops.index')}}">Админ панель</a></li>
                             @endif
 
                             <li>
-                                <form action="{{route('out')}}" method='POST'>
+                                <form action="{{route('auth.logout')}}" method='POST'>
                                     @csrf
                                     <button type='SUBMIT' class = "nav-btn btn">Выход</button>
                                 </form>
@@ -32,12 +32,12 @@
                         </ul>
 
                         @else
-                        <a class = "nav-btn" href ={{route('auth')}}>
+                        <a class = "nav-btn" href ={{route('auth.index')}}>
                             Войти
                         </a>
 
                         <ul class = "cabinet-btns">
-                            <li><a class = "nav-btn" href = "{{route('register')}}">Регистрация</a></li>
+                            <li><a class = "nav-btn" href = "{{route('register.index')}}">Регистрация</a></li>
                         </ul>
                     @endif
 

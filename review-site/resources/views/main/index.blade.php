@@ -32,34 +32,34 @@
 
 <!--MAIN-->
 <main>
-    <div class = "last_reviews_container">
-        <h3>Последние отзывы</h3>
+{{--    <div class = "last_reviews_container">--}}
+{{--        <h3>Последние отзывы</h3>--}}
 
-        @for ($i = 1; $i <= 3; $i++)
-        <!--ОТЗЫВ-->
-        <div class = "review_main">
-            <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">
-            <div class = "review_body">
-                <div class = "review_main_header">
-                    <a href="{{route('shop')}}">Магазин <?=$i?></a>
-                    <div class = "review_main_rating">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <i class="review_icon fa-regular fa-user"></i>
-                    <p class = "review_author">username</p>
-                </div>
-                <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
-            </div>
-        </div>
-        <!--ОТЗЫВ-->
-        @endfor
+{{--        @for ($i = 1; $i <= 3; $i++)--}}
+{{--        <!--ОТЗЫВ-->--}}
+{{--        <div class = "review_main">--}}
+{{--            <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">--}}
+{{--            <div class = "review_body">--}}
+{{--                <div class = "review_main_header">--}}
+{{--                    <a href="{{route('shop')}}">Магазин <?=$i?></a>--}}
+{{--                    <div class = "review_main_rating">--}}
+{{--                        <i class="fa-regular fa-star"></i>--}}
+{{--                        <i class="fa-regular fa-star"></i>--}}
+{{--                        <i class="fa-regular fa-star"></i>--}}
+{{--                        <i class="fa-regular fa-star"></i>--}}
+{{--                        <i class="fa-regular fa-star"></i>--}}
+{{--                    </div>--}}
+{{--                    <i class="review_icon fa-regular fa-user"></i>--}}
+{{--                    <p class = "review_author">username</p>--}}
+{{--                </div>--}}
+{{--                <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <!--ОТЗЫВ-->--}}
+{{--        @endfor--}}
 
-        <h3>Магазины</h3>
-    </div>
+{{--        <h3>Магазины</h3>--}}
+{{--    </div>--}}
 
 
     <div class = "main">
@@ -73,11 +73,11 @@
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="{{route('shop')}}">@lang($shop->title)</a>
+                        <a href="{{route('shop.index', $shop->id)}}">@lang($shop->title)</a>
                     </h3>
 
-                    <p class="shop_description">@lang($shop->description)</p>
-                    <p class="shop_tags">@lang($categories[$shop->category_id])</p>
+                    <p class="shop_description">Описание: @lang($shop->description)</p>
+                    <p class="shop_tags">Категория: @lang($categories[$shop->category_id])</p>
 
                     <div class = "shop_rating">
                         <i class="fa-regular fa-star"></i>

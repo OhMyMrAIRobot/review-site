@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Hash;
 class Auth_controller extends Controller
 {
 
-    public function logout()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        session()->flush();
-        return redirect()->route('main');
+        return view('main/auth');
     }
 
-    public function submit(AuthRequest $request): \Illuminate\Http\RedirectResponse
+    public function logout(): \Illuminate\Http\RedirectResponse
+    {
+        session()->flush();
+        return redirect()->route('main.index');
+    }
+
+    public function check(AuthRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user = User::where('username', $request['username'])->first();
 
@@ -40,6 +45,6 @@ class Auth_controller extends Controller
                 'password' => 'wrong password.',
             ])->withInput();
         }
-        return redirect()->route('main');
+        return redirect()->route('main.index');
     }
 }

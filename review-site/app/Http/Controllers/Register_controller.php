@@ -10,10 +10,15 @@ use function Laravel\Prompts\password;
 
 class Register_controller extends Controller
 {
-    public function submit(RegisterRequest $request): \Illuminate\Http\RedirectResponse
+
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('main/register');
+    }
+
+    public function store(RegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user = new User();
-
         $user->username = $request->username;
         $user->email = $request->email;
         $user->admin = false;
@@ -24,6 +29,6 @@ class Register_controller extends Controller
             'user' => $request->username,
         ]);
 
-       return redirect()->route('main');
+       return redirect()->route('main.index');
     }
 }

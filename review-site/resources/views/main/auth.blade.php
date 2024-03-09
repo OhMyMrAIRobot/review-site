@@ -28,7 +28,7 @@
 @include('components.header')
 
 <!--MAIN-->
-<form class = "reg_container" method='POST' action="{{route('log')}}">
+<form class = "reg_container" method='POST' action="{{route('auth.check')}}">
     @csrf
     <h2 class = "reg_header">Авторизация</h2>
     <label class = "reg_label">Ваш логин</label>
@@ -39,7 +39,7 @@
 
     <div class = "reg_btns_container">
         <button type="SUBMIT" class = "reg_btn">Войти</button>
-        <a class = "login_href" href="{{route('register')}}">Регистрация</a>
+        <a class = "login_href" href="{{route('register.index')}}">Регистрация</a>
     </div>
 </form>
 
