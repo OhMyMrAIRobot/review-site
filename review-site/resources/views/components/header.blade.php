@@ -3,14 +3,14 @@
 <header class = "header">
     <div class = "navbar">
         <h1 class = "title">
-            <a href = "{{route('main')}}">My Title</a>
+            <a href = "{{route('main.index')}}">My Title</a>
         </h1>
 
         <nav class = "navigation">
             <ul>
-                <li><a class = "nav-btn" href = "{{route('main')}}">Главная</a></li>
-                <li><a class = "nav-btn" href = "{{route('main')}}">Магазины</a></li>
-                <li><a class = "nav-btn" href = "{{route('main')}}">О нас</a></li>
+                <li><a class = "nav-btn" href = "{{route('main.index')}}">Главная</a></li>
+                <li><a class = "nav-btn" href = "{{route('main.index')}}">Магазины</a></li>
+                <li><a class = "nav-btn" href = "{{route('main.index')}}">О нас</a></li>
                 <li>
                     @if(session()->has('user'))
                         <a class = "nav-btn" href = {{route('auth')}}>

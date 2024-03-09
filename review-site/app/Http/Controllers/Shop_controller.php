@@ -25,10 +25,12 @@ class Shop_controller extends Controller
 
     public function store(ShopRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $category_id = intval($request->category);
-        $otherData = $request->except('category_id');
-        Shop::create(['category_id' => $category_id] + $otherData);
+        $imageName = $request->title .'.'. $request->img->extension();
+        $request->img->move(public_path('images'), $imageName);
 
+        $category_id = intval($request->category);
+        $otherData = $request->except('category_id', 'img');
+        Shop::create(['category_id' => $category_id, 'img' => $imageName] + $otherData);
         return redirect()->route('shops.index')->with('success', 'Shop created successfully.');
     }
 
@@ -46,15 +48,15 @@ class Shop_controller extends Controller
     public function update(ShopRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         $shop = Shop::find($id);
-
-        $otherData = $request->except('category_id');
+        $otherData = $request->except('category_id', 'img');
         $category_id = intval($request->category);
-
+        $imageName = $request->img;
         if ($request->new_img) {
-            $otherData['img'] = $request->new_img;
+            $imageName = $request->title .'.'. $request->new_img->extension();
+            $request->new_img->move(public_path('images'), $imageName);
         }
 
-        $shop->update(['category_id' => $category_id] + $otherData);
+        $shop->update(['category_id' => $category_id, 'img' => $imageName] + $otherData);
         return redirect()->route('shops.index')->with('success', 'Shop updated successfully.');
     }
 

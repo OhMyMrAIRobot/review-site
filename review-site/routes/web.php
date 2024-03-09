@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Category_controller;
+use App\Http\Controllers\MainPage_controller;
 use App\Http\Controllers\Shop_controller;
 use App\Http\Controllers\User_controller;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Основные маршруты
-Route::view('/', 'main.index') -> name('main');
+Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
+
+
+
+
+
+
 Route::view('/shop', 'main.shopPage') -> name('shop');
 
 // Регистрация и авторизация
@@ -54,7 +61,6 @@ Route::prefix('admin') -> group(function (){
 
 
     Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
-    Route::view('/users/edit', 'admin/users.editUser') -> name('adminUserAdd');
 });
 
 

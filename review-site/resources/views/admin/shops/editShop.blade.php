@@ -34,7 +34,7 @@
 
     <div class = "admin-right_cont">
 
-        <form method="POST" action="{{route('shops.update', $shop->id)}}" class = "admin_container_header">
+        <form method="POST" action="{{route('shops.update', $shop->id)}}" class = "admin_container_header" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <h2>Добавить магазин</h2>
@@ -48,9 +48,8 @@
 
             <h5>Изображение</h5>
             <div class = "select_shop_img_container">
-                <input type="hidden" name="img" value="{{ $shop->img }}">
-                <input src="@lang($shop->img)" name = "new_img" type="file" class="select_img_input" id="selectImg">
-                <label class = "select_img_label" for="selectImg">Upload</label>
+                <input type="hidden" name="img" value="{{$shop->img}}">
+                <input name = "new_img" type="file" class="select_img_input">
             </div>
 
             <h5>Категория</h5>

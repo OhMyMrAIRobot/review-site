@@ -31,7 +31,7 @@ class ShopRequest extends FormRequest
             'vk' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255', 'email'],
-            'img' => ['required', 'string', 'max:255'],
+            'img' => ['required'],
         ];
     }
 }

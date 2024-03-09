@@ -66,18 +66,18 @@
         <!--MAIN CONTENT-->
         <div class = "shop_container">
 
-            @for ($i = 1; $i <= 4; $i++)
+            @foreach($shops as $shop)
             <!--МАГАЗИН-->
             <div class = "shop">
-                <img class = "shop_img" src="{{asset('/images/img.png')}}" alt="shop_image">
+                <img class = "shop_img" src="{{asset('images/'. $shop->img)}}" alt="shop_image">
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
-                        <a href="{{route('shop')}}">Название <?=$i?></a>
+                        <a href="{{route('shop')}}">@lang($shop->title)</a>
                     </h3>
 
-                    <p class="shop_description">С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. . Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает</p>
-                    <p class="shop_tags">Электроника</p>
+                    <p class="shop_description">@lang($shop->description)</p>
+                    <p class="shop_tags">@lang($categories[$shop->category_id])</p>
 
                     <div class = "shop_rating">
                         <i class="fa-regular fa-star"></i>
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <!--МАГАЗИН-->
-            @endfor
+            @endforeach
 
         </div>
 
@@ -105,12 +105,9 @@
             <div class = "categories_container">
                 <h3 class = "categories_title">Категории</h3>
                 <ul>
-                    <li><a class = "category" href="#">Категория 1</a></li>
-                    <li><a class = "category" href="#">Категория 2</a></li>
-                    <li><a class = "category" href="#">Категория 3</a></li>
-                    <li><a class = "category" href="#">Категория 4</a></li>
-                    <li><a class = "category" href="#">Категория 5</a></li>
-                    <li><a class = "category" href="#">Категория 6</a></li>
+                    @foreach($categories as $category)
+                    <li><a class = "category" href="#">@lang($category)</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
