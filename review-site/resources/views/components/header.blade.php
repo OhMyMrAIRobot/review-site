@@ -15,7 +15,7 @@
                     @if(session()->has('user'))
                         <a class = "nav-btn">
                             <i class = "fa fa-user"></i>
-                            Кабинет
+                            @lang(session('user'))
                         </a>
 
                         <ul class = "cabinet-btns">

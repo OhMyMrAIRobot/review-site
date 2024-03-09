@@ -32,34 +32,38 @@
 
 <!--MAIN-->
 <main>
-{{--    <div class = "last_reviews_container">--}}
-{{--        <h3>Последние отзывы</h3>--}}
-
-{{--        @for ($i = 1; $i <= 3; $i++)--}}
-{{--        <!--ОТЗЫВ-->--}}
-{{--        <div class = "review_main">--}}
-{{--            <img class = "img_review" alt="img_review" src="{{asset('/images/img.png')}}">--}}
-{{--            <div class = "review_body">--}}
-{{--                <div class = "review_main_header">--}}
-{{--                    <a href="{{route('shop')}}">Магазин <?=$i?></a>--}}
-{{--                    <div class = "review_main_rating">--}}
-{{--                        <i class="fa-regular fa-star"></i>--}}
-{{--                        <i class="fa-regular fa-star"></i>--}}
-{{--                        <i class="fa-regular fa-star"></i>--}}
-{{--                        <i class="fa-regular fa-star"></i>--}}
-{{--                        <i class="fa-regular fa-star"></i>--}}
-{{--                    </div>--}}
-{{--                    <i class="review_icon fa-regular fa-user"></i>--}}
-{{--                    <p class = "review_author">username</p>--}}
-{{--                </div>--}}
-{{--                <p class = "review_main_desc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <!--ОТЗЫВ-->--}}
-{{--        @endfor--}}
-
-{{--        <h3>Магазины</h3>--}}
-{{--    </div>--}}
+    <div class = "last_reviews_container">
+        <h3>Последние отзывы</h3>
+        @foreach($reviews as $review)
+        <!--ОТЗЫВ-->
+        <div class = "review_main">
+            <a href="{{route('shop.index', $review->shop_id)}}" class = "img_review">
+                <img style="background: inherit; width: 100%; height: 100%" alt="img_review" src="{{asset('/images/' . $shopsArr[$review->shop_id]['img'])}}">
+            </a>
+            <div class = "review_body">
+                <div class = "review_main_header">
+                    <a href="{{route('shop.index', $review->shop_id)}}">
+                        @lang($shopsArr[$review->shop_id]['title'] . ' — ' . $review->title)
+                    </a>
+                    <div class = "review_main_rating">
+                        @for($i = 1; $i <= 5; $i++)
+                            @if ($i <= $review->rating)
+                                <i class="active fa-solid fa-star"></i>
+                            @else
+                                <i class="fa-regular fa-star"></i>
+                            @endif
+                        @endfor
+                    </div>
+                    <i class="review_icon fa-regular fa-user"></i>
+                    <p class = "review_author">@lang($review->author)</p>
+                </div>
+                <p class = "review_main_desc">@lang($review->description)</p>
+            </div>
+        </div>
+        <!--ОТЗЫВ-->
+        @endforeach
+        <h3>Магазины</h3>
+    </div>
 
 
     <div class = "main">
@@ -69,7 +73,9 @@
             @foreach($shops as $shop)
             <!--МАГАЗИН-->
             <div class = "shop">
-                <img class = "shop_img" src="{{asset('images/'. $shop->img)}}" alt="shop_image">
+                <a class = "shop_img" href = "{{route('shop.index', $shop->id)}}">
+                    <img style="background: #ffffff; width: 100%; height: 100%" src="{{asset('images/'. $shop->img)}}" alt="shop_image">
+                </a>
 
                 <div class = "shop_text">
                     <h3 class = "shop_title">
@@ -87,7 +93,7 @@
                         <i class="fa-regular fa-star"></i>
                     </div>
 
-                    <button class="add_review_btn">Добавить отзыв</button>
+                    <a href = '{{route('shop.index', $shop->id)}}' class="add_review_btn">Добавить отзыв</a>
                 </div>
             </div>
             <!--МАГАЗИН-->

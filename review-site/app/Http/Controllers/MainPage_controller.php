@@ -3,15 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Review;
 use App\Models\Shop;
-use Illuminate\Http\Request;
 
 class MainPage_controller extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $shops = Shop::all();
+        $shopsArr = $shops->pluck('id')->combine($shops->toArray())->all();
         $categories = Category::all()->pluck('category', 'id')->all();
-        return view('main.index', ['shops' => $shops, 'categories' => $categories]);
+        $reviews = Review::orderBy('created_at', 'desc')->limit(3)->get();
+        return view('main.index', [
+            'shops' => $shops,
+            'categories' => $categories,
+            'reviews' => $reviews,
+            'shopsArr' =>$shopsArr,
+        ]);
     }
 }

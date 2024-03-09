@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth_controller;
 use App\Http\Controllers\Category_controller;
 use App\Http\Controllers\MainPage_controller;
 use App\Http\Controllers\Register_controller;
+use App\Http\Controllers\Review_controller;
 use App\Http\Controllers\Shop_controller;
 use App\Http\Controllers\ShopPage_controller;
 use App\Http\Controllers\User_controller;
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 // Основные маршруты
 Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
 Route::get('/shop/{id}', ShopPage_controller::class .'@index') -> name('shop.index');
+
+// Отзывы
+Route::post('/reviews/store', Review_controller::class . '@store') ->name('reviews.store');
 
 // Регистрация и авторизация
 Route::get('/register', Register_controller::class . '@index')->name('register.index');

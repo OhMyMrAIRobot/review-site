@@ -60,77 +60,86 @@
 
     <div class = "add_review_container">
         @if(session()->has('user'))
-            <form method="post">
+
+            <form method="POST" action="{{route('reviews.store')}}">
+                @csrf
                 <h5 class = "review_add_header">Заголовок отзыва</h5>
-                <input class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">
+                <input name = 'title' class = "add_review_input" type = "text" placeholder = "Заголовок отзыва...">
                 <h5 style = "margin-top: 15px" class = "review_add_header">Ваш отзыв</h5>
-                <textarea class = "add_review_text" placeholder="Отзыв..."></textarea>
+                <textarea name = 'description' class = "add_review_text" placeholder="Отзыв..."></textarea>
+                <input name = 'rating' value="-1" type="hidden">
+                <input name = 'shop_id' value="@lang($shop->id)" type="hidden">
+                <input name = 'author' value="@lang(session('user'))" type="hidden">
                 <div class = "shop_rating">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    @for ($i = 1; $i <= 5; $i++)
+                        <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
+                        <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star fa-regular fa-star"></i></label>
+                    @endfor
                 </div>
 
-                <button type = "submit" class = "add_review">Опубликовать</button>
+                <button type = "SUBMIT" class = "add_review">Опубликовать</button>
             </form>
+
         @else
             <h3 class = "req_auth_text">Для того, чтобы оставить отзыв требуется <a href = "{{route('auth')}}">авторизация</a>!</h3>
         @endif
-
-
     </div>
 
     <div class = "reviews_container">
-        <h2 style="color: #686868">Отзывы</h2>
+        @if($reviews->isEmpty())
+            <h2 style="color: #686868; text-align: center">Отзывы не найдены!</h2>
+        @else
+            <h2 style="color: #686868">Отзывы</h2>
+        @endif
 
-        <!--ОТЗЫВ 1-->
+        @foreach($reviews as $review)
+        <!--ОТЗЫВ-->
         <div class = "review">
             <div class = "review_header">
                 <i class="review_icon fa-regular fa-user"></i>
-                <p class = "review_author">username</p>
+                <p class = "review_author">@lang($review->author)</p>
                 <div class = "review_rating">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+
+                    @for($i = 1; $i <= 5; $i++)
+                        @if ($i <= $review->rating)
+                            <i class="active fa-solid fa-star"></i>
+                        @else
+                            <i class="fa-regular fa-star"></i>
+                        @endif
+                    @endfor
                 </div>
-                <p class = "review_time">12:03 12.07.2022</p>
+                <p class = "review_time">{{ \Carbon\Carbon::parse($review->created_at)->format('G:i d-m-Y') }}</p>
             </div>
 
-            <h4 class = "review_title">Lorem ipsum dolor sit amet</h4>
-            <p class = "review_text">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
+            <h4 class = "review_title">@lang($review->title)</h4>
+            <p class = "review_text">@lang($review->description)</p>
         </div>
-        <!--ОТЗЫВ 1-->
-
-        <!--ОТЗЫВ 2-->
-        <div class = "review">
-            <div class = "review_header">
-                <i class="review_icon fa-regular fa-user"></i>
-                <p class = "review_author">username</p>
-                <div class = "review_rating">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                </div>
-                <p class = "review_time">12:03 12.07.2022</p>
-            </div>
-
-            <h4 class = "review_title">Lorem ipsum dolor sit amet</h4>
-            <p class = "review_text">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam. ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</p>
-        </div>
-        <!--ОТЗЫВ 2-->
+        <!--ОТЗЫВ-->
+        @endforeach
 
     </div>
 </main>
 
-
 <!--FOOTER-->
 @include('components.footer')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const Rating = (current) => {
+        let stars = Array.from(document.getElementsByClassName('star'));
+        const currentIndex = stars.indexOf(current);
+
+        stars.forEach((star, index) => {
+            if (index <= currentIndex){
+                star.classList.add('fa-solid', 'active');
+                star.classList.remove('fa-regular');
+            } else {
+                star.classList.add('fa-regular');
+                star.classList.remove('fa-solid', 'active');
+            }
+        })
+    }
+</script>
 
 </body>
 </html>

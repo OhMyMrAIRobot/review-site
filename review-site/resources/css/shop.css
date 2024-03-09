@@ -58,6 +58,9 @@
     transition: all 0.4s linear;
     background: #ffffff;
     cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #232323;
 }
 
 .add_review_btn:hover{

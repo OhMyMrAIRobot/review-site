@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Review;
 use App\Models\Shop;
 
 class ShopPage_controller extends Controller
@@ -13,7 +14,13 @@ class ShopPage_controller extends Controller
         if (!$shop)
             return redirect()->route('main.index');
         $categories = Category::all()->pluck('category', 'id')->all();
-        return view('main/shopPage', ['shop' => $shop, 'category' => $categories[$shop->category_id]]);
+        $reviews =  Review::where('shop_id', $id)->orderBy('created_at', 'desc')->get();
+
+        return view('main/shopPage', [
+            'shop' => $shop,
+            'category' => $categories[$shop->category_id],
+            'reviews' => $reviews,
+        ]);
     }
 
 }

@@ -201,3 +201,11 @@ main{
 .req_auth_text a{
     color: #232323;
 }
+
+.star{
+    cursor: pointer;
+}
+
+.active{
+    color: gold;
+}
