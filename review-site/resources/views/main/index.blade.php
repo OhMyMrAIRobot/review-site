@@ -86,11 +86,13 @@
                     <p class="shop_tags">Категория: @lang($categories[$shop->category_id])</p>
 
                     <div class = "shop_rating">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
+                        @for($i = 1; $i <= 5; $i++)
+                            @if ($i <= $shop->rating)
+                                <i class="active fa-solid fa-star"></i>
+                            @else
+                                <i class="fa-regular fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
 
                     <a href = '{{route('shop.index', $shop->id)}}' class="add_review_btn">Добавить отзыв</a>

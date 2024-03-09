@@ -34,11 +34,13 @@
             <img class = "single_shop_img" src = "{{asset('/images/'. $shop->img)}}">
             <div class = "single_shop_info">
                 <div class = "single_shop_rating">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    @for($i = 1; $i <= 5; $i++)
+                        @if ($i <= $shop->rating)
+                            <i class="active fa-solid fa-star"></i>
+                        @else
+                            <i class="fa-regular fa-star"></i>
+                        @endif
+                    @endfor
                 </div>
                 <p class = "single_shop_category">@lang($category)</p>
                 <p class = "single_shop_description">@lang($shop->description)</p>
