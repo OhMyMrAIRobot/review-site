@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Review_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $reviews = Review::all();
+        $reviews = Review::orderBy('created_at', 'desc')->get();
+        foreach ($reviews as $review){
+            $author = User::where('id', $review->user_id)->first()->username;
+            $review->author = $author;
+        }
         return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
     }
 
@@ -25,17 +30,23 @@ class Review_controller extends Controller
         $review = Review::find($id);
         if (!$review)
             return redirect()->route('reviews.index');
+        $author = User::where('id', $review->user_id)->first()->username;
+        $review->author = $author;
         return view('admin/reviews.editReview', ['review' => $review]);
     }
 
-    public function update(ReviewRequest $request, $id)
+    public function update(ReviewRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
-
+        $review = Review::find($id);
+        $review->update($request->all());
+        return redirect()->route('reviews.index')->with('success', 'Review updated successfully.');
     }
 
     public function destroy($id)
     {
-
+        $review = Review::find($id);
+        $review->delete();
+        return redirect()->route('reviews.index')->with('success', 'Review deleted successfully');
     }
 
 }

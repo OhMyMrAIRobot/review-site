@@ -39,7 +39,8 @@
             <h2>Управление отзывами</h2>
             <div class = "admin_table_header">
                 <div class="admin_table_id">ID</div>
-                <div class = "admin_table_text bold">Текст</div>
+                <div class = "admin_table_text bold">Заголовок</div>
+                <div class = "admin_table_time bold">Опубликован</div>
                 <div class = "admin_table_author bold">Автор</div>
                 <div class = "admin_table_control bold">Управление</div>
             </div>
@@ -50,17 +51,20 @@
         <div class = "admin_table_header">
             <div class="admin_table_id">@lang($key)</div>
             <div class = "admin_table_text">
-                @lang(strlen($review->description) > 50 ?
-                    mb_substr($review->description, 0, 50, 'UTF-8') . '...'
+                @lang(strlen($review->title) > 50 ?
+                    mb_substr($review->title, 0, 50, 'UTF-8') . '...'
                     :
-                    $review->description
+                    $review->title
                 )
             </div>
+            <div class = "admin_table_time">{{ \Carbon\Carbon::parse($review->created_at)->format('G:i d-m-Y') }}</div>
             <div class = "admin_table_author">@lang($review->author)</div>
-            <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "{{route('reviews.update', $review->id)}}">edit</a>
-                <a class = "admin_table_delete" href = "{{route('reviews.destroy', $review->id)}}">delete</a>
-            </div>
+            <form method="POST" action="{{route('reviews.destroy', $review->id)}}" class = "admin_table_control">
+                @csrf
+                @method('DELETE')
+                <a class = "admin_table_edit" href = "{{route('reviews.edit', $review->id)}}">edit</a>
+                <button class = "admin_table_delete" type="SUBMIT">delete</button>
+            </form>
         </div>
         {{--Отзыв--}}
         @endforeach

@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
 Route::get('/shop/{id}', ShopPage_controller::class .'@index') -> name('shop.index');
 
-// Отзывы
+// Добавление отзыва
 Route::post('/reviews/store', Review_controller::class . '@store') ->name('reviews.store');
 
 // Регистрация и авторизация
@@ -60,6 +60,7 @@ Route::prefix('admin') -> group(function (){
     Route::put('/users/{user}', User_controller::class . '@update')->name('users.update');
     Route::delete('/users/{user}', User_controller::class . '@destroy')->name('users.destroy');
 
+    // Отзывы
     Route::get('/reviews', Review_controller::class . '@index')->name('reviews.index');
     Route::get('/reviews/{review}/edit', Review_controller::class . '@edit') ->name('reviews.edit');
     Route::put('/reviews/{review}', Review_controller::class . '@update')->name('reviews.update');

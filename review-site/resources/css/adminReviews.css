@@ -21,8 +21,15 @@
     text-align: left;
 }
 
+.admin_table_time{
+    width: 20%;
+    display: block;
+    padding: 15px;
+    text-align: left;
+}
+
 .admin_table_author{
-    width: 30%;
+    width: 20%;
     display: block;
     padding: 15px;
     text-align: left;

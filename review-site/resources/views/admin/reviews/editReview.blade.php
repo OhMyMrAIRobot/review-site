@@ -11,6 +11,7 @@
     'resources/css/header.css',
     'resources/css/footer.css',
     'resources/css/admin.css',
+    'resources/css/adminEditReview.css',
     ])
 
     <link rel = "stylesheet" href = "{{asset('cssTest/test.css')}}">
@@ -34,24 +35,35 @@
 
     <div class = "admin-right_cont">
 
-        <form method="POST" action="{{route('reviews.update', $user->id)}}" class = "admin_container_header">
+        <form method="POST" action="{{route('reviews.update', $review->id)}}" class = "admin_container_header">
             @csrf
             @method('PUT')
             <h2>Редактировать отзыв</h2>
 
-            <div class = "admin_edit_user_container">
+            <div class = "admin_edit_review_container">
+                <h5>Заголовок</h5>
+                <input name = "title" value = "@lang($review->title)" class = "input_review">
+
+                <h5>Текст</h5>
+                <textarea name = "description" class = "review_text_input">@lang($review->description)</textarea>
+
                 <h5>Автор</h5>
-                <input name = "username" value = "@lang($user->username)" class = "input_category">
+                <input disabled value = "@lang($review->author)" class = "input_review">
+                <input type="hidden" name = "user_id" value={{$review->user_id}}>
+                <input type="hidden" name = "shop_id" value={{$review->shop_id}}>
+                <input type="hidden" name = "rating" value={{$review->rating}}>
 
-                <h5>Email</h5>
-                <input name = "email" value = "@lang($user->email)" class = "input_category">
-
-                <h5>Пароль</h5>
-                <input name = "password" class = "input_category" type="password">
-
-                <div class = "admin_checkbox">
-                    <input name="admin" type="checkbox" {{ $user->admin ? 'checked' : '' }}>
-                    Админ
+                <h5>Рейтинг</h5>
+                <div class = "review_rating">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $review->rating)
+                            <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
+                            <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star active fa-solid fa-star"></i></label>
+                        @else
+                            <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
+                            <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star fa-regular fa-star"></i></label>
+                        @endif
+                    @endfor
                 </div>
             </div>
 
@@ -63,7 +75,21 @@
 
 <!--FOOTER-->
 @include('components.footer')
-
+<script>
+    const Rating = (current) => {
+        let stars = Array.from(document.getElementsByClassName('star'));
+        const currentIndex = stars.indexOf(current);
+        stars.forEach((star, index) => {
+            if (index <= currentIndex){
+                star.classList.add('fa-solid', 'active');
+                star.classList.remove('fa-regular');
+            } else {
+                star.classList.add('fa-regular');
+                star.classList.remove('fa-solid', 'active');
+            }
+        })
+    }
+</script>
 </body>
 </html>
 
