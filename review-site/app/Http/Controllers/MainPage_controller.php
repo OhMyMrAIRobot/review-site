@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Review;
 use App\Models\Shop;
 use App\Models\User;
+use Illuminate\Support\Facades\Request;
 
 class MainPage_controller extends Controller
 {
@@ -31,6 +32,31 @@ class MainPage_controller extends Controller
             'categories' => $categories,
             'reviews' => $reviews,
             'shopsArr' =>$shopsArr,
+        ]);
+    }
+
+    public function getShopsByCategory($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $shops = Shop::where('category_id', $id)->get();
+        $categories = Category::all()->pluck('category', 'id')->all();
+
+        return view('main.index', [
+            'shops' => $shops,
+            'reviews' => [],
+            'categories' => $categories,
+            'id' => $id,
+        ]);
+    }
+
+    public function getShopsBySearch(\Illuminate\Http\Request $request)
+    {
+        $shops = Shop::where('title', 'like', '%' . $request->text . '%')->get();
+        $categories = Category::all()->pluck('category', 'id')->all();
+
+        return view('main.index', [
+            'shops' => $shops,
+            'reviews' => [],
+            'categories' => $categories,
         ]);
     }
 }

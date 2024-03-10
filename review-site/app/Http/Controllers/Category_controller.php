@@ -47,17 +47,4 @@ class Category_controller extends Controller
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
-
-    public function getShops($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        $shops = Shop::where('category_id', $id)->get();
-        $categories = Category::all()->pluck('category', 'id')->all();
-
-        return view('main.index', [
-            'shops' => $shops,
-            'reviews' => [],
-            'categories' => $categories,
-            'id' => $id,
-        ]);
-    }
 }

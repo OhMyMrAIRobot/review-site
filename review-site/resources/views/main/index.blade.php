@@ -67,11 +67,11 @@
     </div>
     @else
         <div class = "last_reviews_container">
-            @if ($shops)
-                <h3>Магазины с категорией {{$categories[$id]}}</h3>
-            @else
-                <h3>Магазины с категорией {{$categories[$id]}} не найдены!</h3>
-            @endif
+{{--            @if ($shops)--}}
+{{--                <h3>Магазины с категорией {{$categories[$id]}}</h3>--}}
+{{--            @else--}}
+{{--                <h3>Магазины с категорией {{$categories[$id]}} не найдены!</h3>--}}
+{{--            @endif--}}
         </div>
     @endif
 
@@ -115,16 +115,18 @@
 
         <!--SIDEBAR-->
         <div class = "sidebar">
-            <div class = "search_container">
+            <form method="post" class = "search_container" action="{{route('main.getShopsBySearch')}}">
+                @csrf
                 <h3 class = "search_title">Поиск</h3>
-                <input type = "text" name = "search_name" class = "text-input" placeholder="Поиск...">
-            </div>
+                <input type = "text" name = "text" class = "text-input" placeholder="Поиск...">
+                <button type="submit">Поиск</button>
+            </form>
 
             <div class = "categories_container">
                 <h3 class = "categories_title">Категории</h3>
                 <ul>
                     @foreach($categories as $key => $category)
-                    <li><a class = "category" href="{{route('categories.getShops', $key)}}">@lang($category)</a></li>
+                    <li><a class = "category" href="{{route('main.getShopsByCategory', $key)}}">@lang($category)</a></li>
                     @endforeach
                 </ul>
             </div>

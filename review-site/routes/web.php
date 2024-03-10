@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 // Основные маршруты
 Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
 Route::get('/shop/{shop}', ShopPage_controller::class .'@index')->middleware('shop.check:main')-> name('shop.index');
-Route::get('category/{category}/shops', Category_controller::class . '@getShops')->middleware('category.check:main')->name('categories.getShops');
+Route::get('/category/{category}/shops', MainPage_controller::class . '@getShopsByCategory')->middleware('category.check:main')->name('main.getShopsByCategory');
+Route::post('/shops/search', MainPage_controller::class . '@getShopsBySearch')->name('main.getShopsBySearch');
 
 // Добавление отзыва
 Route::post('/reviews/store', Review_controller::class . '@store') ->name('reviews.store');
