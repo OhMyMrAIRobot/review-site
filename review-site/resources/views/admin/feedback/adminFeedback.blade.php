@@ -13,9 +13,6 @@
         'resources/css/admin.css',
         'resources/css/adminFeedback.css',
     ])
-
-    <link rel = "stylesheet" href = "{{asset('cssTest/test.css')}}">
-
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 
@@ -60,11 +57,12 @@
                 </div>
                 <div class = "admin_table_time">{{ \Carbon\Carbon::parse($feedback->created_at)->format('G:i d-m-Y') }}</div>
                 <div class = "admin_table_author">@lang($feedback->email)</div>
-                <form method="POST" action="{{route('reviews.destroy', $feedback->id)}}" class = "admin_table_control">
+
+                <form method="POST" action="{{route('feedback.destroy', $feedback->id)}}" class = "admin_table_control">
                     @csrf
                     @method('DELETE')
-                    <a class = "admin_table_edit" href = "{{route('reviews.edit', $feedback->id)}}">read</a>
-                    <button class = "admin_table_delete">delete</button>
+                    <a class = "admin_table_edit" href = "{{route('feedback.read', $feedback->id)}}">read</a>
+                    <button type="submit" class = "admin_table_delete">delete</button>
                 </form>
             </div>
 

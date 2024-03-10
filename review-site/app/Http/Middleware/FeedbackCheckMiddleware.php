@@ -19,7 +19,7 @@ class FeedbackCheckMiddleware
         $id = $request->route('feedback');
         $feedback = Feedback::find($id);
         if (!$feedback){
-            redirect()->route('feedback.index');
+            return redirect()->route('feedback.index');
         }
 
         return $next($request);
