@@ -18,9 +18,6 @@ class User_controller extends Controller
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $user = User::find($id);
-        if (!$user)
-            return redirect()->route('users.index');
-
         return view('admin/users.editUser', ['user' => $user]);
     }
 

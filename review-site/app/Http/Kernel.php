@@ -2,6 +2,12 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminCheckMiddleware;
+use App\Http\Middleware\CategoryCheckMiddleware;
+use App\Http\Middleware\FeedbackCheckMiddleware;
+use App\Http\Middleware\ReviewCheckMiddleware;
+use App\Http\Middleware\ShopCheckMiddleware;
+use App\Http\Middleware\UserCheckMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,5 +70,14 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+    ];
+
+    protected $routeMiddleware = [
+        'admin.check' => AdminCheckMiddleware::class,
+        'category.check' => CategoryCheckMiddleware::class,
+        'shop.check' => ShopCheckMiddleware::class,
+        'user.check' => UserCheckMiddleware::class,
+        'review.check' => ReviewCheckMiddleware::class,
+        'feedback.check' => FeedbackCheckMiddleware::class,
     ];
 }

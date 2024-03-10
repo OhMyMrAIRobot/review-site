@@ -53,11 +53,11 @@
             </div>
 
             <h5>Категория</h5>
-            <select name = "category" class = "select_category" name="topic" aria-label="Default select example">
-                <option value="@lang($shop->category_id)" selected>@lang($categories[$shop->category_id]):</option>
+            <select name = "category_id" class = "select_category" name="topic" aria-label="Default select example">
+                <option value="{{$shop->category_id}}" selected>@lang($categories[$shop->category_id]):</option>
                 @foreach($categories as $key => $category)
                     @if ($categories[$shop->category_id] !== $category)
-                        <option value="@lang($key)">@lang($category)</option>
+                        <option value="{{$key}}">@lang($category)</option>
                     @endif
                 @endforeach
             </select>

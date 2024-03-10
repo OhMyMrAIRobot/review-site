@@ -28,8 +28,6 @@ class Review_controller extends Controller
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $review = Review::find($id);
-        if (!$review)
-            return redirect()->route('reviews.index');
         $author = User::where('id', $review->user_id)->first()->username;
         $review->author = $author;
         return view('admin/reviews.editReview', ['review' => $review]);

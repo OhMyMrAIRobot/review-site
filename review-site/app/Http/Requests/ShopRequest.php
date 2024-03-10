@@ -24,7 +24,7 @@ class ShopRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'category' => ['required', 'numeric', 'min:0'],
+            'category_id' => ['required', 'numeric', 'min:0'],
             'facebook' => ['required', 'string', 'max:255'],
             'telegram' => ['required', 'string', 'max:255'],
             'instagram' => ['required', 'string', 'max:255'],

@@ -54,10 +54,10 @@
             </div>
 
             <h5>Категория</h5>
-            <select name = "category" class = "select_category">
+            <select name = "category_id" class = "select_category">
                 <option value="-1" selected>Категория:</option>
                 @foreach($categories as $key => $category)
-                    <option value="@lang($category->id)">@lang($category->category)</option>
+                    <option value="{{$category->id}}">@lang($category->category)</option>
                 @endforeach
             </select>
 

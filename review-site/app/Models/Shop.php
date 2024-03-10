@@ -22,6 +22,6 @@ class Shop extends Model
     ];
 
     protected $casts = [
-        'category' => 'bigint',
+        'category_id' => 'int',
     ];
 }

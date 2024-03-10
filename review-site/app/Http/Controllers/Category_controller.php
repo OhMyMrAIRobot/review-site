@@ -30,8 +30,6 @@ class Category_controller extends Controller
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $category = Category::find($id);
-        if (!$category)
-            return redirect()->route('categories.index');
         return view('admin/categories.editCategory', ['category' => $category]);
     }
 

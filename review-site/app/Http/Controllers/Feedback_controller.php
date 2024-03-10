@@ -22,9 +22,6 @@ class Feedback_controller extends Controller
     public function read($id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $feedback = Feedback::find($id);
-        if (!$feedback){
-            redirect()->route('feedback.index');
-        }
         return view('admin/feedback.adminFeedbackRead', ['feedback' => $feedback]);
     }
 }
