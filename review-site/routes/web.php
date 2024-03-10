@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth_controller;
 use App\Http\Controllers\Category_controller;
+use App\Http\Controllers\Feedback_controller;
 use App\Http\Controllers\MainPage_controller;
 use App\Http\Controllers\Register_controller;
 use App\Http\Controllers\Review_controller;
@@ -27,6 +28,9 @@ Route::get('/shop/{id}', ShopPage_controller::class .'@index') -> name('shop.ind
 
 // Добавление отзыва
 Route::post('/reviews/store', Review_controller::class . '@store') ->name('reviews.store');
+
+// Отправка обратной связи
+Route::post('feedback/store', Feedback_controller::class . '@store')->name('feedback.store');
 
 // Регистрация и авторизация
 Route::get('/register', Register_controller::class . '@index')->name('register.index');
@@ -65,6 +69,10 @@ Route::prefix('admin') -> group(function (){
     Route::get('/reviews/{review}/edit', Review_controller::class . '@edit') ->name('reviews.edit');
     Route::put('/reviews/{review}', Review_controller::class . '@update')->name('reviews.update');
     Route::delete('/reviews/{review}', Review_controller::class . '@destroy')->name('reviews.destroy');
+
+    // Обратная связь
+    Route::get('/feedback', Feedback_controller::class . '@index')->name('feedback.index');
+    Route::get('/feedback/{feedback}/read', Review_controller::class . '@read') ->name('feedback.read');
 });
 
 

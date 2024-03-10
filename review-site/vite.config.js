@@ -10,6 +10,7 @@ export default defineConfig({
                     'resources/css/adminCategory.css',
                     'resources/css/adminShop.css',
                     'resources/css/adminUsers.css',
+                    'resources/css/adminFeedback.css',
                     'resources/css/adminAddCategory.css',
                     'resources/css/adminAddShop.css',
                     'resources/css/adminEditUser.css',

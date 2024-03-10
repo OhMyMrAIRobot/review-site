@@ -32,10 +32,11 @@
         <!--COLUMN WITH FEEDBACK-->
         <div class = "feedback_container">
             <h3 class = "feedback_header">Feedback</h3>
-            <form>
+            <form method="POST" action="{{route('feedback.store')}}">
+                @csrf
                 <input class = "feedback_email" type = "email" name = "email" placeholder = "Введите ваш эл. адрес...">
-                <textarea class = "feedback_text" rows="4" name = "message" placeholder = "Введите текст"></textarea>
-                <button class = "feedback_btn">
+                <textarea class = "feedback_text" rows="4" name = "description" placeholder = "Введите текст"></textarea>
+                <button type="SUBMIT" class = "feedback_btn">
                     <i class = "fa fa-envelope"></i>
                     Отправить
                 </button>
