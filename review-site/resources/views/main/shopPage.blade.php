@@ -62,7 +62,9 @@
 
     <div class = "add_review_container">
         @if(session()->has('user'))
-
+            @foreach($errors as $error)
+                @lang($error)
+            @endforeach
             <form method="POST" action="{{route('reviews.store')}}">
                 @csrf
                 <h5 class = "review_add_header">Заголовок отзыва</h5>
@@ -70,8 +72,8 @@
                 <h5 style = "margin-top: 15px" class = "review_add_header">Ваш отзыв</h5>
                 <textarea name = 'description' class = "add_review_text" placeholder="Отзыв..."></textarea>
                 <input name = 'rating' value="-1" type="hidden">
+                <input name = 'user_id' value="@lang(intval(session('user')))" type="hidden">
                 <input name = 'shop_id' value="@lang($shop->id)" type="hidden">
-                <input name = 'author' value="@lang(session('user'))" type="hidden">
                 <div class = "shop_rating">
                     @for ($i = 1; $i <= 5; $i++)
                         <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
@@ -83,7 +85,7 @@
             </form>
 
         @else
-            <h3 class = "req_auth_text">Для того, чтобы оставить отзыв требуется <a href = "{{route('auth')}}">авторизация</a>!</h3>
+            <h3 class = "req_auth_text">Для того, чтобы оставить отзыв требуется <a href = "{{route('auth.index')}}">авторизация</a>!</h3>
         @endif
     </div>
 
@@ -125,12 +127,10 @@
 <!--FOOTER-->
 @include('components.footer')
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     const Rating = (current) => {
         let stars = Array.from(document.getElementsByClassName('star'));
         const currentIndex = stars.indexOf(current);
-
         stars.forEach((star, index) => {
             if (index <= currentIndex){
                 star.classList.add('fa-solid', 'active');
@@ -142,6 +142,5 @@
         })
     }
 </script>
-
 </body>
 </html>

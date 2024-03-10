@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('rating');
-            $table->string('author');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->cascadeOnUpdate();
             $table->unsignedBigInteger('shop_id');
             $table->foreign('shop_id')->references('id')->on('shops')
                 ->cascadeOnUpdate();

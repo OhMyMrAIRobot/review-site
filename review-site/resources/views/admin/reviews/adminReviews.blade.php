@@ -45,21 +45,25 @@
             </div>
         </div>
 
-        @for ($i = 1; $i <= 5; $i++)
-        {{--Отзыв 1--}}
+        @foreach($reviews as $key => $review)
+        {{--Отзыв--}}
         <div class = "admin_table_header">
-            <div class="admin_table_id"><?=$i?></div>
+            <div class="admin_table_id">@lang($key)</div>
             <div class = "admin_table_text">
-                <?php echo mb_substr('Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum ', 0, 50, 'UTF-8') . '...' ?>
+                @lang(strlen($review->description) > 50 ?
+                    mb_substr($review->description, 0, 50, 'UTF-8') . '...'
+                    :
+                    $review->description
+                )
             </div>
-            <div class = "admin_table_author">Автор <?=$i?></div>
+            <div class = "admin_table_author">@lang($review->author)</div>
             <div class = "admin_table_control">
-                <a class = "admin_table_edit" href = "#">edit</a>
-                <a class = "admin_table_delete" href = "#">delete</a>
+                <a class = "admin_table_edit" href = "{{route('reviews.update', $review->id)}}">edit</a>
+                <a class = "admin_table_delete" href = "{{route('reviews.destroy', $review->id)}}">delete</a>
             </div>
         </div>
-        {{--Отзыв 1--}}
-        @endfor
+        {{--Отзыв--}}
+        @endforeach
 
     </div>
 </main>

@@ -24,9 +24,10 @@ class Register_controller extends Controller
         $user->admin = false;
         $user->password = password_hash($request->password, PASSWORD_DEFAULT);
         $user->save();
-
+        $user = User::where('username', $request->username)->first();
         session([
-            'user' => $request->username,
+            'user' => $user->id,
+            'username' => $user->username,
         ]);
 
        return redirect()->route('main.index');

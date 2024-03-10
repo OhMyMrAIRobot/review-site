@@ -15,7 +15,7 @@
                     @if(session()->has('user'))
                         <a class = "nav-btn">
                             <i class = "fa fa-user"></i>
-                            @lang(session('user'))
+                            @lang(session('username'))
                         </a>
 
                         <ul class = "cabinet-btns">

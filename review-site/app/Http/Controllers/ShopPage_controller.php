@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\Shop;
+use App\Models\User;
 
 class ShopPage_controller extends Controller
 {
@@ -19,6 +20,11 @@ class ShopPage_controller extends Controller
 
         $category = Category::where('id', $shop->category_id)->first()->category;
         $reviews =  Review::where('shop_id', $id)->orderBy('created_at', 'desc')->get();
+
+        foreach ($reviews as $review){
+            $author = User::where('id', $review->user_id)->first()->username;
+            $review->author = $author;
+        }
 
         return view('main/shopPage', [
             'shop' => $shop,

@@ -25,7 +25,7 @@ class ReviewRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'rating' => ['required', 'numeric', 'min:0'],
-            'author' => ['required', 'string', 'max:255'],
+            'user_id' => ['required', 'numeric'],
             'shop_id' => ['required', 'numeric'],
         ];
     }

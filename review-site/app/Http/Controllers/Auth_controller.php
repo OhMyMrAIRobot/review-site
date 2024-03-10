@@ -32,13 +32,15 @@ class Auth_controller extends Controller
         if (password_verify($request->password, $user->password)){
             if ($user->admin === 1){
                 session([
-                    'user' => $request->username,
+                    'user' => $user->id,
+                    'username' => $user->username,
                     'isAdmin' => $user->admin,
                 ]);
             }
             else
                 session([
-                    'user' => $request->username,
+                    'user' => $user->id,
+                    'username' => $user->username,
                 ]);
         } else {
             return back()->withErrors([

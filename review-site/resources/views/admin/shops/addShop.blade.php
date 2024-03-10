@@ -36,6 +36,9 @@
 
         <form method="POST" action="{{route('shops.store')}}" class = "admin_container_header" enctype="multipart/form-data">
             @csrf
+            @foreach($errors as $error)
+                @lang($error)
+            @endforeach
             <h2>Добавить магазин</h2>
 
             <input name = "title" class = "shopName_input" type = "text" placeholder="Название...">

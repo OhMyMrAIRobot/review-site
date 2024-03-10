@@ -60,8 +60,10 @@ Route::prefix('admin') -> group(function (){
     Route::put('/users/{user}', User_controller::class . '@update')->name('users.update');
     Route::delete('/users/{user}', User_controller::class . '@destroy')->name('users.destroy');
 
-
-    Route::view('/reviews', 'admin/reviews.adminReviews') -> name('adminReviewMain');
+    Route::get('/reviews', Review_controller::class . '@index')->name('reviews.index');
+    Route::get('/reviews/{review}/edit', Review_controller::class . '@edit') ->name('reviews.edit');
+    Route::put('/reviews/{review}', Review_controller::class . '@update')->name('reviews.update');
+    Route::delete('/reviews/{review}', Review_controller::class . '@destroy')->name('reviews.destroy');
 });
 
 

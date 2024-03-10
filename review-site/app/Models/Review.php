@@ -12,7 +12,7 @@ class Review extends Model
         'title',
         'description',
         'rating',
-        'author',
+        'user_id',
         'shop_id',
         'created_at',
     ];
