@@ -32,6 +32,7 @@
 
 <!--MAIN-->
 <main>
+    @if ($reviews)
     <div class = "last_reviews_container">
         <h3>Последние отзывы</h3>
         @foreach($reviews as $review)
@@ -64,6 +65,15 @@
         @endforeach
         <h3>Магазины</h3>
     </div>
+    @else
+        <div class = "last_reviews_container">
+            @if ($shops)
+                <h3>Магазины с категорией {{$categories[$id]}}</h3>
+            @else
+                <h3>Магазины с категорией {{$categories[$id]}} не найдены!</h3>
+            @endif
+        </div>
+    @endif
 
 
     <div class = "main">
@@ -83,7 +93,7 @@
                     </h3>
 
                     <p class="shop_description">Описание: @lang($shop->description)</p>
-                    <p class="shop_tags">Категория: @lang($categories[$shop->category_id])</p>
+                    <p class="shop_tags">Категория: {{$categories[$shop->id]}}</p>
 
                     <div class = "shop_rating">
                         @for($i = 1; $i <= 5; $i++)
@@ -113,8 +123,8 @@
             <div class = "categories_container">
                 <h3 class = "categories_title">Категории</h3>
                 <ul>
-                    @foreach($categories as $category)
-                    <li><a class = "category" href="#">@lang($category)</a></li>
+                    @foreach($categories as $key => $category)
+                    <li><a class = "category" href="{{route('categories.getShops', $key)}}">@lang($category)</a></li>
                     @endforeach
                 </ul>
             </div>

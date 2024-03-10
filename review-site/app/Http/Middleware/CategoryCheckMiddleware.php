@@ -14,12 +14,14 @@ class CategoryCheckMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $param): Response
     {
         $id = $request->route('category');
         $category = Category::find($id);
-        if (!$category)
-            return redirect()->route('categories.index');
+        if (!$category){
+            $param === 'admin' ? $redirect = 'categories.index' : $redirect = 'main.index';
+            return redirect()->route($redirect);
+        }
 
         return $next($request);
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\category;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -45,5 +46,18 @@ class Category_controller extends Controller
         $category = Category::find($id);
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+    }
+
+    public function getShops($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $shops = Shop::where('category_id', $id)->get();
+        $categories = Category::all()->pluck('category', 'id')->all();
+
+        return view('main.index', [
+            'shops' => $shops,
+            'reviews' => [],
+            'categories' => $categories,
+            'id' => $id,
+        ]);
     }
 }

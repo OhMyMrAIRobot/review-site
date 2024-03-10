@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 // Основные маршруты
 Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
 Route::get('/shop/{shop}', ShopPage_controller::class .'@index')->middleware('shop.check:main')-> name('shop.index');
+Route::get('category/{category}/shops', Category_controller::class . '@getShops')->middleware('category.check:main')->name('categories.getShops');
 
 // Добавление отзыва
 Route::post('/reviews/store', Review_controller::class . '@store') ->name('reviews.store');
@@ -46,9 +47,9 @@ Route::prefix('admin') -> middleware('admin.check') -> group(function (){
     Route::get('/categories', Category_controller::class .'@index')->name('categories.index');
     Route::get('/categories/create', Category_controller::class . '@create')->name('categories.create');
     Route::post('/categories/store', Category_controller::class . '@store')->name('categories.store');
-    Route::get('/categories/{category}/edit', Category_controller::class . '@edit')->middleware('category.check')->name('categories.edit');
-    Route::put('/categories/{category}', Category_controller::class . '@update')->middleware('category.check')->name('categories.update');
-    Route::delete('/categories/{category}', Category_controller::class . '@destroy')->middleware('category.check')->name('categories.destroy');
+    Route::get('/categories/{category}/edit', Category_controller::class . '@edit')->middleware('category.check:admin')->name('categories.edit');
+    Route::put('/categories/{category}', Category_controller::class . '@update')->middleware('category.check:admin')->name('categories.update');
+    Route::delete('/categories/{category}', Category_controller::class . '@destroy')->middleware('category.check:admin')->name('categories.destroy');
 
     // Магазины
     Route::get('/shops', Shop_controller::class .'@index')->name('shops.index');
