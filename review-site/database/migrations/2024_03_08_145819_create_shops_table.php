@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->text('description');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')
-                ->cascadeOnUpdate();
+                ->nullOnDelete()->cascadeOnUpdate();
             $table->string('facebook');
             $table->string('telegram');
             $table->string('instagram');

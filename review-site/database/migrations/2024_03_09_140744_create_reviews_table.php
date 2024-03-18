@@ -18,10 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('rating');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')
-                ->cascadeOnUpdate();
+                ->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('shop_id');
             $table->foreign('shop_id')->references('id')->on('shops')
-                ->cascadeOnUpdate();
+                ->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@
 <body>
 
 <!--HEADER-->
-@include('components.header')
+@include('components.adminHeader')
 
 <main class = "admin-container">
     @include('components.sidebarAdmin')
@@ -51,7 +51,9 @@
         <div class = "admin_table_header">
             <div class="admin_table_id">@lang($key)</div>
             <div class = "admin_table_name">@lang($shop->title)</div>
-            <div class = "admin_table_category">@lang($categories[$shop->category_id])</div>
+            <div class = "admin_table_category">
+                @lang($shop->category_id ? $categories[$shop->category_id] : 'Нет категории')
+            </div>
             <form action="{{route('shops.destroy', $shop->id)}}" method="POST" class = "admin_table_control">
                 @csrf
                 @method('DELETE')

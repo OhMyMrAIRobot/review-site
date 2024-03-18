@@ -1,1 +1,12 @@
-
+.search_btn{
+    margin-top: 5px;
+    width: 25%;
+    height: 30px;
+    display: block;
+    font-size: 1rem;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #ececec;
+    outline-color: #272727;
+}

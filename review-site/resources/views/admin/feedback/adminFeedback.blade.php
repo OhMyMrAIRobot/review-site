@@ -25,7 +25,7 @@
 <body>
 
 <!--HEADER-->
-@include('components.header')
+@include('components.adminHeader')
 
 <main class = "admin-container">
     @include('components.sidebarAdmin')

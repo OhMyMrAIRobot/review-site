@@ -16,6 +16,8 @@
         'resources/css/lastReviews.css',
     ])
 
+    <link rel="stylesheet" href = "{{asset('/cssTest/test.css')}}">
+
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 
@@ -65,13 +67,21 @@
         @endforeach
         <h3>Магазины</h3>
     </div>
-    @else
+    @elseif ($method === 'category')
         <div class = "last_reviews_container">
-{{--            @if ($shops)--}}
-{{--                <h3>Магазины с категорией {{$categories[$id]}}</h3>--}}
-{{--            @else--}}
-{{--                <h3>Магазины с категорией {{$categories[$id]}} не найдены!</h3>--}}
-{{--            @endif--}}
+            @if (!$shops->isEmpty())
+                <h3>Магазины с категорией {{$categories[$id]}}:</h3>
+            @else
+                <h3>Магазины с категорией {{$categories[$id]}} не найдены!</h3>
+            @endif
+        </div>
+    @elseif ($method === 'search')
+        <div class = "last_reviews_container">
+            @if (!$shops->isEmpty())
+                <h3>Результаты поиска:</h3>
+            @else
+                <h3>Магазины не найдены!</h3>
+            @endif
         </div>
     @endif
 
@@ -93,7 +103,7 @@
                     </h3>
 
                     <p class="shop_description">Описание: @lang($shop->description)</p>
-                    <p class="shop_tags">Категория: {{$categories[$shop->id]}}</p>
+                    <p class="shop_tags">Категория: {{$shop->category_id ? $categories[$shop->category_id] : "Нет категории"}}</p>
 
                     <div class = "shop_rating">
                         @for($i = 1; $i <= 5; $i++)
@@ -108,6 +118,7 @@
                     <a href = '{{route('shop.index', $shop->id)}}' class="add_review_btn">Добавить отзыв</a>
                 </div>
             </div>
+
             <!--МАГАЗИН-->
             @endforeach
 
@@ -118,8 +129,10 @@
             <form method="post" class = "search_container" action="{{route('main.getShopsBySearch')}}">
                 @csrf
                 <h3 class = "search_title">Поиск</h3>
-                <input type = "text" name = "text" class = "text-input" placeholder="Поиск...">
-                <button type="submit">Поиск</button>
+                <div style = "display: flex">
+                    <input type = "text" name = "text" class = "text-input" placeholder="Поиск...">
+                    <button class="search_btn" type="submit">Поиск</button>
+                </div>
             </form>
 
             <div class = "categories_container">

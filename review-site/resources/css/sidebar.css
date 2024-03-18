@@ -14,11 +14,12 @@
 
 .text-input{
     margin-top: 5px;
-    width: 80%;
+    width: 75%;
     height: 30px;
     display: block;
     padding: 10px 12px;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
     font-size: 1rem;
     border: 1px solid #ececec;
     outline-color: #272727;

@@ -16,7 +16,10 @@ class ShopPage_controller extends Controller
         $avg = $this->getShopRating($shop->id);
         $shop->rating = $avg;
 
-        $category = Category::where('id', $shop->category_id)->first()->category;
+        $shop->category_id ?
+            $category = Category::where('id', $shop->category_id)->first()->category
+        :
+            $category = "Нет категории";
         $reviews =  Review::where('shop_id', $id)->orderBy('created_at', 'desc')->get();
 
         foreach ($reviews as $review){

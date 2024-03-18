@@ -29,11 +29,10 @@
 <body>
 
 <!--HEADER-->
-@include('components.header')
+@include('components.adminHeader')
 
 <main class = "admin-container">
     @include('components.sidebarAdmin')
-
     <div class = "admin-right_cont">
 
         <form method="POST" action="{{route('users.update', $user->id)}}" class = "admin_container_header">

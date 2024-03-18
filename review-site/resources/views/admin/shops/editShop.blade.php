@@ -27,7 +27,7 @@
 <body>
 
 <!--HEADER-->
-@include('components.header')
+@include('components.adminHeader')
 
 <main class = "admin-container">
     @include('components.sidebarAdmin')
@@ -54,10 +54,16 @@
 
             <h5>Категория</h5>
             <select name = "category_id" class = "select_category" name="topic" aria-label="Default select example">
-                <option value="{{$shop->category_id}}" selected>@lang($categories[$shop->category_id]):</option>
+                @if ($shop->category_id)
+                    <option value="{{$shop->category_id}}" selected>@lang($categories[$shop->category_id]):</option>
+                @else
+                    <option value="-1" selected>Выбрать категорию: </option>
+                @endif
                 @foreach($categories as $key => $category)
-                    @if ($categories[$shop->category_id] !== $category)
-                        <option value="{{$key}}">@lang($category)</option>
+                    @if (!$shop->category_id)
+                            <option value="{{$key}}">@lang($category)</option>
+                    @elseif ($categories[$shop->category_id] !== $category)
+                            <option value="{{$key}}">@lang($category)</option>
                     @endif
                 @endforeach
             </select>

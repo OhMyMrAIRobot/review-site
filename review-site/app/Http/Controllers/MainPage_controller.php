@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Review;
 use App\Models\Shop;
 use App\Models\User;
-use Illuminate\Support\Facades\Request;
 
 class MainPage_controller extends Controller
 {
@@ -39,8 +38,12 @@ class MainPage_controller extends Controller
     {
         $shops = Shop::where('category_id', $id)->get();
         $categories = Category::all()->pluck('category', 'id')->all();
-
+        foreach ($shops as $shop) {
+            $avg = $this->getShopRating($shop->id);
+            $shop->rating = $avg;
+        }
         return view('main.index', [
+            'method' => 'category',
             'shops' => $shops,
             'reviews' => [],
             'categories' => $categories,
@@ -52,8 +55,12 @@ class MainPage_controller extends Controller
     {
         $shops = Shop::where('title', 'like', '%' . $request->text . '%')->get();
         $categories = Category::all()->pluck('category', 'id')->all();
-
+        foreach ($shops as $shop) {
+            $avg = $this->getShopRating($shop->id);
+            $shop->rating = $avg;
+        }
         return view('main.index', [
+            'method' => 'search',
             'shops' => $shops,
             'reviews' => [],
             'categories' => $categories,
