@@ -12,6 +12,7 @@
         'resources/css/footer.css',
         'resources/css/admin.css',
         'resources/css/adminCategory.css',
+        'resources/css/pagination.css',
     ])
 
     <!--icons-->
@@ -49,7 +50,7 @@
         @foreach($categories as $key => $category)
         <!--Category-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key++)</div>
+            <div class="admin_table_id">@lang($key+1)</div>
             <div class = "admin_table_name">@lang($category->category)</div>
             <form action="{{route('categories.destroy', $category->id)}}" method="POST" class = "admin_table_control">
                 @csrf
@@ -61,6 +62,9 @@
         <!--Category-->
         @endforeach
 
+        <div class = "pagination_main" style="margin-top: 30px">
+            {{ $categories->onEachSide(8)->links('components.pagination') }}
+        </div>
     </div>
 </main>
 

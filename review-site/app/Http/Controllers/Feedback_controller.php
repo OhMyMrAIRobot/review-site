@@ -9,7 +9,8 @@ class Feedback_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::paginate(6);
+        $feedbacks->withPath('/admin/feedback');
         return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
     }
 

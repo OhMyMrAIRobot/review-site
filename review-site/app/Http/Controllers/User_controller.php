@@ -11,7 +11,8 @@ class User_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $users = User::all();
+        $users = User::paginate(7);
+        $users->withPath('/admin/users');
         return view('admin/users.adminUsers', ['users' => $users]);
     }
 

@@ -11,7 +11,8 @@ class Review_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $reviews = Review::orderBy('created_at', 'desc')->get();
+        $reviews = Review::orderBy('created_at', 'desc')->paginate(6);
+        $reviews->withPath('/admin/reviews');
         foreach ($reviews as $review){
             $author = User::where('id', $review->user_id)->first()->username;
             $review->author = $author;

@@ -12,6 +12,7 @@
         'resources/css/footer.css',
         'resources/css/admin.css',
         'resources/css/adminUsers.css',
+        'resources/css/pagination.css',
     ])
 
     <!--icons-->
@@ -46,7 +47,7 @@
         @foreach($users as $key => $user)
         <!--USER-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key)</div>
+            <div class="admin_table_id">@lang($key + 1)</div>
             <div class = "admin_table_login">@lang($user->username)</div>
             <div class = "admin_table_email">@lang($user->email)</div>
             <div class = "admin_table_role">@lang($user->admin ? 'admin' : 'user')</div>
@@ -59,6 +60,10 @@
         </div>
         <!--USER-->
         @endforeach
+
+        <div class = "pagination_main" style="margin-top: 30px">
+            {{ $users->onEachSide(7)->links('components.pagination') }}
+        </div>
     </div>
 </main>
 

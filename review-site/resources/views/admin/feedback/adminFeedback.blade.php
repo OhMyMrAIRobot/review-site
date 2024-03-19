@@ -12,6 +12,7 @@
         'resources/css/footer.css',
         'resources/css/admin.css',
         'resources/css/adminFeedback.css',
+        'resources/css/pagination.css',
     ])
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
@@ -47,7 +48,7 @@
 
         @foreach($feedbacks as $key => $feedback)
             <div class = "admin_table_header">
-                <div class="admin_table_id">@lang($key)</div>
+                <div class="admin_table_id">@lang($key + 1)</div>
                 <div class = "admin_table_text">
                     @lang(strlen($feedback->description) > 50 ?
                         mb_substr($feedback->description, 0, 50, 'UTF-8') . '...'
@@ -65,9 +66,11 @@
                     <button type="submit" class = "admin_table_delete">delete</button>
                 </form>
             </div>
-
         @endforeach
 
+        <div class = "pagination_main" style="margin-top: 30px">
+            {{ $feedbacks->onEachSide(6)->links('components.pagination') }}
+        </div>
     </div>
 </main>
 

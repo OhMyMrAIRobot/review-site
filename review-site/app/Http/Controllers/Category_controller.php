@@ -12,8 +12,8 @@ class Category_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $categories = Category::all();
-
+        $categories = Category::paginate(8);
+        $categories->withPath('/admin/categories');
         return view('admin/categories.adminCategory', ['categories' => $categories]);
     }
 

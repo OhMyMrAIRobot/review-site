@@ -11,7 +11,8 @@ class Shop_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $shops = Shop::all();
+        $shops = Shop::paginate(8);
+        $shops->withPath('/admin/shops');
         $categories = Category::all()->pluck('category', 'id')->all();
         return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);
     }

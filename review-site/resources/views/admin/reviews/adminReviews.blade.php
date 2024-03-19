@@ -12,6 +12,7 @@
         'resources/css/footer.css',
         'resources/css/admin.css',
         'resources/css/adminReviews.css',
+        'resources/css/pagination.css',
     ])
 
     <!--icons-->
@@ -49,7 +50,7 @@
         @foreach($reviews as $key => $review)
         {{--Отзыв--}}
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key)</div>
+            <div class="admin_table_id">@lang($key + 1)</div>
             <div class = "admin_table_text">
                 @lang(strlen($review->title) > 50 ?
                     mb_substr($review->title, 0, 50, 'UTF-8') . '...'
@@ -69,6 +70,9 @@
         {{--Отзыв--}}
         @endforeach
 
+        <div class = "pagination_main" style="margin-top: 30px">
+            {{ $reviews->onEachSide(6)->links('components.pagination') }}
+        </div>
     </div>
 </main>
 

@@ -12,6 +12,7 @@
         'resources/css/footer.css',
         'resources/css/admin.css',
         'resources/css/adminShop.css',
+        'resources/css/pagination.css',
     ])
 
     <!--icons-->
@@ -49,7 +50,7 @@
         @foreach($shops as $key => $shop)
         <!--Магазин-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key)</div>
+            <div class="admin_table_id">@lang($key + 1)</div>
             <div class = "admin_table_name">@lang($shop->title)</div>
             <div class = "admin_table_category">
                 @lang($shop->category_id ? $categories[$shop->category_id] : 'Нет категории')
@@ -63,6 +64,10 @@
         </div>
         <!--Магазин-->
         @endforeach
+
+        <div class = "pagination_main" style="margin-top: 30px">
+            {{ $shops->onEachSide(8)->links('components.pagination') }}
+        </div>
     </div>
 </main>
 
