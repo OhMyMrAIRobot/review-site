@@ -42,7 +42,6 @@
         <!--ОТЗЫВ-->
         <div class = "review_main">
             <a href="{{route('shop.index', $review->shop_id)}}" class = "img_review">
-{{--                @dd($reviewShops);--}}
                 <img style="background: inherit; width: 100%; height: 100%" alt="img_review" src="{{asset('/images/' . $reviewShops[$key]['img'])}}">
             </a>
             <div class = "review_body">
@@ -87,7 +86,6 @@
         </div>
     @endif
 
-
     <div class = "main">
         <!--MAIN CONTENT-->
         <div class = "shop_container">
@@ -123,7 +121,7 @@
             <!--МАГАЗИН-->
             @endforeach
             <div class = "pagination_main">
-                {{ $shops->onEachSide(1)->links('components.pagination') }}
+                {{ $shops->onEachSide(5)->links('components.pagination') }}
             </div>
 
         </div>
@@ -143,7 +141,7 @@
                 <h3 class = "categories_title">Категории</h3>
                 <ul>
                     @foreach($categories as $key => $category)
-                    <li><a class = "category" href="{{route('main.getShopsByCategory', $key)}}">@lang($category)</a></li>
+                        <li><a class = "category" href="{{route('main.getShopsByCategory', $key)}}">@lang($category)</a></li>
                     @endforeach
                 </ul>
             </div>

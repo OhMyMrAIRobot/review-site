@@ -5,7 +5,7 @@
         </li>
         @for ($i = 1; $i <= $paginator->lastPage(); $i++)
             @php
-                $half_total_links = floor(10 / 2);
+                $half_total_links = floor(6 / 2);
                 $from = $paginator->currentPage() - $half_total_links;
                 $to = $paginator->currentPage() + $half_total_links;
                 if ($paginator->currentPage() < $half_total_links) {

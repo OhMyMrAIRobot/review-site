@@ -9,7 +9,7 @@
         <nav class = "navigation">
             <ul>
                 <li><a class = "nav-btn" href = "{{route('main.index')}}">Главная</a></li>
-                <li><a class = "nav-btn" href = "{{route('main.index')}}">Магазины</a></li>
+{{--                <li><a class = "nav-btn" href = "{{route('main.index', 'shops=all')}}">Магазины</a></li>--}}
                 <li><a class = "nav-btn" href = "{{route('main.index')}}">О нас</a></li>
                 <li>
                     @if(session()->has('user'))

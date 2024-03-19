@@ -42,7 +42,12 @@
 
             <h5>Текст</h5>
             <textarea class="feedback_input" disabled>{{$feedback->description}}</textarea>
-            <a href = "{{route('feedback.index')}}" class = "admin_btn_edit">Закрыть</a>
+            <form method="POST" action="{{route('feedback.destroy', $feedback->id)}}" style="display: flex; gap: 30px">
+                @csrf
+                @method('DELETE')
+                <a href = "{{route('feedback.index')}}" class = "admin_btn_edit">Закрыть</a>
+                <button type="submit" class = "admin_btn_edit">Прочитано</button>
+            </form>
         </div>
     </div>
 </main>
