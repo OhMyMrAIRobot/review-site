@@ -18,6 +18,7 @@ export default defineConfig({
                     'resources/css/adminEditReview.css',
                     'resources/css/footer.css',
                     'resources/css/header.css',
+                    'resources/css/pagination.css',
                     'resources/css/lastReviews.css',
                     'resources/css/main.css',
                     'resources/css/register.css',

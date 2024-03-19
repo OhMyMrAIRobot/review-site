@@ -12,7 +12,7 @@ class MainPage_controller extends Controller
 {
     public function index(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $shops = Shop::paginate(5);
+        $shops = Shop::paginate(1);
         $shops->withPath('/');
         foreach ($shops as $shop) {
             $avg = $this->getShopRating($shop->id);
@@ -38,12 +38,13 @@ class MainPage_controller extends Controller
 
     public function getShopsByCategory($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $shops = Shop::where('category_id', $id)->paginate(2);
+        $shops = Shop::where('category_id', $id)->paginate(1);
         $categories = Category::all()->pluck('category', 'id')->all();
         foreach ($shops as $shop) {
             $avg = $this->getShopRating($shop->id);
             $shop->rating = $avg;
         }
+        $shops->withPath('/category/' . $id . '/shops/');
         return view('main.index', [
             'method' => 'category',
             'shops' => $shops,
@@ -55,7 +56,8 @@ class MainPage_controller extends Controller
 
     public function getShopsBySearch(\Illuminate\Http\Request $request)
     {
-        $shops = Shop::where('title', 'like', '%' . $request->search . '%')->paginate(2);
+        $shops = Shop::where('title', 'like', '%' . $request->search . '%')->paginate(1);
+        $shops->withPath('/shops?search=' . $request->search);
         $categories = Category::all()->pluck('category', 'id')->all();
         foreach ($shops as $shop) {
             $avg = $this->getShopRating($shop->id);

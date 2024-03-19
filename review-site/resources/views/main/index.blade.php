@@ -14,6 +14,7 @@
         'resources/css/sidebar.css',
         'resources/css/footer.css',
         'resources/css/lastReviews.css',
+        'resources/css/pagination.css',
     ])
 
     <link rel="stylesheet" href = "{{asset('/cssTest/test.css')}}">
@@ -122,7 +123,7 @@
             <!--МАГАЗИН-->
             @endforeach
             <div class = "pagination_main">
-                {{ $shops->onEachSide(5)->links('components.pagination') }}
+                {{ $shops->onEachSide(1)->links('components.pagination') }}
             </div>
 
         </div>
