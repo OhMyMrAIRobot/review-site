@@ -37,16 +37,17 @@
     @if ($reviews)
     <div class = "last_reviews_container">
         <h3>Последние отзывы</h3>
-        @foreach($reviews as $review)
+        @foreach($reviews as $key => $review)
         <!--ОТЗЫВ-->
         <div class = "review_main">
             <a href="{{route('shop.index', $review->shop_id)}}" class = "img_review">
-                <img style="background: inherit; width: 100%; height: 100%" alt="img_review" src="{{asset('/images/' . $shopsArr[$review->shop_id]['img'])}}">
+{{--                @dd($reviewShops);--}}
+                <img style="background: inherit; width: 100%; height: 100%" alt="img_review" src="{{asset('/images/' . $reviewShops[$key]['img'])}}">
             </a>
             <div class = "review_body">
                 <div class = "review_main_header">
                     <a href="{{route('shop.index', $review->shop_id)}}">
-                        @lang($shopsArr[$review->shop_id]['title'] . ' — ' . $review->title)
+                        @lang($reviewShops[$key]['title'] . ' — ' . $review->title)
                     </a>
                     <div class = "review_main_rating">
                         @for($i = 1; $i <= 5; $i++)
@@ -118,19 +119,21 @@
                     <a href = '{{route('shop.index', $shop->id)}}' class="add_review_btn">Добавить отзыв</a>
                 </div>
             </div>
-
             <!--МАГАЗИН-->
             @endforeach
+            <div class = "pagination_main">
+                {{ $shops->onEachSide(5)->links('components.pagination') }}
+            </div>
 
         </div>
 
         <!--SIDEBAR-->
         <div class = "sidebar">
-            <form method="post" class = "search_container" action="{{route('main.getShopsBySearch')}}">
+            <form method="get" class = "search_container" action="{{route('main.getShopsBySearch')}}">
                 @csrf
                 <h3 class = "search_title">Поиск</h3>
                 <div style = "display: flex">
-                    <input type = "text" name = "text" class = "text-input" placeholder="Поиск...">
+                    <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
                     <button class="search_btn" type="submit">Поиск</button>
                 </div>
             </form>
