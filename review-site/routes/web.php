@@ -47,6 +47,7 @@ Route::prefix('admin') -> middleware('admin.check') -> group(function (){
     // Категории
     Route::get('/categories', Category_controller::class .'@index')->name('categories.index');
     Route::get('/categories/create', Category_controller::class . '@create')->name('categories.create');
+    Route::get('/categories/get', Category_controller::class . '@getCategoriesBySearch')->name('categories.getCategoriesBySearch');
     Route::post('/categories/store', Category_controller::class . '@store')->name('categories.store');
     Route::get('/categories/{category}/edit', Category_controller::class . '@edit')->middleware('category.check:admin')->name('categories.edit');
     Route::put('/categories/{category}', Category_controller::class . '@update')->middleware('category.check:admin')->name('categories.update');
@@ -55,6 +56,7 @@ Route::prefix('admin') -> middleware('admin.check') -> group(function (){
     // Магазины
     Route::get('/shops', Shop_controller::class .'@index')->name('shops.index');
     Route::get('/shops/create', Shop_controller::class . '@create')->name('shops.create');
+    Route::get('/shops/get', Shop_controller::class . '@getShopsBySearch')->name('shops.getShopsBySearch');
     Route::post('/shops/store', Shop_controller::class . '@store')->name('shops.store');
     Route::get('/shops/{shop}/edit', Shop_controller::class . '@edit')->middleware('shop.check:admin')->name('shops.edit');
     Route::put('/shops/{shop}', Shop_controller::class . '@update')->middleware('shop.check:admin')->name('shops.update');

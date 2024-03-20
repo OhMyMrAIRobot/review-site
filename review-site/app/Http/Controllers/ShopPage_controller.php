@@ -20,12 +20,14 @@ class ShopPage_controller extends Controller
             $category = Category::where('id', $shop->category_id)->first()->category
         :
             $category = "Нет категории";
-        $reviews =  Review::where('shop_id', $id)->orderBy('created_at', 'desc')->get();
+
+        $reviews =  Review::where('shop_id', $id)->orderBy('created_at', 'desc')->paginate(5);
 
         foreach ($reviews as $review){
             $author = User::where('id', $review->user_id)->first()->username;
             $review->author = $author;
         }
+        $reviews->withPath($id);
 
         return view('main/shopPage', [
             'shop' => $shop,

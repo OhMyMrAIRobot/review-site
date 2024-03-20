@@ -52,9 +52,9 @@
 }
 
 .admin_btn_container{
-    width: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .admin_btn_container a{
@@ -99,6 +99,31 @@
     color: #ffc107;
     background: #ffffff;
 }
+
+.text-input{
+    width: 75%;
+    height: 35px;
+    display: block;
+    padding: 10px 12px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #ececec;
+    outline-color: #272727;
+}
+
+.search_btn{
+    width: 25%;
+    height: 35px;
+    display: block;
+    font-size: 1rem;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #ececec;
+    outline-color: #272727;
+}
+
 
 .admin_container_header{
     margin-top: 30px;

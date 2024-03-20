@@ -35,22 +35,32 @@
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
             <a class = "admin_btn_add" href = {{route('shops.create')}}>Добавить</a>
+
+            <form method="get" style="display: flex" action="{{route('shops.getShopsBySearch')}}">
+                @csrf
+                    <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                    <button class="search_btn" type="submit">Поиск</button>
+            </form>
         </div>
 
         <div class = "admin_container_header">
-            <h2>Управление магазинами</h2>
-            <div class = "admin_table_header">
-                <div class="admin_table_id">ID</div>
-                <div class = "admin_table_name bold">Название</div>
-                <div class = "admin_table_category bold">Категория</div>
-                <div class = "admin_table_control bold">Управление</div>
-            </div>
+            @if(!$shops->isEmpty())
+                <h2>Управление магазинами</h2>
+                <div class = "admin_table_header">
+                    <div class="admin_table_id">ID</div>
+                    <div class = "admin_table_name bold">Название</div>
+                    <div class = "admin_table_category bold">Категория</div>
+                    <div class = "admin_table_control bold">Управление</div>
+                </div>
+            @else
+                <h2>Магазины не найдены</h2>
+            @endif
         </div>
 
         @foreach($shops as $key => $shop)
         <!--Магазин-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key + 1)</div>
+            <div class="admin_table_id">@lang((request('page') ?? 1) * 8 + $key - 7)</div>
             <div class = "admin_table_name">@lang($shop->title)</div>
             <div class = "admin_table_category">
                 @lang($shop->category_id ? $categories[$shop->category_id] : 'Нет категории')

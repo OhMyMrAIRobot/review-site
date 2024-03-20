@@ -17,8 +17,6 @@
         'resources/css/pagination.css',
     ])
 
-    <link rel="stylesheet" href = "{{asset('/cssTest/test.css')}}">
-
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 

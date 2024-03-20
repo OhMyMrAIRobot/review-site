@@ -11,7 +11,7 @@ class Shop_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $shops = Shop::paginate(8);
+        $shops = Shop::orderBy('created_at', 'desc')->paginate(8);
         $shops->withPath('/admin/shops');
         $categories = Category::all()->pluck('category', 'id')->all();
         return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);
@@ -21,6 +21,14 @@ class Shop_controller extends Controller
     {
         $categories = Category::all();
         return view('admin/shops.addShop', ['categories' => $categories]);
+    }
+
+    public function getShopsBySearch(\Illuminate\Http\Request $request)
+    {
+        $shops = Shop::where('title', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(8);
+        $shops->withPath('?search=' . $request->search);
+        $categories = Category::all()->pluck('category', 'id')->all();
+        return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);
     }
 
     public function store(ShopRequest $request): \Illuminate\Http\RedirectResponse

@@ -12,7 +12,7 @@ class Category_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $categories = Category::paginate(8);
+        $categories = Category::orderBy('created_at', 'desc')->paginate(8);
         $categories->withPath('/admin/categories');
         return view('admin/categories.adminCategory', ['categories' => $categories]);
     }
@@ -20,6 +20,13 @@ class Category_controller extends Controller
     public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         return view('admin/categories.addCategory');
+    }
+
+    public function getCategoriesBySearch(\Illuminate\Http\Request $request)
+    {
+        $categories = Category::where('category', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(8);
+        $categories->withPath('?search=' . $request->search);
+        return view('admin/categories.adminCategory', ['categories' => $categories]);
     }
 
     public function store(CategoryRequest $request): \Illuminate\Http\RedirectResponse

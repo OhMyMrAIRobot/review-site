@@ -11,6 +11,7 @@
         'resources/css/header.css',
         'resources/css/shopPage.css',
         'resources/css/footer.css',
+        'resources/css/pagination.css'
     ])
 
     <!--icons-->
@@ -121,6 +122,11 @@
         <!--ОТЗЫВ-->
         @endforeach
 
+            @if(!$reviews->isEmpty())
+            <div class = "pagination_main" style="margin-top: 30px">
+                {{ $reviews->onEachSide(5)->links('components.pagination') }}
+            </div>
+            @endif
     </div>
 </main>
 
