@@ -20,6 +20,22 @@ class Review_controller extends Controller
         return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
     }
 
+    public function getReviewsBySearch(\Illuminate\Http\Request $request)
+    {
+        $user_id = User::where('username', $request->search)->first()->id ?? -1;
+        $reviews = Review::where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('description', 'like', '%' . $request->search . '%')
+            ->orWhere('user_id', $user_id)
+            ->orderBy('created_at', 'desc')->paginate(6);
+
+        foreach ($reviews as $review){
+            $author = User::where('id', $review->user_id)->first()->username;
+            $review->author = $author;
+        }
+        $reviews->withPath('?search=' . $request->search);
+        return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
+    }
+
     public function store(ReviewRequest $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         Review::create($request->all());

@@ -34,23 +34,32 @@
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
+            <form method="get" style="display: flex; margin-left: auto" action="{{route('reviews.getReviewsBySearch')}}">
+                @csrf
+                <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                <button class="search_btn" type="submit">Поиск</button>
+            </form>
         </div>
 
         <div class = "admin_container_header">
-            <h2>Управление отзывами</h2>
-            <div class = "admin_table_header">
-                <div class="admin_table_id">ID</div>
-                <div class = "admin_table_text bold">Заголовок</div>
-                <div class = "admin_table_time bold">Опубликован</div>
-                <div class = "admin_table_author bold">Автор</div>
-                <div class = "admin_table_control bold">Управление</div>
-            </div>
+            @if(!$reviews->isEmpty())
+                <h2>Управление отзывами</h2>
+                <div class = "admin_table_header">
+                    <div class="admin_table_id">ID</div>
+                    <div class = "admin_table_text bold">Заголовок</div>
+                    <div class = "admin_table_time bold">Опубликован</div>
+                    <div class = "admin_table_author bold">Автор</div>
+                    <div class = "admin_table_control bold">Управление</div>
+                </div>
+            @else
+                <h2>Отзывы не найдены</h2>
+            @endif
         </div>
 
         @foreach($reviews as $key => $review)
         {{--Отзыв--}}
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key + 1)</div>
+            <div class="admin_table_id">@lang((request('page') ?? 1) * 6 + $key - 5)</div>
             <div class = "admin_table_text">
                 @lang(strlen($review->title) > 50 ?
                     mb_substr($review->title, 0, 50, 'UTF-8') . '...'

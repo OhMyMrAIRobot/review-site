@@ -64,18 +64,21 @@ Route::prefix('admin') -> middleware('admin.check') -> group(function (){
 
     // Пользователи
     Route::get('/users', User_controller::class .'@index')->name('users.index');
+    Route::get('/users/get', User_controller::class .'@getUsersBySearch')->name('users.getUsersBySearch');
     Route::get('/users/{user}/edit', User_controller::class . '@edit')->middleware('user.check')->name('users.edit');
     Route::put('/users/{user}', User_controller::class . '@update')->middleware('user.check')->name('users.update');
     Route::delete('/users/{user}', User_controller::class . '@destroy')->middleware('user.check')->name('users.destroy');
 
     // Отзывы
     Route::get('/reviews', Review_controller::class . '@index')->name('reviews.index');
+    Route::get('/reviews/get', Review_controller::class . '@getReviewsBySearch')->name('reviews.getReviewsBySearch');
     Route::get('/reviews/{review}/edit', Review_controller::class . '@edit')->middleware('review.check') ->name('reviews.edit');
     Route::put('/reviews/{review}', Review_controller::class . '@update')->middleware('review.check')->name('reviews.update');
     Route::delete('/reviews/{review}', Review_controller::class . '@destroy')->middleware('review.check')->name('reviews.destroy');
 
     // Обратная связь
     Route::get('/feedback', Feedback_controller::class . '@index')->name('feedback.index');
+    Route::get('/feedback/get', Feedback_controller::class . '@getFeedbackBySearch')->name('feedback.getFeedbackBySearch');
     Route::get('/feedback/{feedback}/read', Feedback_controller::class . '@read')->middleware('feedback.check')->name('feedback.read');
     Route::delete('feedback/{feedback}', Feedback_controller::class . '@destroy')->middleware('feedback.check')->name('feedback.destroy');
 });

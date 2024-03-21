@@ -33,21 +33,33 @@
     @include('components.sidebarAdmin')
 
     <div class = "admin-right_cont">
+        <div class = "admin_btn_container">
+            <form method="get" style="display: flex; margin-left: auto" action="{{route('users.getUsersBySearch')}}">
+                @csrf
+                <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                <button class="search_btn" type="submit">Поиск</button>
+            </form>
+        </div>
+
         <div class = "admin_container_header">
-            <h2>Управление пользователями</h2>
-            <div class = "admin_table_header">
-                <div class="admin_table_id">ID</div>
-                <div class = "admin_table_login bold">Логин</div>
-                <div class = "admin_table_email bold">Email</div>
-                <div class = "admin_table_role bold">Роль</div>
-                <div class = "admin_table_control bold">Управление</div>
-            </div>
+            @if(!$users->isEmpty())
+                <h2>Управление пользователями</h2>
+                <div class = "admin_table_header">
+                    <div class="admin_table_id">ID</div>
+                    <div class = "admin_table_login bold">Логин</div>
+                    <div class = "admin_table_email bold">Email</div>
+                    <div class = "admin_table_role bold">Роль</div>
+                    <div class = "admin_table_control bold">Управление</div>
+                </div>
+            @else
+                <h2>Пользователи не найдены</h2>
+            @endif
         </div>
 
         @foreach($users as $key => $user)
         <!--USER-->
         <div class = "admin_table_header">
-            <div class="admin_table_id">@lang($key + 1)</div>
+            <div class="admin_table_id">@lang((request('page') ?? 1) * 7 + $key - 6)</div>
             <div class = "admin_table_login">@lang($user->username)</div>
             <div class = "admin_table_email">@lang($user->email)</div>
             <div class = "admin_table_role">@lang($user->admin ? 'admin' : 'user')</div>

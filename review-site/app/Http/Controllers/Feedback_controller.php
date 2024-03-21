@@ -14,6 +14,14 @@ class Feedback_controller extends Controller
         return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
     }
 
+    public function getFeedbackBySearch(\Illuminate\Http\Request $request)
+    {
+        $feedbacks = Feedback::where('description', 'like', '%' . $request->search . '%')
+            ->orWhere('email', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(6);
+        $feedbacks->withPath('?search=' . $request->search);
+        return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
+    }
+
     public function store(FeedbackRequest $request): \Illuminate\Http\RedirectResponse
     {
         Feedback::create($request->all());

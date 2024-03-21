@@ -16,6 +16,14 @@ class User_controller extends Controller
         return view('admin/users.adminUsers', ['users' => $users]);
     }
 
+    public function getUsersBySearch(\Illuminate\Http\Request $request)
+    {
+        $users = User::where('username', 'like', '%' . $request->search . '%')
+            ->orWhere('email', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(7);
+        $users->withPath('?search=' . $request->search);
+        return view('admin/users.adminUsers', ['users' => $users]);
+    }
+
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $user = User::find($id);

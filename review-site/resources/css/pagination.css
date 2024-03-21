@@ -35,13 +35,17 @@
     transition: 0.5s;
 }
 
-.pagination li:not(:first-child):not(:last-child):hover{
+.pagination li:not(:first-child):not(:last-child):not(.active):hover{
     margin-top: 5px;
     transition: 0.5s;
 }
 
 .active{
     font-weight: bold;
+}
+
+.active a{
+    border: 2px solid black;
 }
 
 .disabled{
