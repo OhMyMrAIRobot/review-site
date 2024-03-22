@@ -127,7 +127,6 @@
         <!--SIDEBAR-->
         <div class = "sidebar">
             <form method="get" class = "search_container" action="{{route('main.getShopsBySearch')}}">
-                @csrf
                 <h3 class = "search_title">Поиск</h3>
                 <div style = "display: flex">
                     <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">

@@ -35,7 +35,6 @@
         <div class = "admin_btn_container">
             <a class = "admin_btn_add" href = {{route('categories.create')}}>Добавить</a>
             <form method="get" style="display: flex" action="{{route('categories.getCategoriesBySearch')}}">
-                @csrf
                 <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
                 <button class="search_btn" type="submit">Поиск</button>
             </form>

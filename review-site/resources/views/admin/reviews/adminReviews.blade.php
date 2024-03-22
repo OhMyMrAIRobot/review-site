@@ -35,7 +35,6 @@
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
             <form method="get" style="display: flex; margin-left: auto; align-items: end" action="{{route('reviews.getReviewsBySearch')}}">
-                @csrf
                 <div style="display: flex; gap: 10px; padding-right: 10px">
                     <label class="date-label">
                         <span>From</span>

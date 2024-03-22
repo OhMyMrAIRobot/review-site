@@ -35,7 +35,6 @@
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
             <form method="get" style="display: flex; margin-left: auto" action="{{route('users.getUsersBySearch')}}">
-                @csrf
                 <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
                 <button class="search_btn" type="submit">Поиск</button>
             </form>
