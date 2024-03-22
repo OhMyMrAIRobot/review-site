@@ -20,5 +20,6 @@ class Review extends Model
     protected $casts = [
         'rating' => 'int',
         'shop_id' => 'int',
+        'created_at' => 'timestamp'
     ];
 }

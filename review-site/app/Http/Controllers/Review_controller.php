@@ -22,17 +22,24 @@ class Review_controller extends Controller
 
     public function getReviewsBySearch(\Illuminate\Http\Request $request)
     {
+        $date_from = date('Y-m-d', strtotime($request->date_from ?? "2021-01-01")) . ' 00:00:00';
+        $date_to = date('Y-m-d', strtotime($request->date_to ?? date('Y-m-d'))) . ' 23:59:59';
         $user_id = User::where('username', $request->search)->first()->id ?? -1;
-        $reviews = Review::where('title', 'like', '%' . $request->search . '%')
-            ->orWhere('description', 'like', '%' . $request->search . '%')
-            ->orWhere('user_id', $user_id)
-            ->orderBy('created_at', 'desc')->paginate(6);
+
+        $reviews = Review::where(function($query) use ($request, $user_id) {
+            $query->where('title', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%')
+                ->orWhere('user_id', $user_id);
+            })
+            ->whereBetween('created_at', [$date_from, $date_to])
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
 
         foreach ($reviews as $review){
             $author = User::where('id', $review->user_id)->first()->username;
             $review->author = $author;
         }
-        $reviews->withPath('?search=' . $request->search);
+        $reviews->withPath('?search=' . $request->search . '&date_from=' . $request->date_from . '&date_to=' . $request->date_to);
         return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
     }
 

@@ -34,9 +34,22 @@
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
-            <form method="get" style="display: flex; margin-left: auto" action="{{route('reviews.getReviewsBySearch')}}">
+            <form method="get" style="display: flex; margin-left: auto; align-items: end" action="{{route('reviews.getReviewsBySearch')}}">
                 @csrf
-                <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                <div style="display: flex; gap: 10px; padding-right: 10px">
+                    <label class="date-label">
+                        <span>From</span>
+                        <input type = "date" value="{{request('date_from')}}" name = "date_from" class="date-input">
+                    </label>
+                    <label class="date-label">
+                        <span>To</span>
+                        <input type = "date" value="{{request('date_to')}}" name = "date_to" class = "date-input">
+                    </label>
+                </div>
+                <label class="search-label">
+                    <span>Поиск</span>
+                    <input type = "text" name = "search" class = "text-input" value="{{request('search')}}" placeholder="Поиск...">
+                </label>
                 <button class="search_btn" type="submit">Поиск</button>
             </form>
         </div>

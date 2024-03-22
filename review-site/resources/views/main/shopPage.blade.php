@@ -99,34 +99,34 @@
 
         @foreach($reviews as $review)
         <!--ОТЗЫВ-->
-        <div class = "review">
-            <div class = "review_header">
-                <i class="review_icon fa-regular fa-user"></i>
-                <p class = "review_author">@lang($review->author)</p>
-                <div class = "review_rating">
+            <div class = "review">
+                <div class = "review_header">
+                    <i class="review_icon fa-regular fa-user"></i>
+                    <p class = "review_author">@lang($review->author)</p>
+                    <div class = "review_rating">
 
-                    @for($i = 1; $i <= 5; $i++)
-                        @if ($i <= $review->rating)
-                            <i class="active fa-solid fa-star"></i>
-                        @else
-                            <i class="fa-regular fa-star"></i>
-                        @endif
-                    @endfor
+                        @for($i = 1; $i <= 5; $i++)
+                            @if ($i <= $review->rating)
+                                <i class="active fa-solid fa-star"></i>
+                            @else
+                                <i class="fa-regular fa-star"></i>
+                            @endif
+                        @endfor
+                    </div>
+                    <p class = "review_time">{{ \Carbon\Carbon::parse($review->created_at)->format('G:i d-m-Y') }}</p>
                 </div>
-                <p class = "review_time">{{ \Carbon\Carbon::parse($review->created_at)->format('G:i d-m-Y') }}</p>
-            </div>
 
-            <h4 class = "review_title">@lang($review->title)</h4>
-            <p class = "review_text">@lang($review->description)</p>
-        </div>
+                <h4 class = "review_title">@lang($review->title)</h4>
+                <p class = "review_text">@lang($review->description)</p>
+            </div>
         <!--ОТЗЫВ-->
         @endforeach
 
-            @if(!$reviews->isEmpty())
+        @if(!$reviews->isEmpty())
             <div class = "pagination_main" style="margin-top: 30px">
                 {{ $reviews->onEachSide(5)->links('components.pagination') }}
             </div>
-            @endif
+        @endif
     </div>
 </main>
 

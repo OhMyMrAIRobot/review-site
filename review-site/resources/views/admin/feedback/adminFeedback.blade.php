@@ -14,6 +14,7 @@
         'resources/css/adminFeedback.css',
         'resources/css/pagination.css',
     ])
+    <link rel="stylesheet" href = "{{asset('cssTest/test.css')}}">
     <!--icons-->
     <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
 
@@ -33,9 +34,22 @@
 
     <div class = "admin-right_cont">
         <div class = "admin_btn_container">
-            <form method="get" style="display: flex; margin-left: auto" action="{{route('feedback.getFeedbackBySearch')}}">
+            <form method="get" style="display: flex; align-items: end; margin-left: auto" action="{{route('feedback.getFeedbackBySearch')}}" enctype="multipart/form-data">
                 @csrf
-                <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                <div style="display: flex; gap: 10px; padding-right: 10px">
+                    <label class="date-label">
+                        <span>From</span>
+                        <input type = "date" name = "date_from" class="date-input">
+                    </label>
+                    <label class="date-label">
+                        <span>To</span>
+                        <input type = "date" name = "date_to" class = "date-input">
+                    </label>
+                </div>
+                <label class="search-label">
+                    <span>Поиск</span>
+                    <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                </label>
                 <button class="search_btn" type="submit">Поиск</button>
             </form>
         </div>
