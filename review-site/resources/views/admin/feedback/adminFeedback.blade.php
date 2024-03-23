@@ -38,16 +38,16 @@
                 <div style="display: flex; gap: 10px; padding-right: 10px">
                     <label class="date-label">
                         <span>From</span>
-                        <input type = "date" name = "date_from" class="date-input">
+                        <input type = "date" name = "date_from" class="date-input" value="{{request('date_from')}}">
                     </label>
                     <label class="date-label">
                         <span>To</span>
-                        <input type = "date" name = "date_to" class = "date-input">
+                        <input type = "date" name = "date_to" class = "date-input" value="{{request('date_to')}}">
                     </label>
                 </div>
                 <label class="search-label">
                     <span>Поиск</span>
-                    <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
+                    <input type = "text" name = "search" class = "text-input" placeholder="Поиск..." value="{{request('search')}}">
                 </label>
                 <button class="search_btn" type="submit">Поиск</button>
             </form>
