@@ -44,7 +44,25 @@
                     @endfor
                 </div>
                 <p class = "single_shop_category">@lang($category)</p>
-                <p class = "single_shop_description">@lang($shop->description)</p>
+                <p class="single_shop_description">
+                    @php
+                        $description = $shop->description;
+                        // целые числа
+                        $number_pattern = '/\b\d+\b/';
+
+                        // email
+                        $email_pattern = '/[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/';
+
+                        // url
+                        $url_pattern = '/\bhttps?:\/\/[^?]+\b/';
+
+                        $result = preg_replace($number_pattern, '<span style="color:green;">$0</span>', $description);
+                        $result = preg_replace($email_pattern, '<span style="color:red;">$0</span>', $result);
+                        $result = preg_replace($url_pattern, '<span style="color:blue;">$0</span>', $result);
+
+                        echo '<p class="single_shop_description">' . $result . '</p>';
+                    @endphp
+                </p>
 
                 <div class = "single_shop_contacts">
                     <span><i class = "fas fa-phone"></i>&nbsp @lang($shop->phone)</span>
