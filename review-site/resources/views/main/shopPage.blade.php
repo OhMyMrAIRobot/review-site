@@ -51,7 +51,7 @@
                         $number_pattern = '/\b\d+\b/';
 
                         // email
-                        $email_pattern = '/[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/';
+                        $email_pattern = '/[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/';
 
                         // url
                         $url_pattern = '/\bhttps?:\/\/[^?]+\b/';

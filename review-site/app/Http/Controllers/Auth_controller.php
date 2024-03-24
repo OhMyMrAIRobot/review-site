@@ -25,8 +25,8 @@ class Auth_controller extends Controller
         $user = User::where('username', $request['username'])->first();
 
         if (!$user) {
-            return back()->withErrors([
-                'username' => 'wrong username.',
+            return redirect()->back()->withErrors([
+                'username' => '* Такого пользователя не существует',
             ])->withInput();
         }
         if (password_verify($request->password, $user->password)){
@@ -43,8 +43,8 @@ class Auth_controller extends Controller
                     'username' => $user->username,
                 ]);
         } else {
-            return back()->withErrors([
-                'password' => 'wrong password.',
+            return redirect()->back()->withErrors([
+                'password' => '* Пароль неверный',
             ])->withInput();
         }
         return redirect()->route('main.index');

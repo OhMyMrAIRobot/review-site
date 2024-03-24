@@ -32,10 +32,12 @@
     @csrf
     <h2 class = "reg_header">Авторизация</h2>
     <label class = "reg_label">Ваш логин</label>
-    <input name = "username" class = "reg_input" type = "text" placeholder="Введите логин...">
+    <label for="usernameAuth" class = "error-label">{{$errors->first('username')}}</label>
+    <input id = "usernameAuth" name = "username" class = "reg_input" type = "text" placeholder="Введите логин..." value="{{old('username')}}">
 
     <label class = "reg_label">Пароль</label>
-    <input name = "password" class = "reg_input" type = "password" placeholder="Введите пароль...">
+    <label for="pasAuth" class = "error-label">{{$errors->first('password')}}</label>
+    <input id = "pasAuth" name = "password" class = "reg_input" type = "password" placeholder="Введите пароль...">
 
     <div class = "reg_btns_container">
         <button type="SUBMIT" class = "reg_btn">Войти</button>
@@ -45,6 +47,7 @@
 
 <!--FOOTER-->
 @include('components.footer')
+
 
 </body>
 </html>
