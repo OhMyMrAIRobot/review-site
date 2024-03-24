@@ -48,13 +48,11 @@
                     @php
                         $description = $shop->description;
                         // целые числа
-                        $number_pattern = '/\b\d+\b/';
-
+                        $number_pattern = '/(?<![\d.,])\b\d+\b(?![\d.,])/';
                         // email
                         $email_pattern = '/[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/';
-
                         // url
-                        $url_pattern = '/\bhttps?:\/\/[^?]+\b/';
+                        $url_pattern = '/\bhttps?:\/\/[^\s?]+\b/';
 
                         $result = preg_replace($number_pattern, '<span style="color:green;">$0</span>', $description);
                         $result = preg_replace($email_pattern, '<span style="color:red;">$0</span>', $result);
