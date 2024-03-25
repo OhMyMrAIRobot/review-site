@@ -18,18 +18,12 @@ class Register_controller extends Controller
 
     public function store(RegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $user = new User();
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->admin = false;
-        $user->password = password_hash($request->password, PASSWORD_DEFAULT);
-        $user->save();
-        $user = User::where('username', $request->username)->first();
-        session([
-            'user' => $user->id,
-            'username' => $user->username,
-        ]);
-
-       return redirect()->route('main.index');
+        dd($request);
+        $user = User::create($request->all());
+        if ($user){
+            Auth::login($user);
+            return redirect()->route('main.index');
+        }
+        return redirect()->route('register.index')->withErrors(["formError" => "Произошла ошибка"]);
     }
 }

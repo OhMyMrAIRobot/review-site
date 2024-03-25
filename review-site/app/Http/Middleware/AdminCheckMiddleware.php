@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCheckMiddleware
 {
@@ -13,7 +14,7 @@ class AdminCheckMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!session('isAdmin')) {
+        if (!Auth::user()->isAdmin()) {
             return redirect()->route('main.index');
         }
 

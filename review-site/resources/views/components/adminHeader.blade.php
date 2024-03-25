@@ -1,5 +1,3 @@
-@php(session_start())
-
 <header class = "header">
     <div class = "navbar">
         <h1 class = "title">

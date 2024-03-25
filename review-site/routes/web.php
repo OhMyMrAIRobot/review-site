@@ -38,11 +38,11 @@ Route::post('feedback/store', Feedback_controller::class . '@store')->name('feed
 Route::get('/register', Register_controller::class . '@index')->name('register.index');
 Route::post('/register', Register_controller::class . '@store')->name('register.store');
 Route::get('/auth', Auth_controller::class . '@index')->name('auth.index');
-Route::post('/auth', Auth_controller::class . '@check')->name('auth.check');
+Route::post('/auth', Auth_controller::class . '@login')->name('auth.login');
 Route::post('/logout', Auth_controller::class . '@logout')->name('auth.logout');
 
 // Админ панель
-Route::prefix('admin') -> middleware('admin.check') -> group(function (){
+Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (){
 
     // Категории
     Route::get('/categories', Category_controller::class .'@index')->name('categories.index');

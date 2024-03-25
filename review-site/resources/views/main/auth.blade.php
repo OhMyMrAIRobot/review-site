@@ -28,7 +28,7 @@
 @include('components.header')
 
 <!--MAIN-->
-<form class = "reg_container" method='POST' action="{{route('auth.check')}}">
+<form class = "reg_container" method='POST' action="{{route('auth.login')}}">
     @csrf
     <h2 class = "reg_header">Авторизация</h2>
     <label class = "reg_label">Ваш логин</label>

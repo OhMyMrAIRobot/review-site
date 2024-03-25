@@ -47,12 +47,12 @@
                 <p class="single_shop_description">
                     @php
                         $description = $shop->description;
-                        // целые числа
-                        $number_pattern = '/(?<![\d.,])\b\d+\b(?![\d.,])/';
                         // email
                         $email_pattern = '/[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/';
                         // url
                         $url_pattern = '/\bhttps?:\/\/[^\s?]+\b/';
+                        // целые числа
+                        $number_pattern = '/(?<![\d.,])\b\d+\b(?![\d.,])/';
 
                         $result = preg_replace($number_pattern, '<span style="color:green;">$0</span>', $description);
                         $result = preg_replace($email_pattern, '<span style="color:red;">$0</span>', $result);
@@ -78,7 +78,7 @@
     </div>
 
     <div class = "add_review_container">
-        @if(session()->has('user'))
+        @if(\Illuminate\Support\Facades\Auth::check())
             @foreach($errors as $error)
                 @lang($error)
             @endforeach

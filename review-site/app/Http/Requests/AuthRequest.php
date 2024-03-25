@@ -22,7 +22,7 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string'],
+            'username' => ['required', 'string','max:30'],
             'password' => ['required', 'string'],
         ];
     }
@@ -37,6 +37,7 @@ class AuthRequest extends FormRequest
         return [
             'username.required' => '* Поле обязательно для заполнения.',
             'username.string' => '* Поле должно быть строкой.',
+            'username.max' => '* Поле не должно превышать 30 символов',
 
             'password.required' => '* Поле обязательно для заполнения.',
             'password.string' => '* Поле должно быть строкой.',

@@ -22,8 +22,8 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:30', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
@@ -33,13 +33,13 @@ class RegisterRequest extends FormRequest
         return [
             'username.required' => '* Поле обязательно для заполнения',
             'username.string' => '* Поле должно быть строкой',
-            'username.max' => '* Поле не должно превышать 255 символов',
+            'username.max' => '* Поле не должно превышать 30 символов',
             'username.unique' => '* Такое имя пользователя уже используется',
 
             'email.required' => '* Поле обязательно для заполнения',
             'email.string' => '* Поле должно быть строкой',
             'email.email' => '* Поле должно быть действительным адресом электронной почты',
-            'email.max' => '* Поле не должно превышать 255 символов',
+            'email.max' => '* Поле не должно превышать 50 символов',
             'email.unique' => '* Такой адрес электронной почты уже используется',
 
             'password.required' => '* Поле обязательно для заполнения',
