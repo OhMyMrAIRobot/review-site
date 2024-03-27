@@ -39,6 +39,11 @@
     <label for="pasAuth" class = "error-label">{{$errors->first('password')}}</label>
     <input id = "pasAuth" name = "password" class = "reg_input" type = "password" placeholder="Введите пароль...">
 
+    <div style="margin-top: 10px;">
+        <input id = "remAuth" type = "checkbox" name = "remember">
+        <label for = "remAuth">Запомнить меня</label>
+    </div>
+
     <div class = "reg_btns_container">
         <button type="SUBMIT" class = "reg_btn">Войти</button>
         <a class = "login_href" href="{{route('register.index')}}">Регистрация</a>

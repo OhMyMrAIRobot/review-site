@@ -48,6 +48,11 @@
     <label for="pasReg2" class = "error-label">{{$errors->first('password')}}</label>
     <input id = "pasReg2" name = "password_confirmation" type="password" class = "reg_input" placeholder="Повторите пароль...">
 
+    <div style="margin-top: 10px;">
+        <input id = "remReg" type = "checkbox" name = "remember">
+        <label for = "remReg">Запомнить меня</label>
+    </div>
+
     <div class = "reg_btns_container">
         <button type="SUBMIT" class = "reg_btn">Регистрация</button>
         <a class = "login_href" href="{{route('auth.index')}}">Войти</a>

@@ -23,8 +23,9 @@ class Auth_controller extends Controller
 
     public function login(AuthRequest $request): \Illuminate\Http\RedirectResponse
     {
+        $remember = $request->has('remember');
         $data = $request->only(['username', 'password']);
-        if(Auth::attempt($data)){
+        if(Auth::attempt($data, $remember)){
             return redirect()->route('main.index');
         }
         else{
