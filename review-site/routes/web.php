@@ -35,9 +35,9 @@ Route::post('/reviews/store', Review_controller::class . '@store') ->name('revie
 Route::post('feedback/store', Feedback_controller::class . '@store')->name('feedback.store');
 
 // Регистрация и авторизация
-Route::get('/register', Register_controller::class . '@index')->name('register.index');
+Route::get('/register', Register_controller::class . '@index')->middleware('guest')->name('register.index');
 Route::post('/register', Register_controller::class . '@store')->name('register.store');
-Route::get('/auth', Auth_controller::class . '@index')->name('auth.index');
+Route::get('/auth', Auth_controller::class . '@index')->middleware('guest')->name('auth.index');
 Route::post('/auth', Auth_controller::class . '@login')->name('auth.login');
 Route::post('/logout', Auth_controller::class . '@logout')->name('auth.logout');
 

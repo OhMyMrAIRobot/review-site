@@ -20,7 +20,7 @@ class Review_controller extends Controller
         return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
     }
 
-    public function getReviewsBySearch(\Illuminate\Http\Request $request)
+    public function getReviewsBySearch(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $date_from = date('Y-m-d', strtotime($request->date_from ?? "2021-01-01")) . ' 00:00:00';
         $date_to = date('Y-m-d', strtotime($request->date_to ?? date('Y-m-d'))) . ' 23:59:59';
@@ -64,7 +64,7 @@ class Review_controller extends Controller
         return redirect()->route('reviews.index')->with('success', 'Review updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $review = Review::find($id);
         $review->delete();
