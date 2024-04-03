@@ -2,10 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrackUserActivity
@@ -17,16 +15,17 @@ class TrackUserActivity
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $visitedPages = session('visited_pages', []);
+        $visitedPages = json_decode($request->cookie('visited_pages'), true) ?? [];
         $visitedPages[] = $request->fullUrl();
-        session(['visited_pages' => $visitedPages]);
+
+        $cookie = cookie('visited_pages', json_encode($visitedPages));
 
         if ($request->has('search')) {
-            $searchHistory = session('search_history', []);
+            $searchHistory = json_decode($request->cookie('search_history'), true) ?? [];
             $searchHistory[] = $request->input('search');
-            session(['search_history' => $searchHistory]);
+            $cookie = cookie('search_history', json_encode($searchHistory));
         }
 
-        return $next($request);
+        return $next($request)->withCookie($cookie, );
     }
 }

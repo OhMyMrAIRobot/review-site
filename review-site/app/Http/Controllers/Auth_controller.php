@@ -25,43 +25,13 @@ class Auth_controller extends Controller
     {
         $remember = $request->has('remember');
         $data = $request->only(['username', 'password']);
-        if(Auth::attempt($data, $remember)){
+        if(Auth::attempt($data, $remember)) {
             return redirect()->route('main.index');
         }
-        else{
+        else {
             return redirect()->back()->withErrors([
-                'username' => '* Ошибка при авторизации',
+                'username' => '* Неверный логин или пароль',
             ])->withInput();
         }
     }
-
-//    public function check(AuthRequest $request): \Illuminate\Http\RedirectResponse
-//    {
-//        $user = User::where('username', $request['username'])->first();
-//
-//        if (!$user) {
-//            return redirect()->back()->withErrors([
-//                'username' => '* Такого пользователя не существует',
-//            ])->withInput();
-//        }
-//        if (password_verify($request->password, $user->password)){
-//            if ($user->admin === 1){
-//                session([
-//                    'user' => $user->id,
-//                    'username' => $user->username,
-//                    'isAdmin' => $user->admin,
-//                ]);
-//            }
-//            else
-//                session([
-//                    'user' => $user->id,
-//                    'username' => $user->username,
-//                ]);
-//        } else {
-//            return redirect()->back()->withErrors([
-//                'password' => '* Пароль неверный',
-//            ])->withInput();
-//        }
-//        return redirect()->route('main.index');
-//    }
 }

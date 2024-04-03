@@ -39,9 +39,12 @@
     <label for="pasAuth" class = "error-label">{{$errors->first('password')}}</label>
     <input id = "pasAuth" name = "password" class = "reg_input" type = "password" placeholder="Введите пароль...">
 
-    <div style="margin-top: 10px;">
-        <input id = "remAuth" type = "checkbox" name = "remember">
-        <label for = "remAuth">Запомнить меня</label>
+    <div style="margin-top: 10px; display: flex; justify-content: space-between">
+        <div>
+            <input id = "remAuth" type = "checkbox" name = "remember">
+            <label style="color: #232323" for = "remAuth">Запомнить меня</label>
+        </div>
+        <a style="color: #232323; text-decoration: none; margin-right: 10px;" href = "{{route('password.index')}}">Забыли пароль?</a>
     </div>
 
     <div class = "reg_btns_container">

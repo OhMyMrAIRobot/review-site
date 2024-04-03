@@ -3,8 +3,10 @@
 use App\Http\Controllers\Auth_controller;
 use App\Http\Controllers\Category_controller;
 use App\Http\Controllers\Feedback_controller;
+use App\Http\Controllers\ForgotPassword_controller;
 use App\Http\Controllers\MainPage_controller;
 use App\Http\Controllers\Register_controller;
+use App\Http\Controllers\ResetPassword_controller;
 use App\Http\Controllers\Review_controller;
 use App\Http\Controllers\Shop_controller;
 use App\Http\Controllers\ShopPage_controller;
@@ -40,6 +42,10 @@ Route::post('/register', Register_controller::class . '@store')->name('register.
 Route::get('/auth', Auth_controller::class . '@index')->middleware('guest')->name('auth.index');
 Route::post('/auth', Auth_controller::class . '@login')->name('auth.login');
 Route::post('/logout', Auth_controller::class . '@logout')->name('auth.logout');
+Route::get('/forgotPassword', ForgotPassword_controller::class . '@index')->name('password.index');
+Route::post('/forgotPassword', ForgotPassword_controller::class . '@store')->name('password.send');
+Route::get('/resetPassword', ResetPassword_controller::class . '@index')->name('password.reset');
+Route::post('/resetPassword', ResetPassword_controller::class . '@store')->name('password.update');
 
 // Админ панель
 Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (){
