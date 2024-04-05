@@ -8,9 +8,6 @@
     <!--css-->
     @vite([
         'resources/css/style.css',
-        'resources/css/header.css',
-        'resources/css/footer.css',
-        'resources/css/register.css',
     ])
 
     <!--icons-->

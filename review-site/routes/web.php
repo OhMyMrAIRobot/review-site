@@ -42,6 +42,7 @@ Route::post('/register', Register_controller::class . '@store')->name('register.
 Route::get('/auth', Auth_controller::class . '@index')->middleware('guest')->name('auth.index');
 Route::post('/auth', Auth_controller::class . '@login')->name('auth.login');
 Route::post('/logout', Auth_controller::class . '@logout')->name('auth.logout');
+
 Route::get('/forgotPassword', ForgotPassword_controller::class . '@index')->name('password.index');
 Route::post('/forgotPassword', ForgotPassword_controller::class . '@store')->name('password.send');
 Route::get('/resetPassword', ResetPassword_controller::class . '@index')->name('password.reset');

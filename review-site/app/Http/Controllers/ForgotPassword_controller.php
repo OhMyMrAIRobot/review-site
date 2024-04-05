@@ -20,10 +20,10 @@ class ForgotPassword_controller extends Controller
 
         $status = Password::sendResetLink($request->only('email'));
 
-        if ($status === Password::RESET_LINK_SENT){
-            return back()->with('status', 'Ссылка для воостановления отправлена на почту!');
+        if ($status === Password::RESET_LINK_SENT) {
+            return back()->with('status_ok', 'Message sent successfully.');
         }
 
-        return back()->withInput($request->only('email'))->withErrors(['status' => 'Ошибка']);
+        return back()->withInput($request->only('email'))->with('status_err', 'Something went wrong! Check your email and try again!');
     }
 }

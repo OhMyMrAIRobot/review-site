@@ -33,11 +33,10 @@ class ResetPassword_controller extends Controller
         );
 
         if ($status === Password::PASSWORD_RESET) {
-            return redirect()->route('auth.index')->with('status', 'Пароль изменён');
+            return redirect()->route('auth.index')->with('status_ok', 'Password changed successfully!');
         }
 
         return back()->withInput($request->only('email'))
             ->withErrors(['email' => 'Ошибка']);
     }
-
 }
