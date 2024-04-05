@@ -3,6 +3,7 @@ export default {
   content: [
       "./resources/views/main/index.blade.php",
       "./resources/views/components/header.blade.php",
+      "./resources/views/components/footer.blade.php",
   ],
   theme: {
       extend: {
@@ -11,6 +12,7 @@ export default {
           }
       },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
 

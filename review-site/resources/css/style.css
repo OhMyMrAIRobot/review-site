@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,9 +16,6 @@ body{
     color: gold;
 }
 
-.error-label{
-    color: red;
-    font-size: 0.7rem;
-    margin-left: 5px;
-    padding-bottom: 3px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
