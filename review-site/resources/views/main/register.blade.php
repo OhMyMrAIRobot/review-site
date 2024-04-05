@@ -27,37 +27,56 @@
 <!--HEADER-->
 @include('components.header')
 
-<!--MAIN-->
-<form class = "reg_container" method='POST' action="{{route('register.store')}}">
-    @csrf
-    <h2 class = "reg_header">Регистрация</h2>
+<section class="bg-gray-50">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-20">
+        <div class="w-full bg-white rounded-lg shadow dark:border lg:mt-0 max-w-md lg:p-0">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-2xl font-bold leading-tight tracking-tight text-gray-900">
+                    Create an account
+                </h1>
+                <form class="space-y-4 md:space-y-6" method='POST' action="{{route('register.store')}}">
+                    @csrf
+                    <div>
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your username</label>
+                        <input type="text" name = "username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Username..." required="" value="{{old('username')}}">
+                    </div>
 
-    <label class = "reg_label">Ваш логин</label>
-    <label for="usernameReg" class = "error-label">{{$errors->first('username')}}</label>
-    <input id = 'usernameReg' name = "username" class = "reg_input" placeholder="Введите логин..." value="{{old('username')}}">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                        <input type="text" name = "email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Example@mail.com" required="" value="{{old('email')}}">
+                    </div>
 
-    <label class = "reg_label">Ваш email</label>
-    <label for="emailReg" class = "error-label">{{$errors->first('email')}}</label>
-    <input id = "emailReg" name = "email" class = "reg_input" placeholder="Введите email..." value="{{old('email')}}">
+                    <div>
+                        <label for="password" class="mb-2 text-sm font-medium text-gray-900">Password</label>
+                        <input type="password" name = "password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+                    </div>
 
-    <label class = "reg_label">Пароль</label>
-    <label for="pasReg1" class = "error-label">{{$errors->first('password')}}</label>
-    <input id = "pasReg1" name = "password" type="password" class = "reg_input" placeholder="Введите пароль...">
+                    <div>
+                        <label for="password_c" class="mb-2 text-sm font-medium text-gray-900">Password confirmation</label>
+                        <input type="password" name = "password_confirmation" id="password_c" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+                    </div>
 
-    <label class = "reg_label">Повторите пароль</label>
-    <label for="pasReg2" class = "error-label">{{$errors->first('password')}}</label>
-    <input id = "pasReg2" name = "password_confirmation" type="password" class = "reg_input" placeholder="Повторите пароль...">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input name="remember" id="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="remember" class="font-light text-gray-500 ">Remember me</label>
+                        </div>
+                    </div>
 
-    <div style="margin-top: 10px;">
-        <input id = "remReg" type = "checkbox" name = "remember">
-        <label for = "remReg">Запомнить меня</label>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-bold leading-6 text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-300"
+                    >Create an account</button>
+
+                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                        Already have an account? <a href="{{route('auth.index')}}" class="font-medium text-indigo-600 hover:underline">Login here</a>
+                    </p>
+
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class = "reg_btns_container">
-        <button type="SUBMIT" class = "reg_btn">Регистрация</button>
-        <a class = "login_href" href="{{route('auth.index')}}">Войти</a>
-    </div>
-</form>
+</section>
 
 <!--FOOTER-->
 @include('components.footer')
