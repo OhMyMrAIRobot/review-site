@@ -15,11 +15,10 @@
                 <a href = "#"><i class = "fab fa-telegram"></i></a>
                 <a href = "#"><i class = "fab fa-vk"></i></a>
             </div>
-
         </div>
 
         <!--COLUMN WITH QUICK LINKS-->
-        <div class = "col-span-3">
+        <div class = "col-span-3 lg:mt-0 mt-5">
             <h3 class = "font-bold text-white text-3xl pb-2">Quick links</h3>
             <ul class="transition-all ml-2 flex flex-col gap-1">
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
@@ -41,18 +40,18 @@
         </div>
 
         <!--COLUMN WITH FEEDBACK-->
-        <div class = "col-span-4">
+        <div class = "col-span-4 lg:mt-0 mt-5">
             <h3 class = "text-white font-bold text-3xl pb-2">Feedback</h3>
             <form class="flex flex-col gap-3" method="POST" action="{{route('feedback.store')}}">
                 @csrf
                 <label>
-                    <input class="w-full text-white px-3 py-2 rounded bg-gray-600 outline-gray-900" type = "email" name = "email" placeholder = "Example@email.com">
+                    <input class="lg:w-full sm:w-1/2 w-full text-white px-3 py-2 rounded bg-gray-600 outline-gray-900" type = "email" name = "email" placeholder = "Example@email.com">
                 </label>
 
                 <label>
-                    <textarea class = "w-full text-white resize-none px-3 py-2 rounded bg-gray-600 outline-gray-900" rows="4" name = "description" placeholder = "Your text..."></textarea>
+                    <textarea class = "lg:w-full sm:w-1/2 w-full text-white resize-none px-3 py-2 rounded bg-gray-600 outline-gray-900" rows="4" name = "description" placeholder = "Your text..."></textarea>
                 </label>
-                <button type="submit" class="text-gray-600 w-3/5 text-center text-xl border border-1 border-gray-700 h-12 rounded hover:text-gray-300  transition-all duration-500">
+                <button type="submit" class="text-gray-600 lg:w-3/5 sm:w-1/2 w-full text-center text-xl border border-1 border-gray-700 h-12 rounded hover:text-gray-300  transition-all duration-500">
                     <i class = "fa fa-envelope"></i>
                     Отправить
                 </button>
