@@ -1,4 +1,4 @@
-<footer class="bg-gray-800">
+<footer class="bg-gray-800 mt-auto">
     <div class="lg:grid lg:grid-cols-12 gap-8 px-4 lg:px-20 py-4">
         <!--COLUMN WITH INFO-->
         <div class = "col-span-5 text-white">
