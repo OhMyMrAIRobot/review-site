@@ -24,7 +24,7 @@
             <div class = "justify-between items-center w-full flex lg:w-auto lg:order-1">
                 <ul class="flex flex-col mt-4 text-xl lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                        <a href = "{{route('main.index')}}" class="block text-white py-2 rounded hover:text-white">MainPage</a>
+                        <a href = "{{route('main.index')}}" class="block text-gray-500 py-2 rounded hover:text-white">MainPage</a>
                     </li>
                     <li>
                         <a href = "{{route('main.index')}}" class="block text-gray-500 py-2 rounded hover:text-white">About</a>

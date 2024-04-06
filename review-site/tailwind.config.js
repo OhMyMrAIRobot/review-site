@@ -9,6 +9,7 @@ export default {
       "./resources/views/main/register.blade.php",
       "./resources/views/main/forgotPassword.blade.php",
       "./resources/views/main/ResetPassword.blade.php",
+      "./resources/views/main/shopPage.blade.php",
   ],
   theme: {
       extend: {

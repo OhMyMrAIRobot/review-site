@@ -16,6 +16,35 @@ body{
     color: gold;
 }
 
+.rat1::after, .rat2::after, .rat3::after, .rat4::after, .rat5::after{
+    margin-top: -2px;
+    margin-left: -10px;
+    display: block;
+    font-size: 0.6rem;
+    position: absolute;
+}
+
+/*.rat1::after{*/
+/*    content: '1';*/
+/*}*/
+
+/*.rat2::after{*/
+/*    content: '2';*/
+/*}*/
+
+/*.rat3::after{*/
+/*    content: '3';*/
+/*}*/
+
+/*.rat4::after{*/
+/*    content: '4';*/
+/*}*/
+
+/*.rat5::after{*/
+/*    content: '5';*/
+/*}*/
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -28,10 +28,11 @@ class MainPage_controller extends Controller
         }
 
         return view('main.index', [
+            'method' => 'all',
             'shops' => $shops,
             'categories' => $categories,
             'reviews' => $reviews,
-            'reviewShops' => $reviewShops
+            'reviewShops' => $reviewShops,
         ]);
     }
 

@@ -1,5 +1,8 @@
 @if ($paginator->lastPage() > 1)
-    <div class="flex items-center justify-between bg-white px-4 py-3 sm:px-6">
+    @php
+        $perPage = $paginator->perPage();
+    @endphp
+    <div class="flex items-center justify-between px-4 py-3 sm:px-6">
         <div class="flex flex-1 justify-between sm:hidden">
             <a href="{{ $paginator->url($paginator->currentPage() - 1) }}" class="{{ ($paginator->currentPage() == 1) ? "pointer-events-none" : "hover:bg-gray-100" }}
             relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">Previous</a>
@@ -10,10 +13,10 @@
             <div>
                 <p class="text-sm text-gray-700">
                     Showing
-                    <span class="font-medium">{{($paginator->currentPage() - 1) * 5 + 1}}</span>
+                    <span class="font-medium">{{($paginator->currentPage() - 1) * $perPage + 1}}</span>
                     to
                     <span class="font-medium">{{
-                        min(($paginator->currentPage() - 1) * 5 + 1 + 5, $paginator->total())}}</span>
+                        min(($paginator->currentPage() - 1) * $perPage + $perPage, $paginator->total())}}</span>
                     of
                     <span class="font-medium">{{$paginator->total()}}</span>
                     results

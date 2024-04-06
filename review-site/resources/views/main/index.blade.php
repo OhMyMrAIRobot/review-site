@@ -77,14 +77,46 @@
     <div class="bg-white lg:py-10">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="hidden lg:block mx-auto lg:max-w-2xl lg:mx-0">
-                <h3 class="text-3xl font-bold">Shops list</h3>
+                <h3 class="text-3xl font-bold">
+                @if ($method === 'search')
+                    @if ($shops->isEmpty())
+                        {{"No results found!"}}
+                    @else
+                        {{"Search results"}}
+                    @endif
+                @elseif ($method === 'category')
+                    @if ($shops->isEmpty())
+                        {{"No shops with category $categories[$id]!"}}
+                    @else
+                        {{"Shops with category $categories[$id]"}}
+                    @endif
+                @else
+                    {{"Shops"}}
+                @endif
+                </h3>
             </div>
 
             <div class="mx-auto mt-10 flex max-w-2xl flex-col-reverse gap-x-16 gap-y-10 border-t border-gray-200 lg:pt-10 lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-12">
                 <div class="flex flex-col gap-y-8 lg:col-span-8">
 
                     <div class="lg:hidden lg:max-w-2xl lg:mx-0 border-b pb-8">
-                        <h3 class="text-3xl font-bold">Shops list</h3>
+                        <h3 class="text-3xl font-bold">
+                            @if ($method === 'search')
+                                @if ($shops->isEmpty())
+                                    {{"No results found!"}}
+                                @else
+                                    {{"Search results"}}
+                                @endif
+                            @elseif ($method === 'category')
+                                @if ($shops->isEmpty())
+                                    {{"No shops with category $categories[$id]!"}}
+                                @else
+                                    {{"Shops with category $categories[$id]"}}
+                                @endif
+                            @else
+                                {{"Shops"}}
+                            @endif
+                        </h3>
                     </div>
 
                     @foreach($shops as $shop)
@@ -132,7 +164,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                 </svg>
                             </div>
-                            <input type="search" name = "search" id="default-search" class="block w-full p-4 ps-10 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." />
+                            <input type="search" name = "search" id="default-search" class="block w-full p-4 ps-10 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." value="{{request('search')}}" />
                             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
                         </div>
                     </form>
@@ -149,45 +181,6 @@
 
         </div>
     </div>
-
-
-{{--        <!--ОТЗЫВ-->--}}
-{{--        <div class = "review_main">--}}
-{{--            <div class = "review_body">--}}
-{{--                <div class = "review_main_header">--}}
-{{--                    <a href="{{route('shop.index', $review->shop_id)}}">--}}
-{{--                        @lang($reviewShops[$key]['title'] . ' — ' . $review->title)--}}
-{{--                    </a>--}}
-{{--                    <div class = "review_main_rating">--}}
-{{--                    </div>--}}
-{{--                    <i class="review_icon fa-regular fa-user"></i>--}}
-{{--                    <p class = "review_author">@lang($review->author)</p>--}}
-{{--                </div>--}}
-{{--                <p class = "review_main_desc">@lang($review->description)</p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <!--ОТЗЫВ-->--}}
-
-{{--        <h3>Магазины</h3>--}}
-{{--    </div>--}}
-{{--    @elseif ($method === 'category')--}}
-{{--        <div class = "last_reviews_container">--}}
-{{--            @if (!$shops->isEmpty())--}}
-{{--                <h3>Магазины с категорией {{$categories[$id]}}:</h3>--}}
-{{--            @else--}}
-{{--                <h3>Магазины с категорией {{$categories[$id]}} не найдены!</h3>--}}
-{{--            @endif--}}
-{{--        </div>--}}
-{{--    @elseif ($method === 'search')--}}
-{{--        <div class = "last_reviews_container">--}}
-{{--            @if (!$shops->isEmpty())--}}
-{{--                <h3>Результаты поиска:</h3>--}}
-{{--            @else--}}
-{{--                <h3>Магазины не найдены!</h3>--}}
-{{--            @endif--}}
-{{--        </div>--}}
-
-
 
 </main>
 

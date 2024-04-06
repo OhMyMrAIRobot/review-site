@@ -45,8 +45,12 @@ class Review_controller extends Controller
 
     public function store(ReviewRequest $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
-        Review::create($request->all());
-        return redirect(route('shop.index', $request->shop_id));
+        $review = Review::create($request->all());
+        if ($review) {
+            return back()->with('status_ok', 'Review published successfully.');
+        } else {
+            return back()->with('status_err', 'Failed to publish review. Please try again.');
+        }
     }
 
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
@@ -70,5 +74,4 @@ class Review_controller extends Controller
         $review->delete();
         return redirect()->route('reviews.index')->with('success', 'Review deleted successfully');
     }
-
 }
