@@ -30,7 +30,7 @@ class Auth_controller extends Controller
         }
         else {
             return redirect()->back()->withErrors([
-                'username' => '* Неверный логин или пароль',
+                'username' => 'Invalid username or password',
             ])->withInput();
         }
     }

@@ -27,18 +27,4 @@ class PasswordResetRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'email.required' => '* Поле обязательно для заполнения',
-            'email.string' => '* Поле должно быть строкой',
-            'email.email' => '* Поле должно быть действительным адресом электронной почты',
-
-            'password.required' => '* Поле обязательно для заполнения',
-            'password.string' => '* Поле должно быть строкой',
-            'password.min' => '* Пароль должен содержать не менее 8 символов',
-            'password.confirmed' => '* Подтверждение пароля не совпадает с паролем',
-        ];
-    }
 }

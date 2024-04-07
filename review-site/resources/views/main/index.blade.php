@@ -135,7 +135,7 @@
                                             @endif
                                         @endfor
                                     </div>
-                                    <a href="{{route('main.getShopsByCategory', $shop->category_id ?? -1)}}" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{$shop->category_id ? $categories[$shop->category_id] : "Нет категории"}}</a>
+                                    <a href="{{route('main.getShopsByCategory', $shop->category_id ?? -1)}}" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{$shop->category_id ? $categories[$shop->category_id] : "No category"}}</a>
                                 </div>
                                 <div class="group relative">
                                     <h3 class="mt-3 text-lg font-bold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -154,6 +154,7 @@
                     {{ $shops->onEachSide(5)->links('components.pagination') }}
                 </div>
 
+                {{--SIDEBAR--}}
                 <div class="lg:col-span-4 lg:border-l mt-8 lg:mt-0 lg:pl-2 h-fit lg:pb-8 lg:pt-2">
                     <form method="get" action="{{route('main.getShopsBySearch')}}">
                         <h3 class="text-3xl lg:text-2xl font-bold pb-1">Search</h3>
@@ -177,6 +178,7 @@
                         @endforeach
                     </ul>
                 </div>
+                {{--SIDEBAR--}}
             </div>
 
         </div>

@@ -11,7 +11,11 @@ class Shop_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $shops = Shop::orderBy('created_at', 'desc')->paginate(8);
+        $shops = Shop::orderBy('created_at', 'desc')->paginate(10);
+        foreach ($shops as $shop) {
+            $avg = $this->getShopRating($shop->id);
+            $shop->rating = $avg;
+        }
         $shops->withPath('/admin/shops');
         $categories = Category::all()->pluck('category', 'id')->all();
         return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);
@@ -25,7 +29,11 @@ class Shop_controller extends Controller
 
     public function getShopsBySearch(\Illuminate\Http\Request $request)
     {
-        $shops = Shop::where('title', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(8);
+        $shops = Shop::where('title', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(10);
+        foreach ($shops as $shop) {
+            $avg = $this->getShopRating($shop->id);
+            $shop->rating = $avg;
+        }
         $shops->withPath('?search=' . $request->search);
         $categories = Category::all()->pluck('category', 'id')->all();
         return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);

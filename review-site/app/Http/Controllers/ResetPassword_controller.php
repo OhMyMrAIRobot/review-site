@@ -37,6 +37,6 @@ class ResetPassword_controller extends Controller
         }
 
         return back()->withInput($request->only('email'))
-            ->withErrors(['email' => 'Ошибка']);
+            ->withErrors(['status_err' => 'Something went wrong. Please try again!']);
     }
 }

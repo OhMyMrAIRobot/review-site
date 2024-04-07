@@ -26,21 +26,4 @@ class AuthRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'username.required' => '* Поле обязательно для заполнения.',
-            'username.string' => '* Поле должно быть строкой.',
-            'username.max' => '* Поле не должно превышать 30 символов',
-
-            'password.required' => '* Поле обязательно для заполнения.',
-            'password.string' => '* Поле должно быть строкой.',
-        ];
-    }
 }

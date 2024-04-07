@@ -12,19 +12,18 @@
                     <a class="text-white mr-2 text-xl cursor-pointer px-4 py-2 focus:ring-4"
                     ><i class = "fa fa-user mr-1"></i>@lang(\Illuminate\Support\Facades\Auth::user()->getUsername())
                     </a>
-                    <a class = "text-gray-300 hover:text-white mr-2 rounded-lg py-1 px-4 border border-gray-400">
-                        <form action="{{route('auth.logout')}}" method='POST'>
+                        <form class="text-gray-300 hover:text-white mr-2 rounded-lg py-1 px-4 border border-gray-400 cursor-pointer" action="{{route('auth.logout')}}" method='POST'>
                             @csrf
                             <button type='submit'>Logout</button>
                         </form>
-                    </a>
                 @endif
             </div>
 
             <div class = "justify-between items-center w-full flex lg:w-auto lg:order-1">
                 <ul class="flex flex-col mt-4 text-xl lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                        <a href = "{{route('main.index')}}" class="block text-gray-500 py-2 rounded hover:text-white">MainPage</a>
+                        <a href = "{{route('main.index')}}" class="block py-2 rounded hover:text-white @if(request()->routeIs('main.index')) text-white @else text-gray-500 @endif"
+                        >MainPage</a>
                     </li>
                     <li>
                         <a href = "{{route('main.index')}}" class="block text-gray-500 py-2 rounded hover:text-white">About</a>
@@ -32,7 +31,8 @@
                     @if(\Illuminate\Support\Facades\Auth::check())
                         @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
                             <li>
-                                <a href = "{{route('shops.index')}}" class="block text-gray-500 py-2 rounded hover:text-white">Admin panel</a>
+                                <a href = "{{route('shops.index')}}" class="block py-2 rounded hover:text-white @if(Str::startsWith(request()->url(), route('admin.index'))) text-white @else text-gray-500 @endif"
+                                >Admin panel</a>
                             </li>
                         @endif
                     @endif

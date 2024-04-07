@@ -50,7 +50,7 @@ Route::post('/resetPassword', ResetPassword_controller::class . '@store')->name(
 
 // Админ панель
 Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (){
-
+    Route::get('/', Shop_controller::class .'@index')->name('admin.index');
     // Категории
     Route::get('/categories', Category_controller::class .'@index')->name('categories.index');
     Route::get('/categories/create', Category_controller::class . '@create')->name('categories.create');

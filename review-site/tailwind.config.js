@@ -5,11 +5,13 @@ export default {
       "./resources/views/components/header.blade.php",
       "./resources/views/components/footer.blade.php",
       "./resources/views/components/pagination.blade.php",
+      "./resources/views/components/sidebarAdmin.blade.php",
       "./resources/views/main/auth.blade.php",
       "./resources/views/main/register.blade.php",
       "./resources/views/main/forgotPassword.blade.php",
       "./resources/views/main/ResetPassword.blade.php",
       "./resources/views/main/shopPage.blade.php",
+      "./resources/views/admin/shops/adminShops.blade.php",
   ],
   theme: {
       extend: {

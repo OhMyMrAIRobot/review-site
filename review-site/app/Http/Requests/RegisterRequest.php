@@ -27,25 +27,4 @@ class RegisterRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'username.required' => '* Поле обязательно для заполнения',
-            'username.string' => '* Поле должно быть строкой',
-            'username.max' => '* Поле не должно превышать 30 символов',
-            'username.unique' => '* Такое имя пользователя уже используется',
-
-            'email.required' => '* Поле обязательно для заполнения',
-            'email.string' => '* Поле должно быть строкой',
-            'email.email' => '* Поле должно быть действительным адресом электронной почты',
-            'email.max' => '* Поле не должно превышать 50 символов',
-            'email.unique' => '* Такой адрес электронной почты уже используется',
-
-            'password.required' => '* Поле обязательно для заполнения',
-            'password.string' => '* Поле должно быть строкой',
-            'password.min' => '* Пароль должен содержать не менее 8 символов',
-            'password.confirmed' => '* Подтверждение пароля не совпадает с паролем',
-        ];
-    }
 }

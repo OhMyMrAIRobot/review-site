@@ -8,11 +8,11 @@
     <!--css-->
     @vite([
         'resources/css/style.css',
-        'resources/css/header.css',
-        'resources/css/footer.css',
-        'resources/css/admin.css',
-        'resources/css/adminShop.css',
-        'resources/css/pagination.css',
+//        'resources/css/header.css',
+//        'resources/css/footer.css',
+//        'resources/css/admin.css',
+//        'resources/css/adminShop.css',
+//        'resources/css/pagination.css',
     ])
 
     <!--icons-->
@@ -22,63 +22,126 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cardo&family=Comfortaa:wght@300..700&family=Lato:wght@300;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 
 </head>
 <body>
 
 <!--HEADER-->
-@include('components.adminHeader')
+{{--@include('components.adminHeader')--}}
 
-<main class = "admin-container">
-    @include('components.sidebarAdmin')
+{{--<main class = "admin-container">--}}
 
-    <div class = "admin-right_cont">
-        <div class = "admin_btn_container">
-            <a class = "admin_btn_add" href = {{route('shops.create')}}>Добавить</a>
+{{--    <div class = "admin-right_cont">--}}
+{{--        <div class = "admin_btn_container">--}}
 
-            <form method="get" style="display: flex" action="{{route('shops.getShopsBySearch')}}">
-                    <input type = "text" name = "search" class = "text-input" placeholder="Поиск...">
-                    <button class="search_btn" type="submit">Поиск</button>
-            </form>
+{{--        <div class = "admin_container_header">--}}
+{{--            @if(!$shops->isEmpty())--}}
+{{--                <h2>Управление магазинами</h2>--}}
+{{--                <div class = "admin_table_header">--}}
+{{--                    <div class="admin_table_id">ID</div>--}}
+{{--                    <div class = "admin_table_name bold">Название</div>--}}
+{{--                    <div class = "admin_table_category bold">Категория</div>--}}
+{{--                    <div class = "admin_table_control bold">Управление</div>--}}
+{{--                </div>--}}
+{{--            @else--}}
+{{--                <h2>Магазины не найдены</h2>--}}
+{{--            @endif--}}
+{{--        </div>--}}
+
+
+{{--        <!--Магазин-->--}}
+{{--        <div class = "admin_table_header">--}}
+{{--            <div class="admin_table_id">@lang()</div>--}}
+{{--            <div class = "admin_table_name">@lang()</div>--}}
+{{--            <div class = "admin_table_category">--}}
+{{--                @lang($shop->category_id ? $categories[$shop->category_id] : 'Нет категории')--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <!--Магазин-->--}}
+{{--        @endforeach--}}
+
+{{--    </div>--}}
+{{--</main>--}}
+@include('components.header')
+
+<section class="grid grid-cols-12">
+    <div class="col-span-3">
+        @include('components.sidebarAdmin')
+    </div>
+
+    <div class="col-span-9 border-l bg-gray-50 pr-1">
+        <form method="get" class="relative bg-gray-100" action="{{route('shops.getShopsBySearch')}}">
+            <div class="absolute inset-y-0 start-0 flex items-center px-8 pointer-events-none ">
+                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+            </div>
+            <input type="search" name = "search" id="default-search" class="block w-full py-4 px-14 outline-none text-sm text-gray-900 border-b border-r bg-gray-100 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." value="{{request('search')}}" />
+            <button type="submit" class="absolute end-2.5 bottom-2.5 text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-4 py-2 font-bold"
+            >Search</button>
+        </form>
+
+        <div class="border-b border-r p-4 bg-gray-50 flex gap-x-8">
+            <a href = "{{route('shops.create')}}" class="border rounded-xl bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white font-bold text-base px-6 py-2"
+            >Create a shop</a>
+
         </div>
 
-        <div class = "admin_container_header">
-            @if(!$shops->isEmpty())
-                <h2>Управление магазинами</h2>
-                <div class = "admin_table_header">
-                    <div class="admin_table_id">ID</div>
-                    <div class = "admin_table_name bold">Название</div>
-                    <div class = "admin_table_category bold">Категория</div>
-                    <div class = "admin_table_control bold">Управление</div>
-                </div>
-            @else
-                <h2>Магазины не найдены</h2>
-            @endif
+{{--        <h3 class="font-bold mt-10 ml-6 pb-6 text-xl">Shop list</h3>--}}
+
+        <div class="grid grid-cols-12 text-base border-b bg-gray-50">
+            <div class="col-span-1 font-bold pl-3 pt-1 pb-1">ID</div>
+
+            <div class="col-span-4 font-bold pl-3 pt-1 pb-1">Title</div>
+
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1">Rating</div>
+
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1">Category</div>
+
+            <div class="col-span-3 font-bold pl-3 pt-1 pb-1">Control</div>
         </div>
 
         @foreach($shops as $key => $shop)
-        <!--Магазин-->
-        <div class = "admin_table_header">
-            <div class="admin_table_id">@lang((request('page') ?? 1) * 8 + $key - 7)</div>
-            <div class = "admin_table_name">@lang($shop->title)</div>
-            <div class = "admin_table_category">
-                @lang($shop->category_id ? $categories[$shop->category_id] : 'Нет категории')
-            </div>
-            <form action="{{route('shops.destroy', $shop->id)}}" method="POST" class = "admin_table_control">
-                @csrf
-                @method('DELETE')
-                <a class = "admin_table_edit" href = "{{route('shops.edit', $shop->id)}}">edit</a>
-                <button class = "admin_table_delete" type="SUBMIT">delete</button>
-            </form>
-        </div>
-        <!--Магазин-->
-        @endforeach
+            <div class="grid grid-cols-12 border-b">
+                <div class="col-span-1 font-bold pl-3 pt-3 pb-3 border-r">{{(request('page') ?? 1) * 10 + $key - 9}}</div>
 
+                <div class="col-span-4 text-gray-700 pl-3 pt-3 pb-3 hover:text-indigo-600 hover:bg-gray-100 cursor-pointer border-r">
+                    <a href="{{route('shop.index', $shop->id)}}">
+                        {{$shop->title}}
+                    </a>
+                </div>
+
+                <div class="col-span-2 pl-3 pt-3 pb-3 border-r">
+                    @for($i = 1; $i <= 5; $i++)
+                        @if ($i <= $shop->rating)
+                            <i class="active fa-solid fa-star"></i>
+                        @else
+                            <i class="fa-regular fa-star"></i>
+                        @endif
+                    @endfor
+                </div>
+
+                <div class="col-span-2 pl-3 pt-3 pb-3 border-r">
+                    <span class="cursor-default relative z-10 rounded-full bg-gray-100 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-200">{{$shop->category_id ? $categories[$shop->category_id] : "No category"}}</span>
+                </div>
+
+                <form action="{{route('shops.destroy', $shop->id)}}" method="POST" class = "flex gap-x-12 col-span-3 pl-3 pt-3 pb-3 border-r">
+                    @csrf
+                    @method('DELETE')
+                    <a href = "{{route('shops.edit', $shop->id)}}" class="block text-white rounded-full font-medium bg-green-600 px-4 py-0.5 hover:bg-green-700"
+                    >Edit</a>
+                    <button type="submit" class="block text-white rounded-full font-medium bg-red-600 px-4 py-0.5 hover:bg-red-700"
+                    >Delete</button>
+                </form>
+            </div>
+        @endforeach
         <div class = "pagination_main" style="margin-top: 30px">
-            {{ $shops->onEachSide(8)->links('components.pagination') }}
+            {{ $shops->onEachSide(10)->links('components.pagination') }}
         </div>
     </div>
-</main>
+
+</section>
 
 
 <!--FOOTER-->

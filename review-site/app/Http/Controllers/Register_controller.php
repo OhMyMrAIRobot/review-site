@@ -24,6 +24,6 @@ class Register_controller extends Controller
             Auth::login($user, $remember);
             return redirect()->route('main.index');
         }
-        return redirect()->route('register.index')->withErrors(["formError" => "Произошла ошибка"]);
+        return redirect()->route('register.index')->withErrors(["formError" => "Something going wrong! Please try again!"]);
     }
 }

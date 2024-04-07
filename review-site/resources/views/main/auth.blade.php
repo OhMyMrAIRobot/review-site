@@ -27,17 +27,15 @@
 <section class="bg-gray-50">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-20">
 
-        @if (session('status_ok'))
-            <div id="toast-success" class="flex items-center w-full max-w-md p-4 mb-4 text-gray-500 bg-white rounded-lg shadow" role="alert">
-                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                    </svg>
-                    <span class="sr-only">Check icon</span>
-                </div>
-                <div class="ms-3 text-sm font-normal text-green-500">{{session('status_ok')}}</div>
-            </div>
-        @endif
+        <div class="w-full max-w-md mx-auto">
+            @if (session('status_ok'))
+                @component('components.success', ['status' => session('status_ok')])@endcomponent
+            @elseif ($errors->any())
+                @foreach ($errors->all() as $error)
+                    @component('components.error', ['status' => $error])@endcomponent
+                @endforeach
+            @endif
+        </div>
 
         <div class="w-full bg-white rounded-lg shadow dark:border lg:mt-0 max-w-md lg:p-0">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -48,7 +46,7 @@
                     @csrf
                     <div>
                         <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your username</label>
-                        <input type="text" name = "username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Username..." required="" value="{{old('username')}}">
+                        <input type="text" name = "username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Username..." value="{{old('username')}}">
                     </div>
 
                     <div>
@@ -56,7 +54,7 @@
                             <span>Password</span>
                             <a href="{{route('password.index')}}" class="text-indigo-600 hover:underline">Forgot password?</a>
                         </label>
-                        <input type="password" name = "password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+                        <input type="password" name = "password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
                     </div>
 
                     <div class="flex items-start">
