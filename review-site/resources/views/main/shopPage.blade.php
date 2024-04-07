@@ -106,7 +106,7 @@
         <h1 class="text-3xl font-bold leading-tight tracking-tight border-b pb-2 text-gray-900 mt-10">
             Leave a review
         </h1>
-        <div class="flex flex-col mt-4 w-1/2">
+        <div class="flex flex-col mt-4 w-full lg:w-1/2 ">
             @if(session('status_ok'))
                 @component('components.success', ['status' => session('status_ok')])@endcomponent
             @elseif ($errors->any())

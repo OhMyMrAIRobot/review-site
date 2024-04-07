@@ -3,15 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackRequest;
+use App\Http\Requests\sendMailRequest;
+use App\Mail\DemoEmail;
 use App\Models\Feedback;
+use http\Env\Request;
+use Illuminate\Support\Facades\Mail;
 
 class Feedback_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $feedbacks = Feedback::orderBy('created_at', 'desc')->paginate(6);
+        $feedbacks = Feedback::orderBy('created_at', 'desc')->paginate(10);
         $feedbacks->withPath('/admin/feedback');
         return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
+    }
+
+    public function reply($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $feedback = Feedback::find($id);
+        return view('admin/feedback.adminFeedbackReply', ['feedback' => $feedback]);
+    }
+
+    public function send(sendMailRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $objDemo = new \stdClass();
+        $objDemo->title = $request->title;
+        $objDemo->text = $request->text;
+        $objDemo->sender = $request->sender;
+        $objDemo->receiver = $request->email;
+        $result = Mail::to($request->email)->send(new DemoEmail($objDemo));
+
+        if ($result) {
+            return redirect()->route('feedback.index')->with('status_ok', 'Message sent successfully!');
+        } else {
+            return redirect()->back()->with('status_err', 'Something went wrong! Please try again!');
+        }
     }
 
     public function getFeedbackBySearch(\Illuminate\Http\Request $request)
@@ -24,7 +50,7 @@ class Feedback_controller extends Controller
         })
             ->whereBetween('created_at', [$date_from, $date_to])
             ->orderBy('created_at', 'desc')
-            ->paginate(6);
+            ->paginate(10);
 
         $feedbacks->withPath('?search=' . $request->search . '&date_from=' . $request->date_from . '&date_to=' . $request->date_to);
         return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
@@ -33,19 +59,13 @@ class Feedback_controller extends Controller
     public function store(FeedbackRequest $request): \Illuminate\Http\RedirectResponse
     {
         Feedback::create($request->all());
-        return redirect()->route('main.index')->with('success', 'Feedback created successfully.');
+        return redirect()->back()->with('success', 'Feedback created successfully.');
     }
 
-    public function read($id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
-    {
-        $feedback = Feedback::find($id);
-        return view('admin/feedback.adminFeedbackRead', ['feedback' => $feedback]);
-    }
-
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $feedback = Feedback::find($id);
         $feedback->delete();
-        return redirect()->route('feedback.index')->with('success', 'Feedback deleted successfully');
+        return redirect()->back()->with('status_ok', 'Feedback deleted successfully');
     }
 }

@@ -85,28 +85,23 @@
         <div class="border-b border-r p-4 bg-gray-50 flex gap-x-8">
             <a href = "{{route('shops.create')}}" class="border rounded-xl bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white font-bold text-base px-6 py-2"
             >Create a shop</a>
-
         </div>
 
-{{--        <h3 class="font-bold mt-10 ml-6 pb-6 text-xl">Shop list</h3>--}}
+        <div class="grid grid-cols-12 mt-1 text-base border-b bg-gray-50">
+            <div class="col-span-1 font-bold pl-3 pt-1 pb-1 border-b">ID</div>
 
-        <div class="grid grid-cols-12 text-base border-b bg-gray-50">
-            <div class="col-span-1 font-bold pl-3 pt-1 pb-1">ID</div>
+            <div class="col-span-4 font-bold pl-3 pt-1 pb-1 border-b">Title</div>
 
-            <div class="col-span-4 font-bold pl-3 pt-1 pb-1">Title</div>
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b">Rating</div>
 
-            <div class="col-span-2 font-bold pl-3 pt-1 pb-1">Rating</div>
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b">Category</div>
 
-            <div class="col-span-2 font-bold pl-3 pt-1 pb-1">Category</div>
+            <div class="col-span-3 font-bold pl-3 pt-1 pb-1 border-b">Control</div>
 
-            <div class="col-span-3 font-bold pl-3 pt-1 pb-1">Control</div>
-        </div>
-
-        @foreach($shops as $key => $shop)
-            <div class="grid grid-cols-12 border-b">
+            @foreach($shops as $key => $shop)
                 <div class="col-span-1 font-bold pl-3 pt-3 pb-3 border-r">{{(request('page') ?? 1) * 10 + $key - 9}}</div>
 
-                <div class="col-span-4 text-gray-700 pl-3 pt-3 pb-3 hover:text-indigo-600 hover:bg-gray-100 cursor-pointer border-r">
+                <div class="col-span-4 text-gray-500 pl-3 pt-3 pb-3 hover:text-indigo-600 hover:bg-gray-100 cursor-pointer border-r">
                     <a href="{{route('shop.index', $shop->id)}}">
                         {{$shop->title}}
                     </a>
@@ -129,13 +124,13 @@
                 <form action="{{route('shops.destroy', $shop->id)}}" method="POST" class = "flex gap-x-12 col-span-3 pl-3 pt-3 pb-3 border-r">
                     @csrf
                     @method('DELETE')
-                    <a href = "{{route('shops.edit', $shop->id)}}" class="block text-white rounded-full font-medium bg-green-600 px-4 py-0.5 hover:bg-green-700"
+                    <a href = "{{route('shops.edit', $shop->id)}}" class="block h-fit text-white rounded-full font-medium bg-green-600 px-4 py-0.5 hover:bg-green-700"
                     >Edit</a>
-                    <button type="submit" class="block text-white rounded-full font-medium bg-red-600 px-4 py-0.5 hover:bg-red-700"
+                    <button type="submit" class="block h-fit text-white rounded-full font-medium bg-red-600 px-4 py-0.5 hover:bg-red-700"
                     >Delete</button>
                 </form>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
         <div class = "pagination_main" style="margin-top: 30px">
             {{ $shops->onEachSide(10)->links('components.pagination') }}
         </div>

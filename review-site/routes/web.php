@@ -86,7 +86,8 @@ Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (
     // Обратная связь
     Route::get('/feedback', Feedback_controller::class . '@index')->name('feedback.index');
     Route::get('/feedback/get', Feedback_controller::class . '@getFeedbackBySearch')->name('feedback.getFeedbackBySearch');
-    Route::get('/feedback/{feedback}/read', Feedback_controller::class . '@read')->middleware('feedback.check')->name('feedback.read');
+    Route::get('/feedback/{feedback}/reply', Feedback_controller::class . '@reply')->middleware('feedback.check')->name('feedback.reply');
+    Route::post('/feedback/send', Feedback_controller::class . '@send')->name('feedback.send');
     Route::delete('feedback/{feedback}', Feedback_controller::class . '@destroy')->middleware('feedback.check')->name('feedback.destroy');
 });
 

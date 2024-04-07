@@ -6,12 +6,16 @@ export default {
       "./resources/views/components/footer.blade.php",
       "./resources/views/components/pagination.blade.php",
       "./resources/views/components/sidebarAdmin.blade.php",
+      "./resources/views/components/success.blade.php",
+      "./resources/views/components/error.blade.php",
       "./resources/views/main/auth.blade.php",
       "./resources/views/main/register.blade.php",
       "./resources/views/main/forgotPassword.blade.php",
       "./resources/views/main/ResetPassword.blade.php",
       "./resources/views/main/shopPage.blade.php",
       "./resources/views/admin/shops/adminShops.blade.php",
+      "./resources/views/admin/feedback/adminFeedback.blade.php",
+      "./resources/views/admin/feedback/adminFeedbackReply.blade.php",
   ],
   theme: {
       extend: {

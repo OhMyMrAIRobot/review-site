@@ -1,6 +1,5 @@
 <div class="pl-8 py-4 pr-4 h-full bg-gray-100">
     <h3 class="text-3xl font-bold">Admin panel</h3>
-
     <p class="text-sm font-bold mt-10 text-gray-500">Navigation</p>
     <ul class="flex flex-col mt-3 gap-2 font-bold text-xl">
         <li class="flex py-3 px-3 items-center hover:text-indigo-600 hover:bg-gray-200 rounded
@@ -37,5 +36,6 @@
             <i class="fa-solid fa-right-from-bracket"></i>
             <a class = "w-full ml-3" href = "{{route('main.index')}}">Exit</a>
         </li>
+
     </ul>
 </div>

@@ -45,7 +45,7 @@ class Shop_controller extends Controller
         $request->img->move(public_path('images'), $imageName);
         $otherData = $request->except('img');
         Shop::create(['img' => $imageName] + $otherData);
-        return redirect()->route('shops.index')->with('success', 'Shop created successfully.');
+        return redirect()->route('shops.index')->with('status_ok', 'Shop created successfully.');
     }
 
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
@@ -68,13 +68,13 @@ class Shop_controller extends Controller
         }
 
         $shop->update(['img' => $imageName] + $otherData);
-        return redirect()->route('shops.index')->with('success', 'Shop updated successfully.');
+        return redirect()->route('shops.index')->with('status_ok', 'Shop updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $shop = Shop::find($id);
         $shop->delete();
-        return redirect()->route('shops.index')->with('success', 'Shop deleted successfully');
+        return redirect()->back()->with('status_ok', 'Shop deleted successfully');
     }
 }
