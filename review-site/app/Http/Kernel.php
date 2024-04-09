@@ -6,6 +6,7 @@ use App\Http\Middleware\AdminCheckMiddleware;
 use App\Http\Middleware\CategoryCheckMiddleware;
 use App\Http\Middleware\FeedbackCheckMiddleware;
 use App\Http\Middleware\ReviewCheckMiddleware;
+use App\Http\Middleware\SetLangMiddleware;
 use App\Http\Middleware\ShopCheckMiddleware;
 use App\Http\Middleware\TrackUserActivity;
 use App\Http\Middleware\UserCheckMiddleware;
@@ -39,10 +40,11 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            TrackUserActivity::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            TrackUserActivity::class,
+            SetLangMiddleware::class,
         ],
 
         'api' => [

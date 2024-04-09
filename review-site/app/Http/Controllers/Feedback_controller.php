@@ -6,6 +6,7 @@ use App\Http\Requests\FeedbackRequest;
 use App\Http\Requests\sendMailRequest;
 use App\Mail\DemoEmail;
 use App\Models\Feedback;
+use App\Models\User;
 use http\Env\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -32,6 +33,31 @@ class Feedback_controller extends Controller
         $objDemo->sender = $request->sender;
         $objDemo->receiver = $request->email;
         $result = Mail::to($request->email)->send(new DemoEmail($objDemo));
+
+        if ($result) {
+            return redirect()->route('feedback.index')->with('status_ok', 'Message sent successfully!');
+        } else {
+            return redirect()->back()->with('status_err', 'Something went wrong! Please try again!');
+        }
+    }
+
+    public function broadcastIndex()
+    {
+        return view('admin/feedback.AdminBroadcast');
+    }
+
+    public function broadcast(\Illuminate\Http\Request $request)
+    {
+        $objDemo = new \stdClass();
+        $objDemo->title = $request->title;
+        $objDemo->text = $request->text;
+        $objDemo->sender = $request->sender;
+        $users = User::all();
+        $result = null;
+        foreach ($users as $user){
+            $objDemo->receiver = $user->email;
+            $result = Mail::to($user->email)->send(new DemoEmail($objDemo));
+        }
 
         if ($result) {
             return redirect()->route('feedback.index')->with('status_ok', 'Message sent successfully!');

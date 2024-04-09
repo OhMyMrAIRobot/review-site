@@ -29,6 +29,7 @@ Route::get('/', MainPage_controller::class .'@index') -> name('main.index');
 Route::get('/shop/{shop}', ShopPage_controller::class .'@index')->middleware('shop.check:main')-> name('shop.index');
 Route::get('/category/{category}/shops', MainPage_controller::class . '@getShopsByCategory')->middleware('category.check:main')->name('main.getShopsByCategory');
 Route::get('/shops', MainPage_controller::class . '@getShopsBySearch')->name('main.getShopsBySearch');
+Route::get('/lang/{lang}', \App\Http\Controllers\Controller::class . '@changeLang')->name('changeLang');
 
 // Добавление отзыва
 Route::post('/reviews/store', Review_controller::class . '@store') ->name('reviews.store');
@@ -88,9 +89,7 @@ Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (
     Route::get('/feedback/get', Feedback_controller::class . '@getFeedbackBySearch')->name('feedback.getFeedbackBySearch');
     Route::get('/feedback/{feedback}/reply', Feedback_controller::class . '@reply')->middleware('feedback.check')->name('feedback.reply');
     Route::post('/feedback/send', Feedback_controller::class . '@send')->name('feedback.send');
+    Route::get('/feedback/broadcast', Feedback_controller::class . '@broadcastIndex')->name('feedback.broadcastIndex');
+    Route::post('/feedback/broadcast', Feedback_controller::class . '@broadcast')->name('feedback.broadcast');
     Route::delete('feedback/{feedback}', Feedback_controller::class . '@destroy')->middleware('feedback.check')->name('feedback.destroy');
 });
-
-
-
-

@@ -102,8 +102,8 @@
                 <div class="col-span-1 font-bold pl-3 pt-3 pb-3 border-r">{{(request('page') ?? 1) * 10 + $key - 9}}</div>
 
                 <div class="col-span-4 text-gray-500 pl-3 pt-3 pb-3 hover:text-indigo-600 hover:bg-gray-100 cursor-pointer border-r">
-                    <a href="{{route('shop.index', $shop->id)}}">
-                        {{$shop->title}}
+                    <a href="{{route('shop.index', $shop->id)}}" class="block w-full">
+                        {{ $shop->title }}
                     </a>
                 </div>
 

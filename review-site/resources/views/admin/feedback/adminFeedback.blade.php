@@ -42,6 +42,11 @@
             >Search</button>
         </form>
 
+        <div class="border-b border-r p-4 bg-gray-50 flex gap-x-8">
+            <a href = "{{route('feedback.broadcastIndex')}}" class="border rounded-xl bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white font-bold text-base px-6 py-2"
+            >Broadcast</a>
+        </div>
+
         @if (session('status_ok'))
             <div class="mt-3 w-full pl-3 border-b">
                 <div class="w-1/3">
