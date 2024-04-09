@@ -6,7 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/review-site/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/review-site/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/review-site/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/review-site/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/review-site/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/composer" />
@@ -120,6 +122,9 @@
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/jaybizzle/crawler-detect" />
+      <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/jenssegers/agent" />
+      <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/mobiledetect/mobiledetectlib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

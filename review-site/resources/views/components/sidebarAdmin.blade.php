@@ -32,6 +32,12 @@
             <a class = "w-full ml-3" href = "{{route('feedback.index')}}">Feedback</a>
         </li>
 
+        <li class="flex py-3 px-3 items-center hover:text-indigo-600 hover:bg-gray-200 rounded
+        @if(Str::startsWith(request()->url(), route('statistics.index'))) text-indigo-600 @endif">
+            <i class="fa-solid fa-chart-simple"></i>
+            <a class = "w-full ml-3" href = "{{route('statistics.index')}}">Statistics</a>
+        </li>
+
         <li class="flex py-3 px-3 items-center hover:text-indigo-600 hover:bg-gray-200 rounded">
             <i class="fa-solid fa-right-from-bracket"></i>
             <a class = "w-full ml-3" href = "{{route('main.index')}}">Exit</a>

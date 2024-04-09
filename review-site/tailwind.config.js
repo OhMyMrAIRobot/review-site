@@ -16,6 +16,7 @@ export default {
       "./resources/views/admin/shops/adminShops.blade.php",
       "./resources/views/admin/feedback/adminFeedback.blade.php",
       "./resources/views/admin/feedback/adminFeedbackReply.blade.php",
+      "./resources/views/admin/statistics/index.blade.php",
   ],
   theme: {
       extend: {

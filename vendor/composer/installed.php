@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'vendor_name/review-site',
+        'name' => '__root__',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '83e314d7ab44e1bc5e504fe80065d5f665b1c707',
+        'reference' => '3fa080f3728c0a2f435065ec694504c685dc927d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'vendor_name/review-site' => array(
+        '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '83e314d7ab44e1bc5e504fe80065d5f665b1c707',
+            'reference' => '3fa080f3728c0a2f435065ec694504c685dc927d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

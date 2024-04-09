@@ -2,8 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Activity;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Jenssegers\Agent\Agent;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrackUserActivity
@@ -15,17 +18,21 @@ class TrackUserActivity
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $visitedPages = json_decode($request->cookie('visited_pages'), true) ?? [];
-        $visitedPages[] = $request->fullUrl();
+        $agent = new Agent();
+        $agent->setUserAgent($request->header('User-Agent'));
 
-        $cookie = cookie('visited_pages', json_encode($visitedPages));
+        $activity = new Activity();
+        Auth::user() ?
+            $activity->user_id = \Illuminate\Support\Facades\Auth::user()->getUserId()
+            :
+            $activity->user_id = null;
+        $activity->ip = $request->ip();
+        $activity->browser = $agent->browser() . ' v.' . $agent->version($agent->browser());
+        $activity->os = $agent->platform();
+        $activity->url = $request->url();
+        $activity->save();
 
-        if ($request->has('search')) {
-            $searchHistory = json_decode($request->cookie('search_history'), true) ?? [];
-            $searchHistory[] = $request->input('search');
-            $cookie = cookie('search_history', json_encode($searchHistory));
-        }
-
-        return $next($request)->withCookie($cookie, );
+        return $next($request);
     }
+
 }

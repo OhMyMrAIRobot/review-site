@@ -130,6 +130,9 @@
       <path value="$PROJECT_DIR$/review-site/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/review-site/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/review-site/vendor/composer" />
+      <path value="$PROJECT_DIR$/review-site/vendor/jaybizzle/crawler-detect" />
+      <path value="$PROJECT_DIR$/review-site/vendor/jenssegers/agent" />
+      <path value="$PROJECT_DIR$/review-site/vendor/mobiledetect/mobiledetectlib" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

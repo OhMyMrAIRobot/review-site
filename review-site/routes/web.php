@@ -10,6 +10,7 @@ use App\Http\Controllers\ResetPassword_controller;
 use App\Http\Controllers\Review_controller;
 use App\Http\Controllers\Shop_controller;
 use App\Http\Controllers\ShopPage_controller;
+use App\Http\Controllers\Statistics_controller;
 use App\Http\Controllers\User_controller;
 use Illuminate\Support\Facades\Route;
 
@@ -92,4 +93,7 @@ Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (
     Route::get('/feedback/broadcast', Feedback_controller::class . '@broadcastIndex')->name('feedback.broadcastIndex');
     Route::post('/feedback/broadcast', Feedback_controller::class . '@broadcast')->name('feedback.broadcast');
     Route::delete('feedback/{feedback}', Feedback_controller::class . '@destroy')->middleware('feedback.check')->name('feedback.destroy');
+
+    // Статистика
+    Route::get('/statistics', Statistics_controller::class . '@index')->name('statistics.index');
 });
