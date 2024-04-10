@@ -18,7 +18,7 @@ class Auth_controller extends Controller
     public function logout(): \Illuminate\Http\RedirectResponse
     {
         Auth::logout();
-        return redirect()->route('main.index');
+        return redirect()->back();
     }
 
     public function login(AuthRequest $request): \Illuminate\Http\RedirectResponse

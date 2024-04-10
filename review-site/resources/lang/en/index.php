@@ -1,5 +1,6 @@
 <?php
 return[
+    'page' => 'Main page',
     'lastReviews' => 'Last reviews',
     'shops' => 'Shops',
     'noResults' => 'No results found!',

@@ -7,7 +7,7 @@
             <div class="flex items-center lg:order-2">
                 @if(!\Illuminate\Support\Facades\Auth::check())
                     <a href = "{{route("auth.index")}}" class="text-white hover:bg-gray-700 text-base rounded-lg px-4 py-2 focus:ring-4 mr-2">@lang('header.logIn')</a>
-                    <a href = "{{route('register.index')}}" class="text-white text-base focus:ring-primary-300 bg-primary-700 hover:bg-primary-800 focus:ring-4 rounded-lg py-2 px-4 mr-2">@lang('header.signUp')</a>
+                    <a href = "{{route('register.index')}}" class="text-white text-base focus:ring-primary-300 bg-primary-700 hover:bg-primary-800 focus:ring-4 rounded-lg py-2 px-4 mr-4">@lang('header.signUp')</a>
                 @else
                     <a class="text-white mr-2 text-xl cursor-pointer px-4 py-2 focus:ring-4"
                     ><i class = "fa fa-user mr-1"></i>{{(\Illuminate\Support\Facades\Auth::user()->getUsername())}}
@@ -32,7 +32,7 @@
                             </div>
                     @endswitch
 
-                    <div class="absolute hidden langDrop ">
+                    <div class="absolute hidden langDrop">
                         <ul class="flex flex-col gap-y-2.5 px-5 py-4 mt-6 bg-gray-700 ml-3 rounded-xl">
                             @if(session('lang') !== 'ru' )
                                 <li class="flex items-center cursor-pointer">
@@ -81,11 +81,6 @@
                             </li>
                         @endif
                     @endif
-                    <li class="flex items-center">
-
-{{--                        <a href = "{{route('changeLang', session('lang') === 'en' ? 'ru' : 'en')}}"--}}
-{{--                           class="block text-gray-500 py-2 rounded hover:text-white">Lng</a>--}}
-                    </li>
                 </ul>
             </div>
         </div>
