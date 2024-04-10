@@ -11,6 +11,7 @@ use App\Http\Controllers\Review_controller;
 use App\Http\Controllers\Shop_controller;
 use App\Http\Controllers\ShopPage_controller;
 use App\Http\Controllers\Statistics_controller;
+use App\Http\Controllers\TrackLink_controller;
 use App\Http\Controllers\User_controller;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::get('/forgotPassword', ForgotPassword_controller::class . '@index')->name
 Route::post('/forgotPassword', ForgotPassword_controller::class . '@store')->name('password.send');
 Route::get('/resetPassword', ResetPassword_controller::class . '@index')->name('password.reset');
 Route::post('/resetPassword', ResetPassword_controller::class . '@store')->name('password.update');
+
+Route::get('/trackLink', TrackLink_controller::class . '@store')->name('track.link');
 
 // Админ панель
 Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (){
@@ -96,4 +99,5 @@ Route::prefix('admin') -> middleware(['auth','admin.check']) -> group(function (
 
     // Статистика
     Route::get('/statistics', Statistics_controller::class . '@index')->name('statistics.index');
+    Route::get('/statistics/get', Statistics_controller::class . '@search')->name('statistics.search');
 });

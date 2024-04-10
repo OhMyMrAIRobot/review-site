@@ -32,6 +32,8 @@ class TrackUserActivity
         $activity->url = $request->url();
         $activity->save();
 
+
+
         return $next($request);
     }
 

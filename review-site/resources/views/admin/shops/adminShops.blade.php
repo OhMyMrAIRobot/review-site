@@ -22,42 +22,6 @@
 </head>
 <body>
 
-<!--HEADER-->
-{{--@include('components.adminHeader')--}}
-
-{{--<main class = "admin-container">--}}
-
-{{--    <div class = "admin-right_cont">--}}
-{{--        <div class = "admin_btn_container">--}}
-
-{{--        <div class = "admin_container_header">--}}
-{{--            @if(!$shops->isEmpty())--}}
-{{--                <h2>Управление магазинами</h2>--}}
-{{--                <div class = "admin_table_header">--}}
-{{--                    <div class="admin_table_id">ID</div>--}}
-{{--                    <div class = "admin_table_name bold">Название</div>--}}
-{{--                    <div class = "admin_table_category bold">Категория</div>--}}
-{{--                    <div class = "admin_table_control bold">Управление</div>--}}
-{{--                </div>--}}
-{{--            @else--}}
-{{--                <h2>Магазины не найдены</h2>--}}
-{{--            @endif--}}
-{{--        </div>--}}
-
-
-{{--        <!--Магазин-->--}}
-{{--        <div class = "admin_table_header">--}}
-{{--            <div class="admin_table_id">@lang()</div>--}}
-{{--            <div class = "admin_table_name">@lang()</div>--}}
-{{--            <div class = "admin_table_category">--}}
-{{--                @lang($shop->category_id ? $categories[$shop->category_id] : 'Нет категории')--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <!--Магазин-->--}}
-{{--        @endforeach--}}
-
-{{--    </div>--}}
-{{--</main>--}}
 @include('components.header')
 
 <section class="grid grid-cols-12">

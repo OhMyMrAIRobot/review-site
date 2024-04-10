@@ -22,7 +22,7 @@
             <h3 class = "font-bold text-white text-3xl pb-2">Quick links</h3>
             <ul class="transition-all ml-2 flex flex-col gap-1">
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
-                    <a href="#">Quick_link_1</a>
+                    <a href="{{route('track.link', ['url' => urlencode("https://vk.com/")])}}">Track link</a>
                 </li>
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
                     <a href="#">Quick_link_2</a>
