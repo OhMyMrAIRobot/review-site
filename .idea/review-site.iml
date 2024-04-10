@@ -6,7 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/review-site/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/review-site/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/review-site/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
-      <sourceFolder url="file://$MODULE_DIR$/review-site/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/review-site/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/brick/math" />

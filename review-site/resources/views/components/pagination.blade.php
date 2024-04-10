@@ -5,21 +5,20 @@
     <div class="flex items-center justify-between px-4 py-3 sm:px-6">
         <div class="flex flex-1 justify-between sm:hidden">
             <a href="{{ $paginator->url($paginator->currentPage() - 1) }}" class="{{ ($paginator->currentPage() == 1) ? "pointer-events-none" : "hover:bg-gray-100" }}
-            relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">Previous</a>
+            relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700"
+            >@lang('pagination.previous')</a>
             <a href="{{ $paginator->url($paginator->currentPage() + 1)}}" class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? 'pointer-events-none' : '' }}
-            relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+            relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >@lang('pagination.next')</a>
         </div>
         <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
-                    Showing
-                    <span class="font-medium">{{($paginator->currentPage() - 1) * $perPage + 1}}</span>
-                    to
-                    <span class="font-medium">{{
-                        min(($paginator->currentPage() - 1) * $perPage + $perPage, $paginator->total())}}</span>
-                    of
-                    <span class="font-medium">{{$paginator->total()}}</span>
-                    results
+                    {!! trans('pagination.pages', [
+                        'from' => '<span class="font-medium">' . (($paginator->currentPage() - 1) * $perPage + 1) . '</span>',
+                        'to' => '<span class="font-medium">' . min(($paginator->currentPage() - 1) * $perPage + $perPage, $paginator->total()) . '</span>',
+                        'total' => '<span class="font-medium">' . $paginator->total() . '</span>'
+                    ]) !!}
                 </p>
             </div>
             <div>
