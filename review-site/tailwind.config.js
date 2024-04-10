@@ -14,6 +14,7 @@ export default {
       "./resources/views/main/ResetPassword.blade.php",
       "./resources/views/main/shopPage.blade.php",
       "./resources/views/admin/shops/adminShops.blade.php",
+      "./resources/views/admin/shops/addShop.blade.php",
       "./resources/views/admin/feedback/adminFeedback.blade.php",
       "./resources/views/admin/feedback/adminFeedbackReply.blade.php",
       "./resources/views/admin/statistics/index.blade.php",

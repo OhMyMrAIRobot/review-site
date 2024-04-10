@@ -32,7 +32,7 @@
                             </div>
                     @endswitch
 
-                    <div class="absolute hidden langDrop">
+                    <div class="absolute hidden langDrop z-50">
                         <ul class="flex flex-col gap-y-2.5 px-5 py-4 mt-6 bg-gray-700 ml-3 rounded-xl">
                             @if(session('lang') !== 'ru' )
                                 <li class="flex items-center cursor-pointer">

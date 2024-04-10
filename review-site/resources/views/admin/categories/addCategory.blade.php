@@ -8,11 +8,6 @@
     <!--css-->
     @vite([
     'resources/css/style.css',
-    'resources/css/header.css',
-    'resources/css/footer.css',
-    'resources/css/admin.css',
-    'resources/css/adminCategory.css',
-    'resources/css/adminAddCategory.css',
     ])
 
     <!--icons-->
