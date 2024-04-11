@@ -37,14 +37,24 @@
             </div>
             <input type="search" name = "search" id="default-search" class="block w-full py-4 px-14 outline-none text-sm text-gray-900 border-b border-r bg-gray-100 focus:ring-blue-500 focus:border-blue-500"
                    placeholder="@lang('admin/shops.search')..." value="{{request('search')}}" />
-            <button type="submit" class="absolute end-2.5 bottom-2.5 text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-4 py-2 font-bold"
-            >@lang('admin/shops.search')</button>
+            <div class="absolute flex end-2.5 bottom-2.5 gap-x-3 items-center">
+                <button type="submit" class="text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-4 py-2 font-bold"
+                >@lang('admin/shops.search')</button>
+            </div>
         </form>
 
         <div class="border-b border-r p-4 bg-gray-50 flex gap-x-8">
             <a href = "{{route('shops.create')}}" class="border rounded-xl bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white font-bold text-base px-6 py-2"
             >@lang('admin/shops.create')</a>
         </div>
+
+        @if (session('status_ok'))
+            <div class="mt-3 w-full pl-3 border-b">
+                <div class="w-1/3">
+                    @component('components.success', ['status' => session('status_ok')])@endcomponent
+                </div>
+            </div>
+        @endif
 
         <div class="grid grid-cols-12 mt-1 text-base border-b bg-gray-50">
             <div class="col-span-1 font-bold pl-3 pt-1 pb-1 border-b">ID</div>

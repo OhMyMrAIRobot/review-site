@@ -27,7 +27,7 @@ class Shop_controller extends Controller
         return view('admin/shops.addShop', ['categories' => $categories]);
     }
 
-    public function getShopsBySearch(\Illuminate\Http\Request $request)
+    public function getShopsBySearch(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $shops = Shop::where('title', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(10);
         foreach ($shops as $shop) {

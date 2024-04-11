@@ -12,7 +12,7 @@ class Category_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(8);
+        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
         $categories->withPath('/admin/categories');
         return view('admin/categories.adminCategory', ['categories' => $categories]);
     }
@@ -32,7 +32,7 @@ class Category_controller extends Controller
     public function store(CategoryRequest $request): \Illuminate\Http\RedirectResponse
     {
         Category::create($request->all());
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('categories.index')->with('status_ok', 'Category created successfully.');
     }
 
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
@@ -45,13 +45,13 @@ class Category_controller extends Controller
     {
         $category = Category::find($id);
         $category->update($request->all());
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('status_ok', 'Category updated successfully.');
     }
 
     public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return redirect()->route('categories.index')->with('status_ok', 'Category deleted successfully');
     }
 }

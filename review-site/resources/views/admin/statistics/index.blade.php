@@ -70,7 +70,7 @@
 
             <div class="col-span-4 font-bold pl-3 pt-1 pb-1 border-b">Url</div>
 
-            <div class="col-span-2 pl-3 pt-3 pb-3 border-r border-b">Date</div>
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-r border-b">Date</div>
 
             @foreach($activities as $key => $activity)
                 <div style="overflow-wrap: break-word" class="col-span-1 font-bold pl-3 pt-3 pb-3 border-b border-r">{{(request('page') ?? 1) * 50 + $key - 49}}</div>

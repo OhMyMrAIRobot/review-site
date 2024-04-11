@@ -76,7 +76,7 @@
                     </a>
                 </div>
 
-                <div class="col-span-2 text-gray-500 pl-3 border-b pt-3 pb-3 border-r">{{ \Carbon\Carbon::parse($feedback->created_at)->format('G:i M j, Y') }}</div>
+                <div class="col-span-2 text-gray-500 pl-3 border-b pt-3 pb-3 border-r ">{{ \Carbon\Carbon::parse($feedback->created_at)->format('G:i M j, Y') }}</div>
 
                 <div class="col-span-3 text-gray-500 pl-3 pt-3 pb-3 border-r border-b overflow-hidden" style="text-overflow: ellipsis">{{$feedback->email}}</div>
 
