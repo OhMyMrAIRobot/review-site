@@ -2,6 +2,7 @@
 return [
     'pageIndex' => 'Shops',
     'pageAdd' => 'Create a shop',
+    'titleEdit' => 'Edit a shop',
     'search' => 'Search',
     'create' => 'Create a shop',
     'title' => 'Title',
@@ -14,4 +15,5 @@ return [
     'description' => 'Description',
     'img' => 'Image',
     'contact' => 'Contact information',
+    'save' => 'Save'
 ];

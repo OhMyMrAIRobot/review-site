@@ -43,7 +43,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{route('shops.store')}}" enctype="multipart/form-data" class="bg-white py-4 px-6 flex flex-col gap-y-6 h-fit w-1/2 border rounded-xl">
+        <form method="POST" action="{{route('shops.store')}}" enctype="multipart/form-data" class="bg-white  py-4 px-6 flex flex-col gap-y-6 h-fit w-1/2 border rounded-xl">
             @csrf
             <div>
                 <label for = "title" class="block mb-1 text-sm font-medium text-gray-900">@lang('admin/shops.title')</label>
