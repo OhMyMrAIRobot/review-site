@@ -11,7 +11,7 @@ class Review_controller extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $reviews = Review::orderBy('created_at', 'desc')->paginate(6);
+        $reviews = Review::orderBy('created_at', 'desc')->paginate(10);
         $reviews->withPath('/admin/reviews');
         foreach ($reviews as $review){
             $author = User::where('id', $review->user_id)->first()->username;
@@ -33,7 +33,7 @@ class Review_controller extends Controller
             })
             ->whereBetween('created_at', [$date_from, $date_to])
             ->orderBy('created_at', 'desc')
-            ->paginate(6);
+            ->paginate(10);
 
         foreach ($reviews as $review){
             $author = User::where('id', $review->user_id)->first()->username;
@@ -65,13 +65,13 @@ class Review_controller extends Controller
     {
         $review = Review::find($id);
         $review->update($request->all());
-        return redirect()->route('reviews.index')->with('success', 'Review updated successfully.');
+        return redirect()->route('reviews.index')->with('status_ok', 'Review updated successfully.');
     }
 
     public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $review = Review::find($id);
         $review->delete();
-        return redirect()->route('reviews.index')->with('success', 'Review deleted successfully');
+        return redirect()->route('reviews.index')->with('status_ok', 'Review deleted successfully');
     }
 }

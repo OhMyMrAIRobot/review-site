@@ -74,6 +74,7 @@
                     @else
                         <option value="-1" selected>@lang('admin/shops.category')</option>
                     @endif
+
                     @foreach($categories as $key => $category)
                         @if (!$shop->category_id)
                             <option value="{{$key}}">@lang($category)</option>

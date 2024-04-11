@@ -21,6 +21,10 @@ export default {
       "./resources/views/admin/categories/editCategory.blade.php",
       "./resources/views/admin/feedback/adminFeedback.blade.php",
       "./resources/views/admin/feedback/adminFeedbackReply.blade.php",
+      "./resources/views/admin/feedback/adminReviews.blade.php",
+      "./resources/views/admin/feedback/editReview.blade.php",
+      "./resources/views/admin/users/adminUsers.blade.php",
+      "./resources/views/admin/users/editUser.blade.php",
       "./resources/views/admin/statistics/index.blade.php",
   ],
   theme: {

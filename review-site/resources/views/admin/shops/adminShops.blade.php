@@ -59,13 +59,13 @@
         <div class="grid grid-cols-12 mt-1 text-base border-b bg-gray-50">
             <div class="col-span-1 font-bold pl-3 pt-1 pb-1 border-b">ID</div>
 
-            <div class="col-span-4 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/shops.title')</div>
+            <div class="col-span-4 font-bold pl-3 pt-1 pb-1 border-b overflow-x-hidden">@lang('admin/shops.title')</div>
 
-            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/shops.rating')</div>
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b overflow-x-hidden">@lang('admin/shops.rating')</div>
 
-            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/shops.category')</div>
+            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b overflow-x-hidden">@lang('admin/shops.category')</div>
 
-            <div class="col-span-3 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/shops.control')</div>
+            <div class="col-span-3 font-bold pl-3 pt-1 pb-1 border-b overflow-x-hidden">@lang('admin/shops.control')</div>
 
             @foreach($shops as $key => $shop)
                 <div class="col-span-1 font-bold pl-3 pt-3 pb-3 border-r">{{(request('page') ?? 1) * 10 + $key - 9}}</div>

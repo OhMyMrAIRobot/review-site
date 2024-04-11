@@ -57,23 +57,23 @@
             </div>
         @endif
 
-        <div class="grid grid-cols-8 mt-1 text-base border-b bg-gray-50">
+        <div class="grid grid-cols-12 mt-1 text-base border-b bg-gray-50">
             <div class="col-span-1 font-bold pl-3 pt-1 pb-1 border-b">Id</div>
 
-            <div class="col-span-3 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/categories.category')</div>
+            <div class="col-span-5 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/categories.category')</div>
 
-            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/categories.created')</div>
+            <div class="col-span-3 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/categories.created')</div>
 
-            <div class="col-span-2 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/categories.control')</div>
+            <div class="col-span-3 font-bold pl-3 pt-1 pb-1 border-b">@lang('admin/categories.control')</div>
 
             @foreach($categories as $key => $category)
-                <div class="col-span-1 font-bold pl-3 pt-3 pb-3 border-b border-r">{{(request('page') ?? 1) * 10 + $key - 9}}</div>
+                <div class="col-span-1 font-bold pl-3 pt-3 pb-3 border-b border-r overflow-x-hidden">{{(request('page') ?? 1) * 10 + $key - 9}}</div>
 
-                <div class="col-span-3 text-gray-500 pl-3 border-b pt-3 pb-3 border-r">{{ $category->category }}</div>
+                <div class="col-span-5 text-gray-500 pl-3 border-b pt-3 pb-3 border-r overflow-x-hidden">{{ $category->category }}</div>
 
-                <div class="col-span-2 text-gray-500 pl-3 border-b pt-3 pb-3 border-r">{{ \Carbon\Carbon::parse($category->created_at)->format('G:i M j, Y') }}</div>
+                <div class="col-span-3 text-gray-500 pl-3 border-b pt-3 pb-3 border-r overflow-x-hidden">{{ \Carbon\Carbon::parse($category->created_at)->format('G:i M j, Y') }}</div>
 
-                <form action="{{route('categories.destroy', $category->id)}}" method="POST" class = "flex gap-x-12 col-span-2 border-b pl-3 pt-3 pb-3 border-r">
+                <form action="{{route('categories.destroy', $category->id)}}" method="POST" class = "flex gap-x-12 col-span-3 border-b pl-3 pt-3 pb-3 border-r">
                     @csrf
                     @method('DELETE')
                     <a href = "{{route('categories.edit', $category->id)}}" class="block h-fit text-white rounded-full font-medium bg-green-600 px-4 py-0.5 hover:bg-green-700"
