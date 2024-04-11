@@ -6,15 +6,15 @@
         <div class="flex flex-1 justify-between sm:hidden">
             <a href="{{ $paginator->url($paginator->currentPage() - 1) }}" class="{{ ($paginator->currentPage() == 1) ? "pointer-events-none" : "hover:bg-gray-100" }}
             relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700"
-            >@lang('pagination.previous')</a>
+            >@lang('components/pagination.previous')</a>
             <a href="{{ $paginator->url($paginator->currentPage() + 1)}}" class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? 'pointer-events-none' : '' }}
             relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >@lang('pagination.next')</a>
+            >@lang('components/pagination.next')</a>
         </div>
         <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
-                    {!! trans('pagination.pages', [
+                    {!! trans('components/pagination.pages', [
                         'from' => '<span class="font-medium">' . (($paginator->currentPage() - 1) * $perPage + 1) . '</span>',
                         'to' => '<span class="font-medium">' . min(($paginator->currentPage() - 1) * $perPage + $perPage, $paginator->total()) . '</span>',
                         'total' => '<span class="font-medium">' . $paginator->total() . '</span>'

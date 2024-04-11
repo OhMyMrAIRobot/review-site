@@ -28,7 +28,7 @@
 
 <section class="mx-auto max-w-screen-xl px-3">
 
-    <h1 class="text-3xl font-bold leading-tight border-b pb-2 tracking-tight text-gray-900 mt-10">@lang('shop.shopInfo')</h1>
+    <h1 class="text-3xl font-bold leading-tight border-b pb-2 tracking-tight text-gray-900 mt-10">@lang('main/shop.shopInfo')</h1>
 
     <div class="lg:grid lg:grid-cols-12 flex flex-col gap-y-6 gap-x-4 px-2 py-5 mt-10 bg-white rounded-2xl">
         <div class="col-span-2 lg:mx-auto">
@@ -57,7 +57,7 @@
 
         <div class="col-span-4 w-1/2 lg:w-3/4 lg:mx-auto">
             <div class="flex flex-col gap-3">
-                <h3 class="font-bold text-2xl border-b pb-2">@lang('shop.customerReviews')</h3>
+                <h3 class="font-bold text-2xl border-b pb-2">@lang('main/shop.customerReviews')</h3>
 
                 <div class="flex gap-2 items-center">
                     <div>
@@ -69,7 +69,7 @@
                             @endif
                         @endfor
                     </div>
-                    <p class="text-sm">@lang('shop.totalReviews', ['count' => $reviewsCount])</p>
+                    <p class="text-sm">@lang('main/shop.totalReviews', ['count' => $reviewsCount])</p>
                 </div>
 
                 <div class="flex flex-col gap-3 border-b pb-2">
@@ -98,11 +98,11 @@
 
     @if(!\Illuminate\Support\Facades\Auth::check())
         <h1 class="text-3xl font-bold leading-tight border-b pb-2 tracking-tight text-gray-900 mt-10">
-            @lang('shop.login')
+            @lang('main/shop.login')
         </h1>
     @else
         <h1 class="text-3xl font-bold leading-tight tracking-tight border-b pb-2 text-gray-900 mt-10">
-            @lang('shop.leaveReview')
+            @lang('main/shop.leaveReview')
         </h1>
         <div class="flex flex-col mt-4 w-full lg:w-1/2 ">
             @if(session('status_ok'))
@@ -122,13 +122,13 @@
                 <input name='shop_id' value="{{$shop->id}}" type="hidden">
                 <div>
                     <label for="title"></label>
-                    <input name="title" id="title" placeholder="@lang('shop.title')"
+                    <input name="title" id="title" placeholder="@lang('main/shop.title')"
                            class="text-base w-full border-none outline-none pb-2 px-4" value="{{old('title')}}">
                 </div>
 
                 <div>
                     <label for="text"></label>
-                    <textarea name='description' id="text" placeholder="@lang('shop.description')"
+                    <textarea name='description' id="text" placeholder="@lang('main/shop.description')"
                               class="text-sm w-full resize-none border-b mt-2 h-16 outline-none px-4 "
                     >{{old('description')}}</textarea>
                 </div>
@@ -143,7 +143,7 @@
                     </div>
                     <button class="border rounded px-2 py-1 bg-indigo-600 text-white hover:bg-indigo-700 text-center"
                             type="submit">
-                        @lang('shop.publish')
+                        @lang('main/shop.publish')
                     </button>
                 </div>
             </form>
@@ -152,9 +152,9 @@
 
     <h1 class="text-3xl font-bold leading-tight border-b pb-2 tracking-tight text-gray-900 mt-10">
         @if ($reviews->isEmpty())
-            @lang('shop.noReviews')
+            @lang('main/shop.noReviews')
         @else
-            @lang('shop.lastReviews')
+            @lang('main/shop.lastReviews')
         @endif
     </h1>
 

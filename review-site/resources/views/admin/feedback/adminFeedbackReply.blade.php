@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width = device - width, initial-scale = 1">
-    <title>Feedback reply</title>
+    <title>@lang('admin/feedback.pageReply')</title>
 
     <!--css-->
     @vite([
@@ -31,7 +31,7 @@
     </div>
 
     <div class="col-span-9 flex flex-col items-center gap-y-6 pb-10">
-        <h4 class="font-bold text-3xl mt-8">Message</h4>
+        <h4 class="font-bold text-3xl mt-8">@lang('admin/feedback.message')</h4>
         @if (session('status_err') || $errors->any())
             <div class="w-1/2">
                 @if (session('status_err'))
@@ -47,33 +47,32 @@
             {{$feedback->description}}
         </div>
 
-        <h4 class="font-bold text-3xl">Reply message</h4>
+        <h4 class="font-bold text-3xl">@lang('admin/feedback.replyMessage')</h4>
         <form method="POST" action="{{route('feedback.send')}}" class="bg-white py-3 h-fit w-1/2 border rounded-xl">
             @csrf
             <input type="hidden" name = "sender" value="{{\Illuminate\Support\Facades\Auth::user()->getUsername()}}">
             <div class="flex items-center">
-                <label class="pl-4 font-bold pb-2" for="email">Receiver: </label>
-                <input name="email" id="email" placeholder="To" readonly
+                <label class="pl-4 font-bold pb-2" for="email">@lang('admin/feedback.receiver'): </label>
+                <input name="email" id="email" readonly
                        class="text-base text-gray-500 w-full border-none outline-none pb-2 px-4" value="{{$feedback->email}}">
             </div>
 
             <div>
                 <label for="title"></label>
-                <input name="title" id="title" placeholder="Title..."
+                <input name="title" id="title" placeholder="@lang('admin/feedback.title')..."
                        class="text-base w-full font-bold border-none outline-none pb-2 px-4" value="{{old('title')}}">
             </div>
 
             <div>
                 <label for="text"></label>
-                <textarea name='text' id="text" placeholder="Write a description"
+                <textarea name='text' id="text" placeholder="@lang('admin/feedback.text')"
                           class="text-sm w-full resize-none border-b mt-2 h-32 outline-none px-4 "
                 >{{old('description')}}</textarea>
             </div>
 
             <div class="w-full flex justify-between px-4 items-center">
-                <button class="border rounded px-2 py-1 bg-indigo-600 text-white hover:bg-indigo-700 text-center"
-                        type="submit">
-                    Send
+                <button class="border rounded px-2 py-1 bg-indigo-600 text-white hover:bg-indigo-700 text-center" type="submit">
+                    @lang('admin/feedback.send')
                 </button>
             </div>
         </form>
