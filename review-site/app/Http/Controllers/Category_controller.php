@@ -14,19 +14,19 @@ class Category_controller extends Controller
     {
         $categories = Category::orderBy('created_at', 'desc')->paginate(10);
         $categories->withPath('/admin/categories');
-        return view('admin/categories.adminCategory', ['categories' => $categories]);
+        return view('admin/categories.index', ['categories' => $categories]);
     }
 
     public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
-        return view('admin/categories.addCategory');
+        return view('admin/categories.add');
     }
 
     public function getCategoriesBySearch(\Illuminate\Http\Request $request)
     {
         $categories = Category::where('category', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(8);
         $categories->withPath('?search=' . $request->search);
-        return view('admin/categories.adminCategory', ['categories' => $categories]);
+        return view('admin/categories.index', ['categories' => $categories]);
     }
 
     public function store(CategoryRequest $request): \Illuminate\Http\RedirectResponse
@@ -38,7 +38,7 @@ class Category_controller extends Controller
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $category = Category::find($id);
-        return view('admin/categories.editCategory', ['category' => $category]);
+        return view('admin/categories.edit', ['category' => $category]);
     }
 
     public function update(CategoryRequest $request, $id): \Illuminate\Http\RedirectResponse

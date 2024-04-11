@@ -13,21 +13,21 @@ class User_controller extends Controller
     {
         $users = User::paginate(10);
         $users->withPath('/admin/users');
-        return view('admin/users.adminUsers', ['users' => $users]);
+        return view('admin/users.index', ['users' => $users]);
     }
 
-    public function getUsersBySearch(\Illuminate\Http\Request $request)
+    public function getUsersBySearch(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $users = User::where('username', 'like', '%' . $request->search . '%')
             ->orWhere('email', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(10);
         $users->withPath('?search=' . $request->search);
-        return view('admin/users.adminUsers', ['users' => $users]);
+        return view('admin/users.index', ['users' => $users]);
     }
 
     public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $user = User::find($id);
-        return view('admin/users.editUser', ['user' => $user]);
+        return view('admin/users.edit', ['user' => $user]);
     }
 
     public function update(EditUserRequest $request, $id): \Illuminate\Http\RedirectResponse

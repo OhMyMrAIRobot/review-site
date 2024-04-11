@@ -16,13 +16,13 @@ class Feedback_controller extends Controller
     {
         $feedbacks = Feedback::orderBy('created_at', 'desc')->paginate(10);
         $feedbacks->withPath('/admin/feedback');
-        return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
+        return view('admin/feedback.index', ['feedbacks' => $feedbacks]);
     }
 
     public function reply($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $feedback = Feedback::find($id);
-        return view('admin/feedback.adminFeedbackReply', ['feedback' => $feedback]);
+        return view('admin/feedback.reply', ['feedback' => $feedback]);
     }
 
     public function send(sendMailRequest $request): \Illuminate\Http\RedirectResponse
@@ -41,9 +41,9 @@ class Feedback_controller extends Controller
         }
     }
 
-    public function broadcastIndex()
+    public function broadcastIndex(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('admin/feedback.AdminBroadcast');
+        return view('admin/feedback.broadcast');
     }
 
     public function broadcast(\Illuminate\Http\Request $request)
@@ -79,7 +79,7 @@ class Feedback_controller extends Controller
             ->paginate(10);
 
         $feedbacks->withPath('?search=' . $request->search . '&date_from=' . $request->date_from . '&date_to=' . $request->date_to);
-        return view('admin/feedback.adminFeedback', ['feedbacks' => $feedbacks]);
+        return view('admin/feedback.index', ['feedbacks' => $feedbacks]);
     }
 
     public function store(FeedbackRequest $request): \Illuminate\Http\RedirectResponse

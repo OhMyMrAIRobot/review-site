@@ -18,13 +18,13 @@ class Shop_controller extends Controller
         }
         $shops->withPath('/admin/shops');
         $categories = Category::all()->pluck('category', 'id')->all();
-        return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);
+        return view('admin/shops.index', ['shops' => $shops, 'categories' => $categories]);
     }
 
     public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $categories = Category::all();
-        return view('admin/shops.addShop', ['categories' => $categories]);
+        return view('admin/shops.add', ['categories' => $categories]);
     }
 
     public function getShopsBySearch(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
@@ -36,7 +36,7 @@ class Shop_controller extends Controller
         }
         $shops->withPath('?search=' . $request->search);
         $categories = Category::all()->pluck('category', 'id')->all();
-        return view('admin/shops.adminShops', ['shops' => $shops, 'categories' => $categories]);
+        return view('admin/shops.index', ['shops' => $shops, 'categories' => $categories]);
     }
 
     public function store(ShopRequest $request): \Illuminate\Http\RedirectResponse
@@ -53,7 +53,7 @@ class Shop_controller extends Controller
         $shop = Shop::find($id);
         $categories = Category::all()->pluck('category', 'id')->all();
 
-        return view('admin/shops.editShop', ['shop' => $shop, 'categories' => $categories]);
+        return view('admin/shops.edit', ['shop' => $shop, 'categories' => $categories]);
     }
 
     public function update(ShopRequest $request, $id): \Illuminate\Http\RedirectResponse

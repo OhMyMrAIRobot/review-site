@@ -17,7 +17,7 @@ class Review_controller extends Controller
             $author = User::where('id', $review->user_id)->first()->username;
             $review->author = $author;
         }
-        return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
+        return view('admin/reviews.index', ['reviews' => $reviews]);
     }
 
     public function getReviewsBySearch(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
@@ -40,7 +40,7 @@ class Review_controller extends Controller
             $review->author = $author;
         }
         $reviews->withPath('?search=' . $request->search . '&date_from=' . $request->date_from . '&date_to=' . $request->date_to);
-        return view('admin/reviews.adminReviews', ['reviews' => $reviews]);
+        return view('admin/reviews.index', ['reviews' => $reviews]);
     }
 
     public function store(ReviewRequest $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
@@ -58,7 +58,7 @@ class Review_controller extends Controller
         $review = Review::find($id);
         $author = User::where('id', $review->user_id)->first()->username;
         $review->author = $author;
-        return view('admin/reviews.editReview', ['review' => $review]);
+        return view('admin/reviews.edit', ['review' => $review]);
     }
 
     public function update(ReviewRequest $request, $id): \Illuminate\Http\RedirectResponse
