@@ -124,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/jaybizzle/crawler-detect" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/jenssegers/agent" />
       <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/mobiledetect/mobiledetectlib" />
+      <excludeFolder url="file://$MODULE_DIR$/review-site/vendor/stichoza/google-translate-php" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

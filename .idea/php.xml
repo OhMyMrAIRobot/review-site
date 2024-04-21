@@ -133,6 +133,7 @@
       <path value="$PROJECT_DIR$/review-site/vendor/jaybizzle/crawler-detect" />
       <path value="$PROJECT_DIR$/review-site/vendor/jenssegers/agent" />
       <path value="$PROJECT_DIR$/review-site/vendor/mobiledetect/mobiledetectlib" />
+      <path value="$PROJECT_DIR$/review-site/vendor/stichoza/google-translate-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

@@ -24,15 +24,19 @@
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
                     <a href="{{route('track.link', ['url' => urlencode("https://vk.com/")])}}">Track link</a>
                 </li>
+
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
-                    <a href="#">Quick_link_2</a>
+                    <a href="{{route('track.link', ['url' => urlencode("https://google.com/")])}}">Track link 2</a>
                 </li>
+
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
                     <a href="#">Quick_link_3</a>
                 </li>
+
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
                     <a href="#">Quick_link_4</a>
                 </li>
+
                 <li class="text-white text-xl hover:ml-3 transition-all duration-300">
                     <a href="#">Quick_link_5</a>
                 </li>
