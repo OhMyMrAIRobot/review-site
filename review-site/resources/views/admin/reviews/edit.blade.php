@@ -1,111 +1,48 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width = device - width, initial-scale = 1">
-    <title>{{$review->title}}</title>
+@extends('layouts.adminActionBase')
 
-    <!--css-->
-    @vite([
-    'resources/css/style.css',
-    ])
+@section('page.title')
+    @lang('admin/reviews.editTitle')
+@endsection
 
-    <!--icons-->
-    <script src="https://kit.fontawesome.com/0cca381f7a.js" crossorigin="anonymous"></script>
+@section('adminFormTitle')
+    @lang('admin/reviews.editTitle')
+@endsection
 
-    <!--font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cardo&family=Comfortaa:wght@300..700&family=Lato:wght@300;900&display=swap" rel="stylesheet">
+@section('adminFormBody')
+    <form method="POST" action="{{route('reviews.update', $review->id)}}" enctype="multipart/form-data" class="bg-white  py-4 px-6 flex flex-col gap-y-6 h-fit w-1/2 border rounded-xl">
+        @csrf
+        @method('PUT')
 
-</head>
-<body>
+        <div>
+            <label for = "title" class="block mb-1 text-sm font-medium text-gray-900">@lang('admin/reviews.title')</label>
+            <input name = "title" id="title" type = "text" placeholder="@lang('admin/reviews.title')..."
+                   value="{{$review->title}}" class="bg-inherit border border-gray-300 text-gray-900 sm:text-sm rounded-lg outline-none focus:ring-indigo-800 focus:border-indigo-600 block w-full p-2.5">
+        </div>
 
-<!--HEADER-->
-@include('components.Header')
-
-<section class="grid grid-cols-12">
-    <div class="col-span-3">
-        @include('components.sidebarAdmin')
-    </div>
-
-    <div class="col-span-9 flex flex-col items-center gap-y-6 pb-10">
-        <h4 class="font-bold text-3xl mt-8">@lang('admin/reviews.editTitle')</h4>
-
-        @if (session('status_err') || $errors->any())
-            <div class="w-1/2">
-                @if (session('status_err'))
-                    @component('components.success', ['status' => session('status_err')])@endcomponent
+        <div>
+            <label for = "desc" class="block mb-1 text-sm font-medium text-gray-900">@lang('admin/shops.description')</label>
+            <textarea name="description" id="desc" placeholder="@lang('admin/shops.description')..." class="bg-inherit border border-gray-300 text-gray-900 sm:text-sm rounded-lg outline-none focus:ring-indigo-800 focus:border-indigo-600 block w-full h-24 p-2.5"
+            >{{$review->description}}</textarea>
+        </div>
+        <input type="hidden" name = "user_id" value={{$review->user_id}}>
+        <input type="hidden" name = "shop_id" value={{$review->shop_id}}>
+        <input type="hidden" name = "rating" value={{$review->rating}}>
+        <div>
+            <label class="block mb-1 text-sm font-medium text-gray-900">@lang('admin/shops.rating')</label>
+            @for ($i = 1; $i <= 5; $i++)
+                @if ($i <= $review->rating)
+                    <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
+                    <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star cursor-pointer text-xl active fa-solid fa-star"></i></label>
+                @else
+                    <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
+                    <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star cursor-pointer text-xl fa-regular fa-star"></i></label>
                 @endif
-                @foreach ($errors->all() as $error)
-                    @component('components.error', ['status' => $error])@endcomponent
-                @endforeach
-            </div>
-        @endif
+            @endfor
+        </div>
+        <button type="submit" class="mt-2 mr-auto border rounded-xl bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white font-bold text-base px-6 py-2">@lang('admin/shops.save')</button>
+    </form>
+@endsection
 
-        <form method="POST" action="{{route('reviews.update', $review->id)}}" enctype="multipart/form-data" class="bg-white  py-4 px-6 flex flex-col gap-y-6 h-fit w-1/2 border rounded-xl">
-            @csrf
-            @method('PUT')
-
-            <div>
-                <label for = "title" class="block mb-1 text-sm font-medium text-gray-900">@lang('admin/reviews.title')</label>
-                <input name = "title" id="title" type = "text" placeholder="@lang('admin/reviews.title')..."
-                       value="{{$review->title}}" class="bg-inherit border border-gray-300 text-gray-900 sm:text-sm rounded-lg outline-none focus:ring-indigo-800 focus:border-indigo-600 block w-full p-2.5">
-            </div>
-
-            <div>
-                <label for = "desc" class="block mb-1 text-sm font-medium text-gray-900">@lang('admin/shops.description')</label>
-                <textarea name="description" id="desc" placeholder="@lang('admin/shops.description')..." class="bg-inherit border border-gray-300 text-gray-900 sm:text-sm rounded-lg outline-none focus:ring-indigo-800 focus:border-indigo-600 block w-full h-24 p-2.5"
-                >{{$review->description}}</textarea>
-            </div>
-
-        </form>
-    </div>
-</section>
-
-{{--<main class = "admin-container">--}}
-{{--    @include('components.sidebarAdmin')--}}
-
-{{--    <div class = "admin-right_cont">--}}
-
-{{--        <form method="POST" action="{{route('reviews.update', $review->id)}}" class = "admin_container_header">--}}
-{{--            @csrf--}}
-{{--            @method('PUT')--}}
-{{--            <h2>Редактировать отзыв</h2>--}}
-
-{{--            <div class = "admin_edit_review_container">--}}
-{{--                <h5>Заголовок</h5>--}}
-{{--                <input name = "title" value = "@lang($review->title)" class = "input_review">--}}
-
-{{--                <h5>Текст</h5>--}}
-{{--                <textarea name = "description" class = "review_text_input">@lang($review->description)</textarea>--}}
-
-{{--                <h5>Автор</h5>--}}
-{{--                <input disabled value = "@lang($review->author)" class = "input_review">--}}
-{{--                <input type="hidden" name = "user_id" value={{$review->user_id}}>--}}
-{{--                <input type="hidden" name = "shop_id" value={{$review->shop_id}}>--}}
-{{--                <input type="hidden" name = "rating" value={{$review->rating}}>--}}
-
-{{--                <h5>Рейтинг</h5>--}}
-{{--                <div class = "review_rating">--}}
-{{--                    @for ($i = 1; $i <= 5; $i++)--}}
-{{--                        @if ($i <= $review->rating)--}}
-{{--                            <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">--}}
-{{--                            <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star active fa-solid fa-star"></i></label>--}}
-{{--                        @else--}}
-{{--                            <input style="display: none" type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">--}}
-{{--                            <label for="rating{{ $i }}"><i onclick="Rating(this)" class="star fa-regular fa-star"></i></label>--}}
-{{--                        @endif--}}
-{{--                    @endfor--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <button type="SUBMIT" class = "admin_btn_edit">Сохранить</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
-{{--</main>--}}
-
-@include('components.footer')
 <script>
     const Rating = (current) => {
         let stars = Array.from(document.getElementsByClassName('star'));
@@ -121,6 +58,3 @@
         })
     }
 </script>
-</body>
-</html>
-
