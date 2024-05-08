@@ -12,13 +12,7 @@
         >@lang('admin/shops.create')</a>
     </div>
 
-    @if (session('status_ok'))
-        <div class="mt-3 w-full pl-3 border-b">
-            <div class="w-1/3">
-                @component('components.success', ['status' => session('status_ok')])@endcomponent
-            </div>
-        </div>
-    @endif
+    @include('components.admin.status')
 
     <div class="grid grid-cols-12 mt-1 text-base border-b bg-gray-50">
         <div class="col-span-1 font-bold pl-3 pt-1 pb-1 border-b">ID</div>
