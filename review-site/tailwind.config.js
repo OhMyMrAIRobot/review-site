@@ -1,32 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-      "./resources/views/main/index.blade.php",
-      "./resources/views/components/header.blade.php",
-      "./resources/views/components/footer.blade.php",
-      "./resources/views/components/pagination.blade.php",
-      "./resources/views/components/sidebarAdmin.blade.php",
-      "./resources/views/components/success.blade.php",
-      "./resources/views/components/error.blade.php",
-      "./resources/views/main/auth.blade.php",
-      "./resources/views/main/register.blade.php",
-      "./resources/views/main/forgotPassword.blade.php",
-      "./resources/views/main/ResetPassword.blade.php",
-      "./resources/views/main/shopPage.blade.php",
-      "./resources/views/admin/shops/index.blade.php",
-      "./resources/views/admin/shops/add.blade.php",
-      "./resources/views/admin/shops/edit.blade.php",
-      "./resources/views/admin/categories/index.blade.php",
-      "./resources/views/admin/categories/add.blade.php",
-      "./resources/views/admin/categories/edit.blade.php",
-      "./resources/views/admin/feedback/broadcast.blade.php",
-      "./resources/views/admin/feedback/reply.blade.php",
-      "./resources/views/admin/feedback/index.blade.php",
-      "./resources/views/admin/reviews/edit.blade.php",
-      "./resources/views/admin/reviews/index.blade.php",
-      "./resources/views/admin/users/index.blade.php",
-      "./resources/views/admin/users/edit.blade.php",
-      "./resources/views/admin/statistics/index.blade.php",
+      "./resources/views/**",
   ],
   theme: {
       extend: {
