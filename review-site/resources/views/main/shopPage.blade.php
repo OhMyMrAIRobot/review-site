@@ -1,5 +1,9 @@
 @extends('layouts.base')
 
+@section('page.title')
+    {{$shop->title}}
+@endsection
+
 @section('content')
     <section class="mx-auto max-w-screen-xl px-3">
 
