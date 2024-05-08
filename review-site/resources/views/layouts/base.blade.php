@@ -27,21 +27,6 @@
 
 @yield('content')
 
-<div class="bg-white pt-8 lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
-            <h3 class="text-3xl font-bold">@lang('main/index.lastReviews')</h3>
-        </div>
-
-    </div>
-</div>
-
-<div class="bg-white lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        @yield('subtitle')
-    </div>
-</div>
-
 @include('components.footer')
 
 </body>
